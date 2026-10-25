@@ -8,6 +8,7 @@
 */
 (() => {
 const $=id=>document.getElementById(id), C=$('world'),SKY=$('sky'),HUD=$('hudLayer');
+const LANTERN=window.ElisiumLantern;
 // WebGL2 is authoritative. A restrained 2D projected compatibility renderer keeps
 // the HTML preview interactive where embedded browsers disable GPU contexts.
 const realGL=C.getContext('webgl2',{alpha:true,antialias:true,depth:true,premultipliedAlpha:false});
@@ -32,7 +33,7 @@ const rand=rndGen(332081);
 const nodes={
   gate:{name:'The Quiet Door',p:[0,1.7,18],desc:'One exit, facing the world you are leaving.',links:['birth'],kind:'portal'},
   birth:{name:'The First Footfall',p:[0,1.7,10],desc:'The grass is colorless, but the world is not.',links:['gate','letters'],kind:'start'},
-  letters:{name:'A Writer’s Lantern',p:[0,1.7,2],desc:'A screen offers thanks to a writer and his friends.',links:['birth','glade'],kind:'screen'},
+  letters:{name:'A Writer’s Lantern',p:[0,1.7,2],desc:'A cherished lamp and book invite you to read or leave a line.',links:['birth','glade'],kind:'book'},
   glade:{name:'The Unsettled Meadow',p:[0,1.7,-14],desc:'Two figures stand at opposite ends of an unfinished argument.',links:['letters','lion','bird'],kind:'fork'},
   lion:{name:'Aslan’s Listening Place',p:[-18,1.7,-27],desc:'Here, assurance is asked to make room for scrutiny.',links:['glade','brook','bird'],kind:'aslan'},
   bird:{name:'Tash’s Long Shadow',p:[18,1.7,-27],desc:'Here, fear disguises itself in the grammar of truth.',links:['glade','thorn','lion'],kind:'tash'},
@@ -59,7 +60,7 @@ const spriteDefs={
 let activeDialog=null;
 const glyph=(s)=>s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 const clockText=()=>`DAY ${['I','II','III','IV'][Math.min(3,Math.floor(clockMin/1440))]} · ${String(Math.floor(clockMin/60)%24).padStart(2,'0')}:${String(Math.floor(clockMin%60)).padStart(2,'0')}`;
-function refreshUI(){const n=nodes[current];$('place').textContent=n.name;$('placeDesc').textContent=n.desc;$('sector').textContent=n.kind==='aslan'?'CHAPTER II · THE LISTENING LION':n.kind==='tash'?'CHAPTER II · THE SHADOW’S CLAIM':current==='far'?'CHAPTER III · THE UNFINISHED END':'CHAPTER I · A COMMON FIELD';$('clock').textContent=clockText();$('steps').textContent=`${visits} PASSAGES`;$('stepBack').disabled=!!transit||!prior||!n.links.includes(prior);$('stepAhead').disabled=!!transit;$('interact').disabled=!!transit||!nearestInteractable();let k=nearestInteractable();$('interact').querySelector('span').textContent=k==='aslan'||k==='tash'?'SPEAK':k==='screen'?'READ':k==='portal'?'EXIT':'INTERACT';}
+function refreshUI(){const n=nodes[current];$('place').textContent=n.name;$('placeDesc').textContent=n.desc;$('sector').textContent=n.kind==='aslan'?'CHAPTER II · THE LISTENING LION':n.kind==='tash'?'CHAPTER II · THE SHADOW’S CLAIM':current==='far'?'CHAPTER III · THE UNFINISHED END':'CHAPTER I · A COMMON FIELD';$('clock').textContent=clockText();$('steps').textContent=`${visits} PASSAGES`;$('stepBack').disabled=!!transit||!prior||!n.links.includes(prior);$('stepAhead').disabled=!!transit;$('interact').disabled=!!transit||!nearestInteractable();let k=nearestInteractable();$('interact').querySelector('span').textContent=k==='aslan'||k==='tash'?'SPEAK':k==='book'?LANTERN.action():k==='portal'?'EXIT':'INTERACT';}
 // ------------ GPU plumbing: custom GLSL ES 3.00, no third-party engine ------------
 const vScene=`#version 300 es
 precision highp float;
@@ -171,9 +172,8 @@ function layGround(){// Explicit low-poly facets, physically level field, varied
     for(let j=0;j<3;j++){let a=j*TAU/3,xx=p[0]+Math.cos(a)*2.7,zz=p[2]+Math.sin(a)*2.7;box(xx,.48,zz,.55,.96,.56,[.46,.48,.49]);ico(xx,1.15,zz,.49,.24,.49,[.56,.57,.55]);}
    }
   }
-  // Screen pedestal and subtly luminous ornamental frame; the true content is DOM.
-  box(0,2.82,-.05,10.4,5.7,.27,[.18,.22,.27]);box(0,2.82,.11,10.0,5.28,.25,[.61,.48,.31]);box(0,2.82,.28,9.71,4.99,.13,[.12,.22,.30]);
-  box(-4.89,2.82,.43,.12,5.1,.20,[.82,.64,.39]);box(4.89,2.82,.43,.12,5.1,.20,[.82,.64,.39]);
+  // Ornate, high-detail procedural gas lamp and Writer's Lantern lectern.
+  LANTERN.geometry({box,rod,ico,tri});
   // Exit portal behind the player; no inbound URL, no federation, no carry-over.
   box(-2.2,3.2,18,.45,6.4,.55,[.62,.61,.70]);box(2.2,3.2,18,.45,6.4,.55,[.62,.61,.70]);box(0,6.35,18,4.9,.48,.6,[.65,.62,.72]);
   box(0,3.2,18.1,3.9,5.7,.13,[.26,.30,.40]);box(0,3.2,18.2,3.45,5.25,.14,[.28,.29,.43]);
@@ -274,6 +274,7 @@ function drawCompatibility(t){
  const corners=[[ -2.3,0,18],[2.3,0,18],[2.3,6.5,18],[-2.3,6.5,18]].map(a=>project(a));
  if(corners.every(Boolean)){ctx.beginPath();ctx.moveTo(corners[0].x,corners[0].y);corners.slice(1).forEach(p=>ctx.lineTo(p.x,p.y));ctx.closePath();ctx.strokeStyle='#d0c3d7';ctx.lineWidth=8;ctx.stroke();ctx.fillStyle='#8d80ab42';ctx.fill();}
  ctx.globalAlpha=1;
+ LANTERN.paintFallback(ctx,project);
 }
 
 // ------------ navigation, world-projected UI, touch, dialogue ------------
@@ -282,12 +283,8 @@ const names={};for(const [id,text] of [['lion','ASLAN'],['bird','TASH']]){const 
 function refreshAnchors(){const placed=[];for(const [id,btn] of Object.entries(waypoints)){const n=nodes[id],available=!transit&&current!==id&&nodes[current].links.includes(id),p=project([n.p[0],.28,n.p[2]]);
  // Adjacent links only, genuinely in front and within safe viewport bounds.
  if(!available||!p||p.depth<1||p.depth>88||p.x<85||p.x>width-85||p.y<80||p.y>height-135){btn.hidden=true;continue;}
- // A screen in front of the node must obscure its HUD marker as well.
- const sc=project([0,2.82,.53]),sl=project([-4.85,2.82,.53]),sr=project([4.85,2.82,.53]);
- if(sc&&sl&&sr&&sc.depth>3.7&&sc.depth<28&&p.depth>sc.depth){
-  const scale=clamp(Math.abs(sr.x-sl.x)/560,.24,1.55);
-  if(Math.abs(p.x-sc.x)<290*scale+48&&Math.abs(p.y-sc.y)<160*scale+43){btn.hidden=true;continue;}
- }
+ // Neighbor markers must not print through the nearer book pages.
+ if(LANTERN.occludes(p,project)){btn.hidden=true;continue;}
  // Protect the chapter text and action controls from labels.
  if((p.x<Math.min(415,width*.33)&&p.y<410)||p.y>height-155){btn.hidden=true;continue;}
  btn.hidden=false;btn.style.left=p.x+'px';btn.style.top=p.y+'px';btn.querySelector('.caption').textContent=n.name;btn.querySelector('.cost').textContent=edgeCost(current,id)+' min';
@@ -300,20 +297,18 @@ function refreshAnchors(){const placed=[];for(const [id,btn] of Object.entries(w
   else placed.push(area);
  }
  for(const [id,el] of Object.entries(names)){const s=spriteDefs[id==='lion'?'aslan':'tash'],p=project([s.pos[0],s.height+1.1,s.pos[2]]);if(!p||p.depth>85||p.x<0||p.x>width){el.hidden=true;}else{el.hidden=false;el.style.left=p.x+'px';el.style.top=p.y+'px';el.style.opacity=clamp((90-p.depth)/75,.2,1);}}
- // Screen DOM is a real interactive web surface, not baked into the sprite pipeline.
- // Its world anchor is updated in the perspective projection, including distance scale.
- const c=project([0,2.82,.53]),l=project([-4.85,2.82,.53]),r=project([4.85,2.82,.53]);let s=$('worldScreen');if(!c||!l||!r||c.depth<3.7||c.depth>28||Math.abs(c.x-width/2)>width*.74){s.hidden=true;}
- else{s.hidden=false;let sc=clamp(Math.abs(r.x-l.x)/560,.24,1.55);s.style.left=c.x+'px';s.style.top=c.y+'px';s.style.transform=`translate(-50%,-50%) scale(${sc})`;s.style.opacity=clamp((c.depth-3.7)/2.2,0,1);s.style.pointerEvents=(sc>.54)?'auto':'none';}
+ // Twin page DOM screen is projected at the lectern's authored Cartesian position.
+ LANTERN.projectBook(project,player,width,height,transit);
 }
 function directedTarget(){let n=nodes[current],dir=nodes[current].links.map(id=>{let p=nodes[id].p,heading=Math.atan2(-(p[0]-player[0]),-(p[2]-player[2]));let error=Math.abs(Math.atan2(Math.sin(heading-yaw),Math.cos(heading-yaw)));return{id,error};}).sort((a,b)=>a.error-b.error);return dir[0]?.id;}
 function go(id){if(transit||activeDialog||!nodes[current].links.includes(id))return false;let cost=edgeCost(current,id),start=[...player],end=[...nodes[id].p],duration=clamp(.80+Math.sqrt(cost)*.23,1.25,3.0);
  transit={from:current,to:id,cost,start,end,duration,progress:0,startClock:clockMin};$('travelBanner').classList.add('active');$('travelLabel').textContent=`${nodes[current].name}  →  ${nodes[id].name}`;$('travelElapsed').textContent=`0 / ${cost} MIN`;$('travelFill').style.width='0%';$('hintText').textContent='Travelling: the world clock advances with each locked step.';refreshUI();return true;}
 function updateTransit(dt){if(!transit)return;let a=transit;let progress=clamp(a.progress+dt/a.duration,0,1),smooth=progress*progress*(3-2*progress),travelClock=progress<.5?2*progress*progress:1-2*(1-progress)*(1-progress);a.progress=progress;
  player=[lerp(a.start[0],a.end[0],smooth),lerp(a.start[1],a.end[1],smooth),lerp(a.start[2],a.end[2],smooth)];clockMin=a.startClock+a.cost*travelClock;$('clock').textContent=clockText();$('travelFill').style.width=progress*100+'%';$('travelElapsed').textContent=`${Math.floor(a.cost*travelClock)} / ${a.cost} MIN`;
- if(progress>=1){clockMin=a.startClock+a.cost;prior=a.from;current=a.to;player=[...a.end];transit=null;visits++;travelHistory.push({from:prior,to:current,cost:a.cost});$('travelBanner').classList.remove('active');$('hintText').textContent=nodes[current].kind==='aslan'?'Aslan waits here. Press E or INTERACT.':nodes[current].kind==='tash'?'Tash is near. Press E or INTERACT.':current==='gate'?'The departure portal is open behind you. Press E.':'Choose a new luminous waypoint; time has passed.';
+ if(progress>=1){clockMin=a.startClock+a.cost;prior=a.from;current=a.to;player=[...a.end];transit=null;visits++;travelHistory.push({from:prior,to:current,cost:a.cost});$('travelBanner').classList.remove('active');$('hintText').textContent=nodes[current].kind==='aslan'?'Aslan waits here. Press E or INTERACT.':nodes[current].kind==='tash'?'Tash is near. Press E or INTERACT.':current==='gate'?'The departure portal is open behind you. Press E.':current==='letters'?'The lantern-book invites you to read or leave a line. Press E.':'Choose a new luminous waypoint; time has passed.';
  refreshUI();}}
-function nearestInteractable(){if(transit)return null;let arr=[{key:'aslan',p:spriteDefs.aslan.pos,threshold:9},{key:'tash',p:spriteDefs.tash.pos,threshold:9},{key:'screen',p:[0,0,.53],threshold:11.5},{key:'portal',p:[0,0,18],threshold:4.9}].map(k=>({...k,d:Math.hypot(player[0]-k.p[0],player[2]-k.p[2])})).filter(o=>o.d<=o.threshold).sort((a,b)=>a.d-b.d);return arr[0]?.key||null;}
-function interact(){if(transit||activeDialog)return;let what=nearestInteractable();if(!what)return;if(what==='portal')return exitWorld();if(what==='screen')return showScreen();return talk(what);}
+function nearestInteractable(){if(transit)return null;let arr=[{key:'aslan',p:spriteDefs.aslan.pos,threshold:9},{key:'tash',p:spriteDefs.tash.pos,threshold:9},{key:'book',p:[2.05,0,-2.45],threshold:8.5},{key:'portal',p:[0,0,18],threshold:4.9}].map(k=>({...k,d:Math.hypot(player[0]-k.p[0],player[2]-k.p[2])})).filter(o=>o.d<=o.threshold).sort((a,b)=>a.d-b.d);return arr[0]?.key||null;}
+function interact(){if(transit||activeDialog)return;let what=nearestInteractable();if(!what)return;if(what==='portal')return exitWorld();if(what==='book')return LANTERN.interact();return talk(what);}
 function modal(html){activeDialog=true;$('modalBody').innerHTML=html;$('veil').hidden=false;}
 function closeModal(){activeDialog=null;$('veil').hidden=true;}
 $('closeModal').onclick=closeModal;$('veil').addEventListener('click',e=>{if(e.target===$('veil'))closeModal();});
@@ -326,11 +321,10 @@ function talk(kind,answer=''){const lion=kind==='aslan',s=spriteDefs[kind],name=
  modal(banner+`<div class="choices">${answerOpts.map(([k,title])=>`<button data-answer="${k}" data-who="${kind}">◇ ${title}</button>`).join('')}</div><p class="footnote">Original, transformative dialogue, not quotations from C. S. Lewis. The disputed equation comes from Shift in <i>The Last Battle</i>; this world invites scrutiny rather than presenting it as Lewis's own view.</p>`);
  document.querySelectorAll('[data-answer]').forEach(b=>b.onclick=()=>{let k=b.dataset.answer;if(lion)insight=Math.min(3,insight+1);else doubt=Math.min(3,doubt+1);talk(kind,k);});
 }
-function showScreen(){modal(`<span class="tinycaps">IN-WORLD SCREEN · THE DEDICATION</span><h2>For C. S. Lewis and the Inklings</h2><p class="lead">Clive Staples Lewis (1898–1963) taught literature, imagined Narnia, and wrote about belief and doubt. At Oxford he belonged to the Inklings, a gathering of friends—including J. R. R. Tolkien—who read, disagreed, and encouraged one another’s stories.</p><p>To build an essay-world in this tradition is to welcome serious disagreement without extinguishing wonder.</p><div class="choices"><a class="modalAction" target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/C._S._Lewis">Read about C. S. Lewis on Wikipedia ↗</a><a class="modalAction" target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/Inklings">Read about the Inklings on Wikipedia ↗</a></div>`);}
 function exitWorld(){// Browsers normally refuse window.close() for a tab not opened by script.
  $('closed').hidden=false;try{window.close();}catch{} }
 $('again').onclick=()=>{window.location.reload()};
-function showHelp(){modal(`<span class="tinycaps">HOW TO READ THIS WORLD</span><h2>Movement is a proposition.</h2><p>Click a glowing waypoint or use ↑ to take the path most closely aligned with your gaze. Rotate using ←/→, drag the scene to look around, or press A/D. ↓ returns to your last adjacent node. Choose <strong>GRAPH</strong> to inspect the connected network.</p><p>Every connection has a <strong>fictional minute cost</strong>. During travel you are locked between nodes, although you may still look around. The clock advances concurrently with your visible 3D movement. The graph controls motion; the Cartesian field only displays it. Some physically similar journeys deliberately cost different amounts.</p><p>Approach Aslan or Tash and press <strong>E</strong> or <strong>INTERACT</strong>. Their single three-panel sprite sheets respond to distinct rules: Aslan to your questions; Tash to proximity and your skeptical challenges. The foliage is translucent and monochrome, with a shared wavering “ghost tone” shader. Each of the five tree families has fixed sapling, juvenile, and mature forms.</p><p>Behind the beginning is the one-way exit portal. The literary screen ahead has real links that open Wikipedia in new tabs.</p><p class="footnote">An unofficial original fan-work and literary experiment. No affiliation with Lewis's estate. No navigation or interaction data leaves this page.</p>`);}
+function showHelp(){modal(`<span class="tinycaps">HOW TO READ THIS WORLD</span><h2>Movement is a proposition.</h2><p>Click a glowing waypoint or use ↑ to take the path most closely aligned with your gaze. Rotate using ←/→, drag the scene to look around, or press A/D. ↓ returns to your last adjacent node. Choose <strong>GRAPH</strong> to inspect the connected network.</p><p>Every connection has a <strong>fictional minute cost</strong>. During travel you are locked between nodes, although you may still look around. The clock advances concurrently with your visible 3D movement. The graph controls motion; the Cartesian field only displays it. Some physically similar journeys deliberately cost different amounts.</p><p>Approach Aslan or Tash and press <strong>E</strong> or <strong>INTERACT</strong>. Their single three-panel sprite sheets respond to distinct rules: Aslan to your questions; Tash to proximity and your skeptical challenges. The foliage is translucent and monochrome, with a shared wavering “ghost tone” shader. Each of the five tree families has fixed sapling, juvenile, and mature forms.</p><p>Behind the beginning is the one-way exit portal. At the Writer’s Lantern station, the Lewis and Inklings tribute lives inside an ornate open book; turn paired pages, switch books and write on the guest-book leaf. A physical or touchscreen keyboard works directly within the pages.</p><p class="footnote">An unofficial original fan-work and literary experiment. No affiliation with Lewis's estate. No navigation or interaction data leaves this page.</p>`);}
 function showMap(){let xs=Object.values(nodes).map(n=>n.p[0]),zs=Object.values(nodes).map(n=>n.p[2]),minX=Math.min(...xs)-9,maxX=Math.max(...xs)+9,minZ=Math.min(...zs)-8,maxZ=Math.max(...zs)+8;
  const x=v=>35+(v-minX)/(maxX-minX)*530,y=v=>22+(v-minZ)/(maxZ-minZ)*550;
  let edges=edgeList.map(([a,b])=>`<line class="edge ${a===current||b===current?'available':''}" x1="${x(nodes[a].p[0])}" y1="${y(nodes[a].p[2])}" x2="${x(nodes[b].p[0])}" y2="${y(nodes[b].p[2])}"/>`).join('');
@@ -339,12 +333,12 @@ function showMap(){let xs=Object.values(nodes).map(n=>n.p[0]),zs=Object.values(n
  document.querySelectorAll('[data-target]').forEach(el=>el.addEventListener('click',()=>{let to=el.dataset.target;if(nodes[current].links.includes(to)){closeModal();go(to);}}));}
 $('helpBtn').onclick=showHelp;$('mapBtn').onclick=showMap;$('interact').onclick=interact;
 $('turnL').onclick=()=>{if(!activeDialog)yaw-=Math.PI/7};$('turnR').onclick=()=>{if(!activeDialog)yaw+=Math.PI/7};$('stepAhead').onclick=()=>go(directedTarget());$('stepBack').onclick=()=>{if(prior)go(prior)};
-window.addEventListener('keydown',e=>{if(activeDialog){if(e.key==='Escape')closeModal();return;}if($('closed').hidden===false)return;
+window.addEventListener('keydown',e=>{if(e.target instanceof Element&&e.target.closest('#worldBook'))return;if(activeDialog){if(e.key==='Escape')closeModal();return;}if($('closed').hidden===false)return;
  if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight',' ','e','E','a','A','d','D','m','M'].includes(e.key))e.preventDefault();if(e.repeat&&['ArrowUp','ArrowDown','e','E',' '].includes(e.key))return;
  if(e.key==='ArrowUp'||e.key==='w'||e.key==='W')go(directedTarget());else if(e.key==='ArrowDown'||e.key==='s'||e.key==='S'){if(prior)go(prior);}else if(e.key==='ArrowLeft'||e.key==='a'||e.key==='A')yaw-=Math.PI/8;else if(e.key==='ArrowRight'||e.key==='d'||e.key==='D')yaw+=Math.PI/8;else if(e.key==='e'||e.key==='E'||e.key===' ')interact();else if(e.key==='m'||e.key==='M')showMap();});
 let pointer=null;C.addEventListener('pointerdown',e=>{pointer={id:e.pointerId,x:e.clientX,y:e.clientY};C.setPointerCapture(e.pointerId)});C.addEventListener('pointermove',e=>{if(!pointer||pointer.id!==e.pointerId||activeDialog)return;let dx=e.clientX-pointer.x,dy=e.clientY-pointer.y;yaw-=dx*.0058;pitch=clamp(pitch-dy*.0045,-.75,.68);pointer.x=e.clientX;pointer.y=e.clientY;});C.addEventListener('pointerup',()=>{pointer=null});C.addEventListener('pointercancel',()=>{pointer=null});
 // Explicit developer API supports deterministic inspection and regression tests.
-window.ELISIUM={version:'0.1.0',nodes,edgeCost,edgeList,treeFamilies:TREE_FAMILIES,growthStages:GROWTH,foliageRegistry,sprites:spriteDefs,getState:()=>({current,prior,clockMin,visits,insight,doubt,transit:transit&&{...transit},yaw,pitch}),go,interact,showMap};
+window.ELISIUM={version:'0.2.0',lantern:LANTERN,nodes,edgeCost,edgeList,treeFamilies:TREE_FAMILIES,growthStages:GROWTH,foliageRegistry,sprites:spriteDefs,getState:()=>({current,prior,clockMin,visits,insight,doubt,transit:transit&&{...transit},yaw,pitch}),go,interact,showMap};
 function frame(now){let dt=Math.min(.40,(now-last)/1000);last=now;updateTransit(dt);let secs=now/1000;draw(secs);refreshAnchors();$('interact').disabled=!!transit||!nearestInteractable();requestAnimationFrame(frame);}
-resize();refreshUI();requestAnimationFrame(frame);
+LANTERN.mount();resize();refreshUI();requestAnimationFrame(frame);
 })();
