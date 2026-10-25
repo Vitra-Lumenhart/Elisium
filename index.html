@@ -1,11 +1,17 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#121725"><title>ELISIUM · The Names We Give · Webspace 0.1</title>
-<link rel="stylesheet" href="style.css"></head>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#121725"><title>ELISIUM · The Names We Give · Webspace 0.2</title>
+<link rel="stylesheet" href="style.css"><link rel="stylesheet" href="lantern.css"></head>
 <body><div id="app">
 <canvas id="sky" aria-hidden="true"></canvas><canvas id="world" aria-label="Interactive three-dimensional Elisium world"></canvas><div id="hudLayer" aria-hidden="true"></div>
-<div id="topbar"><div class="brand"><span class="brandGlyph">✧</span><div><strong>ELISIUM</strong><small>AN ESSAY YOU CAN WALK THROUGH <span>· WEBSPACE 0.1</span></small></div></div><div class="topRight"><span class="tinycaps">A FIELD OF UNSETTLED NAMES</span><button id="mapBtn" class="topBtn">◈ GRAPH</button><button id="helpBtn" class="topBtn">? HELP</button></div></div>
+<div id="topbar"><div class="brand"><span class="brandGlyph">✧</span><div><strong>ELISIUM</strong><small>AN ESSAY YOU CAN WALK THROUGH <span>· WEBSPACE 0.2</span></small></div></div><div class="topRight"><span class="tinycaps">A FIELD OF UNSETTLED NAMES</span><button id="mapBtn" class="topBtn">◈ GRAPH</button><button id="helpBtn" class="topBtn">? HELP</button></div></div>
 <div id="locationCard"><span class="tinycaps eyebrow" id="sector">CHAPTER I · A COMMON FIELD</span><h1 id="place">The First Footfall</h1><p id="placeDesc">The grass is colorless, but the world is not.</p><div class="locationStats"><span id="clock">DAY I · 06:14</span><span id="steps">0 PASSAGES</span></div></div>
-<div id="worldScreen" class="worldScreen" aria-label="C. S. Lewis memorial screen"><div class="screenDecor">✦ &nbsp; THE COMPANY OF WRITERS &nbsp; ✦</div><h2>C. S. Lewis <span>1898–1963</span></h2><p>Scholar, storyteller, friend. In Oxford, Lewis argued about old books and new worlds with a circle of writers called <em>the Inklings</em>. Their fellowship reminds us that even an enchanted world begins as a conversation.</p><div class="screenLinks"><a href="https://en.wikipedia.org/wiki/C._S._Lewis" target="_blank" rel="noopener noreferrer">C. S. Lewis ↗</a><a href="https://en.wikipedia.org/wiki/Inklings" target="_blank" rel="noopener noreferrer">The Inklings ↗</a></div><span class="screenFoot">A small dedication to the makers of impossible doors.</span></div>
+<div id="worldBook" role="group" aria-label="The Writer's Lantern open book" hidden>
+ <div class="bookToolbar"><span id="bookKind">THE COMPANY OF WRITERS</span>
+  <div class="bookButtons"><button id="bookSwitch" class="bookCtrl" type="button">CHANGE BOOK</button><button id="bookPrev" class="bookCtrl" type="button">◁ PREVIOUS</button><button id="bookNext" class="bookCtrl" type="button">NEXT ▷</button></div>
+ </div>
+ <div class="bookSpread"><section id="bookLeft" class="bookPage left" aria-label="Left-hand page"></section><section id="bookRight" class="bookPage right" aria-label="Right-hand page"></section></div>
+ <div id="bookMeta" aria-live="polite"></div>
+</div>
 <div id="travelBanner"><span class="travelHeader">PASSAGE IN PROGRESS</span><div id="travelLabel">Crossing the field</div><div class="travelTrack"><div id="travelFill"></div></div><div class="travelFooter"><span id="travelElapsed">0 / 0 MIN</span><span>MOVEMENT LOCKED UNTIL ARRIVAL</span></div></div>
 <div id="hint" class="hint"><span id="hintText">Choose a luminous waypoint or press ↑ to advance.</span></div>
 <div id="controls"><button id="turnL" title="Turn left">↶</button><button id="stepBack" title="Travel to previous adjacent node">↓</button><button id="stepAhead" class="gold" title="Travel to waypoint ahead">↑ <span>TRAVEL</span></button><button id="turnR" title="Turn right">↷</button><button id="interact" class="interact" title="Speak or use an object">✦ <span>INTERACT</span></button></div>
@@ -13,4 +19,4 @@
 <div id="veil" class="veil" hidden><div id="modal" class="modal"><button id="closeModal" class="closeModal" title="Close dialog">✕</button><div id="modalBody"></div></div></div>
 <div id="closed" class="closed" hidden><div><div class="exitMark">◇</div><p class="tinycaps">THE THRESHOLD IS CLOSED</p><h1>You have left Elisium.</h1><p>A webspace may end without its questions being answered. Close this tab, or begin again.</p><button id="again">Begin again</button></div></div>
 <div id="error" hidden></div>
-</div><script src="engine.js"></script></body></html>
+</div><script src="lantern.js"></script><script src="engine.js"></script></body></html>
