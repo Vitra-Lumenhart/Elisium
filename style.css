@@ -2,3 +2,6 @@
 @media(max-width:850px){#topbar{padding:16px}.brand strong{font-size:22px}.brand small{font-size:8px}.topRight>.tinycaps{display:none}#locationCard{left:18px;top:91px}.topBtn{padding:10px}#bottomLine{left:12px;right:12px;font-size:8px}#bottomLine div:first-child{display:none}.hint{bottom:117px}.modal{padding:24px}}@media(max-width:600px){.brand strong{font-size:19px}.brand small span{display:none}#topbar{height:60px}.topRight{gap:5px}.topBtn{font-size:9px;padding:7px}#locationCard{top:75px;left:12px;max-width:190px}#locationCard h1{font-size:21px}#locationCard p{font-size:11px}.locationStats{font-size:8px;gap:8px}#controls{bottom:38px;gap:3px;padding:6px}#controls button{min-width:41px;min-height:45px}#controls button span{display:none}#controls .interact{padding:0 12px}#bottomLine{bottom:10px;justify-content:center}.hint{bottom:106px;font-size:11px;width:88vw;max-width:88vw;padding:9px}#travelBanner{width:95vw;top:65px}.characterLayout{flex-direction:column;gap:1px}.modal .portrait{height:140px;width:105px;flex:0 0 140px}.modal h2{font-size:29px}#worldScreen{pointer-events:none}}
 
 .modal .modalAction{display:block;text-decoration:none;color:#f2e0ba}
+
+/* Authored display modes must never override HTML's hidden state. */
+.waypoint[hidden],.nameplate[hidden],#worldScreen[hidden]{display:none!important}
