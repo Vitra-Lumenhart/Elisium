@@ -1,6 +1,6 @@
 {
   "schema": "webspace/elisium-graph-0.1",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "world_id": "elisium-names-we-give",
   "rendering": "WebGL2; X/Z plane, Y up; custom GLSL shaders; Canvas2D compatibility only",
   "initial_node": "birth",
@@ -67,9 +67,9 @@
     "gate": {
       "title": "The Quiet Door",
       "cartesian_xyz": [
-        0.0,
+        0,
         1.7,
-        18.0
+        18
       ],
       "description": "One exit, facing the world you are leaving.",
       "links": [
@@ -80,9 +80,9 @@
     "birth": {
       "title": "The First Footfall",
       "cartesian_xyz": [
-        0.0,
+        0,
         1.7,
-        10.0
+        10
       ],
       "description": "The grass is colorless, but the world is not.",
       "links": [
@@ -94,23 +94,23 @@
     "letters": {
       "title": "A Writer’s Lantern",
       "cartesian_xyz": [
-        0.0,
+        0,
         1.7,
-        2.0
+        2
       ],
-      "description": "A screen offers thanks to a writer and his friends.",
+      "description": "A lovingly detailed London-style lamp and a small book of two speaking pages.",
       "links": [
         "birth",
         "glade"
       ],
-      "kind": "screen"
+      "kind": "book"
     },
     "glade": {
       "title": "The Unsettled Meadow",
       "cartesian_xyz": [
-        0.0,
+        0,
         1.7,
-        -14.0
+        -14
       ],
       "description": "Two figures stand at opposite ends of an unfinished argument.",
       "links": [
@@ -123,9 +123,9 @@
     "lion": {
       "title": "Aslan’s Listening Place",
       "cartesian_xyz": [
-        -18.0,
+        -18,
         1.7,
-        -27.0
+        -27
       ],
       "description": "Here, assurance is asked to make room for scrutiny.",
       "links": [
@@ -138,9 +138,9 @@
     "bird": {
       "title": "Tash’s Long Shadow",
       "cartesian_xyz": [
-        18.0,
+        18,
         1.7,
-        -27.0
+        -27
       ],
       "description": "Here, fear disguises itself in the grammar of truth.",
       "links": [
@@ -153,9 +153,9 @@
     "brook": {
       "title": "The Pale Brook",
       "cartesian_xyz": [
-        -17.0,
+        -17,
         1.7,
-        -44.0
+        -44
       ],
       "description": "Neither bank can explain the meaning of the crossing.",
       "links": [
@@ -168,9 +168,9 @@
     "thorn": {
       "title": "The Court of Thorns",
       "cartesian_xyz": [
-        18.0,
+        18,
         1.7,
-        -44.0
+        -44
       ],
       "description": "Nothing in the forest grows more carefully than a thorn.",
       "links": [
@@ -183,9 +183,9 @@
     "cairn": {
       "title": "A Cairn of Two Names",
       "cartesian_xyz": [
-        0.0,
+        0,
         1.7,
-        -50.0
+        -50
       ],
       "description": "An intersection where a short journey may take a long time.",
       "links": [
@@ -198,9 +198,9 @@
     "roots": {
       "title": "The Root Archive",
       "cartesian_xyz": [
-        -31.0,
+        -31,
         1.7,
-        -62.0
+        -62
       ],
       "description": "Older branches carry younger stories.",
       "links": [
@@ -212,9 +212,9 @@
     "echo": {
       "title": "The Answering Wood",
       "cartesian_xyz": [
-        31.0,
+        31,
         1.7,
-        -62.0
+        -62
       ],
       "description": "The echo speaks with a borrowed voice.",
       "links": [
@@ -226,9 +226,9 @@
     "far": {
       "title": "The Edge of the Essay",
       "cartesian_xyz": [
-        0.0,
+        0,
         1.7,
-        -75.0
+        -75
       ],
       "description": "Beyond the last sentence waits another question.",
       "links": [
@@ -237,6 +237,35 @@
         "echo"
       ],
       "kind": "end"
+    }
+  },
+  "world_objects": {
+    "writers_lantern": {
+      "kind": "procedural-lantern-and-synchronized-book",
+      "node": "letters",
+      "lamp_cartesian_xyz": [
+        -3.42,
+        0,
+        -2.45
+      ],
+      "book_cartesian_xyz": [
+        2.05,
+        2.42,
+        -2.45
+      ],
+      "geometry": "High-segment cast iron shaft, scrolled crossbar, glass cage, collars, vinework, stone plinth, brass and parchment lectern",
+      "book_layout": "one projected browser-native HTML folio with two coordinated screen pages",
+      "page_books": [
+        "Company of Writers dedication",
+        "Local Guest Book"
+      ],
+      "input": "Browser-native textarea with physical/soft keyboard and live opposing-page mirror",
+      "persistence": "same-origin localStorage only; no shared public entries",
+      "files": [
+        "lantern.js",
+        "lantern.css"
+      ],
+      "current_growth": "not applicable"
     }
   }
 }
