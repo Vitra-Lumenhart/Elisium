@@ -279,8 +279,26 @@ function drawCompatibility(t){
 // ------------ navigation, world-projected UI, touch, dialogue ------------
 const waypoints={};for(const id of Object.keys(nodes)){const btn=document.createElement('button');btn.type='button';btn.className='waypoint';btn.innerHTML='<span class="dot"></span><span class="caption"></span><span class="cost"></span>';HUD.appendChild(btn);waypoints[id]=btn;btn.addEventListener('click',()=>go(id));}
 const names={};for(const [id,text] of [['lion','ASLAN'],['bird','TASH']]){const el=document.createElement('div');el.className='nameplate';el.innerHTML=`${text}<span>${id==='lion'?'A LISTENING PRESENCE':'THE SHADOW OF CERTAINTY'}</span>`;HUD.appendChild(el);names[id]=el;}
-function refreshAnchors(){for(const [id,btn] of Object.entries(waypoints)){const n=nodes[id],available=!transit&&current!==id&&nodes[current].links.includes(id),p=project([n.p[0],.28,n.p[2]]);
- if(!available||!p||p.depth<1||p.depth>88||p.x<30||p.x>width-30||p.y<55||p.y>height-50||(-((n.p[0]-player[0])*Math.sin(yaw)+(n.p[2]-player[2])*Math.cos(yaw)))<=0.5){btn.hidden=true;continue;}btn.hidden=false;btn.style.left=p.x+'px';btn.style.top=p.y+'px';btn.querySelector('.caption').textContent=n.name;btn.querySelector('.cost').textContent=edgeCost(current,id)+' min';}
+function refreshAnchors(){const placed=[];for(const [id,btn] of Object.entries(waypoints)){const n=nodes[id],available=!transit&&current!==id&&nodes[current].links.includes(id),p=project([n.p[0],.28,n.p[2]]);
+ // Adjacent links only, genuinely in front and within safe viewport bounds.
+ if(!available||!p||p.depth<1||p.depth>88||p.x<85||p.x>width-85||p.y<80||p.y>height-135){btn.hidden=true;continue;}
+ // A screen in front of the node must obscure its HUD marker as well.
+ const sc=project([0,2.82,.53]),sl=project([-4.85,2.82,.53]),sr=project([4.85,2.82,.53]);
+ if(sc&&sl&&sr&&sc.depth>3.7&&sc.depth<28&&p.depth>sc.depth){
+  const scale=clamp(Math.abs(sr.x-sl.x)/560,.24,1.55);
+  if(Math.abs(p.x-sc.x)<290*scale+48&&Math.abs(p.y-sc.y)<160*scale+43){btn.hidden=true;continue;}
+ }
+ // Protect the chapter text and action controls from labels.
+ if((p.x<Math.min(415,width*.33)&&p.y<410)||p.y>height-155){btn.hidden=true;continue;}
+ btn.hidden=false;btn.style.left=p.x+'px';btn.style.top=p.y+'px';btn.querySelector('.caption').textContent=n.name;btn.querySelector('.cost').textContent=edgeCost(current,id)+' min';
+ }
+ // Closest reachable markers win when two world points project to one label area.
+ const valid=Object.entries(waypoints).filter(([id,btn])=>!btn.hidden).sort((a,b)=>dist(player,nodes[a[0]].p)-dist(player,nodes[b[0]].p));
+ for(const [id,btn] of valid){const x=parseFloat(btn.style.left),y=parseFloat(btn.style.top),w=Math.max(125,nodes[id].name.length*7),h=66;
+  const area={x1:x-w/2-7,x2:x+w/2+7,y1:y-21,y2:y+h};
+  if(placed.some(b=>area.x1<b.x2&&area.x2>b.x1&&area.y1<b.y2&&area.y2>b.y1))btn.hidden=true;
+  else placed.push(area);
+ }
  for(const [id,el] of Object.entries(names)){const s=spriteDefs[id==='lion'?'aslan':'tash'],p=project([s.pos[0],s.height+1.1,s.pos[2]]);if(!p||p.depth>85||p.x<0||p.x>width){el.hidden=true;}else{el.hidden=false;el.style.left=p.x+'px';el.style.top=p.y+'px';el.style.opacity=clamp((90-p.depth)/75,.2,1);}}
  // Screen DOM is a real interactive web surface, not baked into the sprite pipeline.
  // Its world anchor is updated in the perspective projection, including distance scale.
