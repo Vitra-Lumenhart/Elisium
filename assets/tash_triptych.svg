@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="780" viewBox="0 0 1800 780"><defs>
+<radialGradient id="mane"><stop stop-color="#f8dfa0"/><stop offset=".56" stop-color="#c78c46"/><stop offset="1" stop-color="#724b34"/></radialGradient>
+<linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff0b9"/><stop offset=".48" stop-color="#c99458"/><stop offset="1" stop-color="#745036"/></linearGradient>
+<linearGradient id="tash" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#77788b"/><stop offset=".46" stop-color="#44445b"/><stop offset="1" stop-color="#191b30"/></linearGradient>
+<linearGradient id="beak"><stop stop-color="#c2b6a3"/><stop offset="1" stop-color="#686374"/></linearGradient>
+<radialGradient id="aura"><stop stop-color="#dfd39a" stop-opacity=".44"/><stop offset="1" stop-color="#dccd9e" stop-opacity="0"/></radialGradient>
+<radialGradient id="violet"><stop stop-color="#9b91b9" stop-opacity=".4"/><stop offset="1" stop-color="#9b91b9" stop-opacity="0"/></radialGradient>
+</defs><g transform="translate(0 0)">
+<ellipse cx="301" cy="339" rx="228" ry="304" fill="url(#violet)" opacity=".78"/>
+<ellipse cx="302" cy="682" rx="128" ry="19" fill="#998fba" opacity=".15"/>
+<!-- skeletal legs, talons -->
+<path d="M269 501 Q252 590 225 668 M320 502 Q326 601 362 662" stroke="#8c8795" stroke-width="23" fill="none" stroke-linecap="round"/>
+<g stroke="#b6adb7" stroke-width="9" stroke-linecap="round"><path d="M224 664 l-44 11 M224 664 l5 20 M224 664 l30 17 M359 664 l-19 21 M360 666 l22 13 M360 668 l45 -1"/></g>
+<!-- ethereal black cloak -->
+<path d="M271 278 Q205 353 182 468 Q160 542 159 590 Q231 573 267 617 Q292 559 313 615 Q378 575 444 597 Q396 432 334 286Z" fill="url(#tash)" stroke="#a69fb3" stroke-width="5"/>
+<path d="M285 349 Q265 460 271 583" stroke="#a5a5b8" opacity=".47" stroke-width="5" fill="none"/>
+<!-- upper wing arms 1 and 2 -->
+<path d="M255 284 Q172 235 83 310 Q159 303 188 373" stroke="#666478" stroke-width="26" fill="none" stroke-linecap="round"/>
+<path d="M335 282 Q421 214 510 310 Q446 301 399 389" stroke="#727186" stroke-width="26" fill="none" stroke-linecap="round"/>
+<!-- lower arms 3 and 4; joints, grasping hands -->
+<path d="M245 374 Q178 408 156 497 M358 370 Q424 406 444 503" stroke="#868093" stroke-width="18" fill="none" stroke-linecap="round"/>
+<g stroke="#c4b9c2" stroke-width="6" fill="none" stroke-linecap="round"><path d="M156 495 l-29 21 m29 -21 l-4 34 m4 -34 l24 17 M446 502 l28 24 m-28 -24 l5 35 m-5 -35 l-31 17 M90 311 l-23 17 M505 310 l28 24"/></g>
+<!-- feathers etched into arms -->
+<path d="M103 310 q64 0 97 39 M407 366 q62 -71 101 -55" stroke="#80719c" opacity=".7" stroke-width="8" fill="none"/>
+<!-- torso ornament and spine -->
+<path d="M287 336 L300 365 L320 338 M282 393 L305 426 L324 394 M268 454 L305 490 L341 452" stroke="#d7c9b5" opacity=".47" stroke-width="5" fill="none"/>
+<!-- long bird neck, skull, hooked beak -->
+<path d="M269 286 Q265 228 248 179 Q239 136 267 122 Q322 98 340 141 Q356 177 320 220 L326 290Z" fill="url(#tash)" stroke="#b3a9b9" stroke-width="6"/>
+<path d="M260 135 Q281 99 320 125 Q350 147 335 181 Q328 203 299 215 L337 227 Q368 231 362 250 Q336 257 301 235 L270 221 Q249 205 252 172Z" fill="url(#beak)" stroke="#696476" stroke-width="5"/>
+<path d="M327 213 Q367 222 363 248 Q350 255 340 244" fill="#79717a"/>
+<ellipse cx="304" cy="158" rx="12" ry="8" fill="#e5aeb1"/><circle cx="306" cy="159" r="3" fill="#332638"/>
+<path d="M263 128 Q258 91 283 69 M294 120 Q308 88 327 72" stroke="#80719c" stroke-width="9" fill="none"/>
+<!-- attitude-specific glyph orbit -->
+<path d="M198 131 L176 96 L154 130 M386 132 L416 100 L442 139" stroke="#9c87b1" stroke-width="7" fill="none" opacity=".75"/>
+</g><g transform="translate(600 0)">
+<ellipse cx="301" cy="339" rx="228" ry="304" fill="url(#violet)" opacity=".78"/>
+<ellipse cx="302" cy="682" rx="128" ry="19" fill="#998fba" opacity=".15"/>
+<!-- skeletal legs, talons -->
+<path d="M269 501 Q252 590 225 668 M320 502 Q326 601 362 662" stroke="#8c8795" stroke-width="23" fill="none" stroke-linecap="round"/>
+<g stroke="#b6adb7" stroke-width="9" stroke-linecap="round"><path d="M224 664 l-44 11 M224 664 l5 20 M224 664 l30 17 M359 664 l-19 21 M360 666 l22 13 M360 668 l45 -1"/></g>
+<!-- ethereal black cloak -->
+<path d="M271 278 Q205 353 182 468 Q160 542 159 590 Q231 573 267 617 Q292 559 313 615 Q378 575 444 597 Q396 432 334 286Z" fill="url(#tash)" stroke="#a69fb3" stroke-width="5"/>
+<path d="M285 349 Q265 460 271 583" stroke="#a5a5b8" opacity=".47" stroke-width="5" fill="none"/>
+<!-- upper wing arms 1 and 2 -->
+<path d="M255 285 Q139 156 64 218 Q163 251 194 359" stroke="#666478" stroke-width="26" fill="none" stroke-linecap="round"/>
+<path d="M335 282 Q421 214 510 310 Q446 301 399 389" stroke="#727186" stroke-width="26" fill="none" stroke-linecap="round"/>
+<!-- lower arms 3 and 4; joints, grasping hands -->
+<path d="M245 374 Q178 408 156 497 M358 370 Q424 406 444 503" stroke="#868093" stroke-width="18" fill="none" stroke-linecap="round"/>
+<g stroke="#c4b9c2" stroke-width="6" fill="none" stroke-linecap="round"><path d="M156 495 l-29 21 m29 -21 l-4 34 m4 -34 l24 17 M446 502 l28 24 m-28 -24 l5 35 m-5 -35 l-31 17 M90 311 l-23 17 M505 310 l28 24"/></g>
+<!-- feathers etched into arms -->
+<path d="M103 310 q64 0 97 39 M407 366 q62 -71 101 -55" stroke="#a2a1b9" opacity=".7" stroke-width="8" fill="none"/>
+<!-- torso ornament and spine -->
+<path d="M287 336 L300 365 L320 338 M282 393 L305 426 L324 394 M268 454 L305 490 L341 452" stroke="#d7c9b5" opacity=".47" stroke-width="5" fill="none"/>
+<!-- long bird neck, skull, hooked beak -->
+<path d="M269 286 Q265 228 248 179 Q239 136 267 122 Q322 98 340 141 Q356 177 320 220 L326 290Z" fill="url(#tash)" stroke="#b3a9b9" stroke-width="6"/>
+<path d="M260 135 Q281 99 320 125 Q350 147 335 181 Q328 203 299 215 L337 227 Q368 231 362 250 Q336 257 301 235 L270 221 Q249 205 252 172Z" fill="url(#beak)" stroke="#696476" stroke-width="5"/>
+<path d="M327 213 Q367 222 363 248 Q350 255 340 244" fill="#79717a"/>
+<ellipse cx="304" cy="158" rx="12" ry="8" fill="#ffbeb1"/><circle cx="306" cy="159" r="3" fill="#332638"/>
+<path d="M263 128 Q258 91 283 69 M294 120 Q308 88 327 72" stroke="#a2a1b9" stroke-width="9" fill="none"/>
+<!-- attitude-specific glyph orbit -->
+<path d="M123 172 L84 122 M446 169 L489 113" stroke="#baa1bf" stroke-width="8" opacity=".7"/>
+</g><g transform="translate(1200 0)">
+<ellipse cx="301" cy="339" rx="228" ry="304" fill="url(#violet)" opacity=".78"/>
+<ellipse cx="302" cy="682" rx="128" ry="19" fill="#998fba" opacity=".15"/>
+<!-- skeletal legs, talons -->
+<path d="M269 501 Q252 590 225 668 M320 502 Q326 601 362 662" stroke="#8c8795" stroke-width="23" fill="none" stroke-linecap="round"/>
+<g stroke="#b6adb7" stroke-width="9" stroke-linecap="round"><path d="M224 664 l-44 11 M224 664 l5 20 M224 664 l30 17 M359 664 l-19 21 M360 666 l22 13 M360 668 l45 -1"/></g>
+<!-- ethereal black cloak -->
+<path d="M271 278 Q205 353 182 468 Q160 542 159 590 Q231 573 267 617 Q292 559 313 615 Q378 575 444 597 Q396 432 334 286Z" fill="url(#tash)" stroke="#a69fb3" stroke-width="5"/>
+<path d="M285 349 Q265 460 271 583" stroke="#a5a5b8" opacity=".47" stroke-width="5" fill="none"/>
+<!-- upper wing arms 1 and 2 -->
+<path d="M260 285 Q154 268 108 349 Q173 337 202 385" stroke="#666478" stroke-width="26" fill="none" stroke-linecap="round"/>
+<path d="M335 282 Q421 214 510 310 Q446 301 399 389" stroke="#727186" stroke-width="26" fill="none" stroke-linecap="round"/>
+<!-- lower arms 3 and 4; joints, grasping hands -->
+<path d="M245 374 Q178 408 156 497 M358 370 Q424 406 444 503" stroke="#868093" stroke-width="18" fill="none" stroke-linecap="round"/>
+<g stroke="#c4b9c2" stroke-width="6" fill="none" stroke-linecap="round"><path d="M156 495 l-29 21 m29 -21 l-4 34 m4 -34 l24 17 M446 502 l28 24 m-28 -24 l5 35 m-5 -35 l-31 17 M90 311 l-23 17 M505 310 l28 24"/></g>
+<!-- feathers etched into arms -->
+<path d="M103 310 q64 0 97 39 M407 366 q62 -71 101 -55" stroke="#d4c2b0" opacity=".7" stroke-width="8" fill="none"/>
+<!-- torso ornament and spine -->
+<path d="M287 336 L300 365 L320 338 M282 393 L305 426 L324 394 M268 454 L305 490 L341 452" stroke="#d7c9b5" opacity=".47" stroke-width="5" fill="none"/>
+<!-- long bird neck, skull, hooked beak -->
+<path d="M269 286 Q265 228 248 179 Q239 136 267 122 Q322 98 340 141 Q356 177 320 220 L326 290Z" fill="url(#tash)" stroke="#b3a9b9" stroke-width="6"/>
+<path d="M260 135 Q281 99 320 125 Q350 147 335 181 Q328 203 299 215 L337 227 Q368 231 362 250 Q336 257 301 235 L270 221 Q249 205 252 172Z" fill="url(#beak)" stroke="#696476" stroke-width="5"/>
+<path d="M327 213 Q367 222 363 248 Q350 255 340 244" fill="#79717a"/>
+<ellipse cx="304" cy="158" rx="12" ry="8" fill="#ddded8"/><circle cx="306" cy="159" r="3" fill="#332638"/>
+<path d="M263 128 Q258 91 283 69 M294 120 Q308 88 327 72" stroke="#d4c2b0" stroke-width="9" fill="none"/>
+<!-- attitude-specific glyph orbit -->
+<circle cx="301" cy="163" r="100" fill="none" stroke="#bcb3c1" stroke-dasharray="8 17" stroke-width="4" opacity=".6"/>
+</g></svg>

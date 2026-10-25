@@ -1,0 +1,242 @@
+{
+  "schema": "webspace/elisium-graph-0.1",
+  "version": "0.1.0",
+  "world_id": "elisium-names-we-give",
+  "rendering": "WebGL2; X/Z plane, Y up; custom GLSL shaders; Canvas2D compatibility only",
+  "initial_node": "birth",
+  "coordinate_system": "flat Cartesian XYZ authored positions",
+  "travel": {
+    "mode": "node-locked-interpolated-Cartesian",
+    "clock": "diegetic minutes advance concurrently during visual transit",
+    "edge_cost_formula": "round((distance ** 0.9 * 2.6 + 3) * independent_edge_factor), minimum 4",
+    "movement_duration": "clamp(0.80 + sqrt(cost)*0.23, 1.25, 3.0) seconds",
+    "topology": "undirected adjacency list; game-defined costs; no Euclidean topology requirement"
+  },
+  "sprites": {
+    "aslan": {
+      "atlas": "assets/aslan_triptych.png",
+      "panel_count": 3,
+      "selector": "insight from dialogue choices",
+      "cartesian_xyz": [
+        -18,
+        0,
+        -33
+      ]
+    },
+    "tash": {
+      "atlas": "assets/tash_triptych.png",
+      "panel_count": 3,
+      "selector": "proximity and doubt choices",
+      "cartesian_xyz": [
+        18,
+        0,
+        -33
+      ]
+    }
+  },
+  "foliage": {
+    "tree_families": [
+      "cypress",
+      "umbrella pine",
+      "weeping willow",
+      "silver birch",
+      "broadleaf"
+    ],
+    "stage_names": [
+      "sapling",
+      "juvenile",
+      "mature"
+    ],
+    "growth_updates": "disabled in v0.1",
+    "material": "translucent monochrome ghost tone; vertex displacement, Fresnel-like glow, oscillating opacity",
+    "other": [
+      "hedges",
+      "rose thickets",
+      "leaflets",
+      "ground plants",
+      "fern silhouettes",
+      "shrub ring",
+      "roots"
+    ]
+  },
+  "links": [
+    "https://en.wikipedia.org/wiki/C._S._Lewis",
+    "https://en.wikipedia.org/wiki/Inklings"
+  ],
+  "nodes": {
+    "gate": {
+      "title": "The Quiet Door",
+      "cartesian_xyz": [
+        0.0,
+        1.7,
+        18.0
+      ],
+      "description": "One exit, facing the world you are leaving.",
+      "links": [
+        "birth"
+      ],
+      "kind": "portal"
+    },
+    "birth": {
+      "title": "The First Footfall",
+      "cartesian_xyz": [
+        0.0,
+        1.7,
+        10.0
+      ],
+      "description": "The grass is colorless, but the world is not.",
+      "links": [
+        "gate",
+        "letters"
+      ],
+      "kind": "start"
+    },
+    "letters": {
+      "title": "A Writer’s Lantern",
+      "cartesian_xyz": [
+        0.0,
+        1.7,
+        2.0
+      ],
+      "description": "A screen offers thanks to a writer and his friends.",
+      "links": [
+        "birth",
+        "glade"
+      ],
+      "kind": "screen"
+    },
+    "glade": {
+      "title": "The Unsettled Meadow",
+      "cartesian_xyz": [
+        0.0,
+        1.7,
+        -14.0
+      ],
+      "description": "Two figures stand at opposite ends of an unfinished argument.",
+      "links": [
+        "letters",
+        "lion",
+        "bird"
+      ],
+      "kind": "fork"
+    },
+    "lion": {
+      "title": "Aslan’s Listening Place",
+      "cartesian_xyz": [
+        -18.0,
+        1.7,
+        -27.0
+      ],
+      "description": "Here, assurance is asked to make room for scrutiny.",
+      "links": [
+        "glade",
+        "brook",
+        "bird"
+      ],
+      "kind": "aslan"
+    },
+    "bird": {
+      "title": "Tash’s Long Shadow",
+      "cartesian_xyz": [
+        18.0,
+        1.7,
+        -27.0
+      ],
+      "description": "Here, fear disguises itself in the grammar of truth.",
+      "links": [
+        "glade",
+        "thorn",
+        "lion"
+      ],
+      "kind": "tash"
+    },
+    "brook": {
+      "title": "The Pale Brook",
+      "cartesian_xyz": [
+        -17.0,
+        1.7,
+        -44.0
+      ],
+      "description": "Neither bank can explain the meaning of the crossing.",
+      "links": [
+        "lion",
+        "cairn",
+        "roots"
+      ],
+      "kind": "wild"
+    },
+    "thorn": {
+      "title": "The Court of Thorns",
+      "cartesian_xyz": [
+        18.0,
+        1.7,
+        -44.0
+      ],
+      "description": "Nothing in the forest grows more carefully than a thorn.",
+      "links": [
+        "bird",
+        "cairn",
+        "echo"
+      ],
+      "kind": "wild"
+    },
+    "cairn": {
+      "title": "A Cairn of Two Names",
+      "cartesian_xyz": [
+        0.0,
+        1.7,
+        -50.0
+      ],
+      "description": "An intersection where a short journey may take a long time.",
+      "links": [
+        "brook",
+        "thorn",
+        "far"
+      ],
+      "kind": "wild"
+    },
+    "roots": {
+      "title": "The Root Archive",
+      "cartesian_xyz": [
+        -31.0,
+        1.7,
+        -62.0
+      ],
+      "description": "Older branches carry younger stories.",
+      "links": [
+        "brook",
+        "far"
+      ],
+      "kind": "wild"
+    },
+    "echo": {
+      "title": "The Answering Wood",
+      "cartesian_xyz": [
+        31.0,
+        1.7,
+        -62.0
+      ],
+      "description": "The echo speaks with a borrowed voice.",
+      "links": [
+        "thorn",
+        "far"
+      ],
+      "kind": "wild"
+    },
+    "far": {
+      "title": "The Edge of the Essay",
+      "cartesian_xyz": [
+        0.0,
+        1.7,
+        -75.0
+      ],
+      "description": "Beyond the last sentence waits another question.",
+      "links": [
+        "cairn",
+        "roots",
+        "echo"
+      ],
+      "kind": "end"
+    }
+  }
+}
