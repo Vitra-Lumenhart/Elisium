@@ -1,5 +1,8 @@
 # ELISIUM · The Names We Give
 
+> **Revision covenant — contributors and AI coding agents:** Every change to the game must update both documents from distinct viewpoints: **`README.md` for players** (what changed, how it feels, and how to use it) and **`TECH_MANUAL.html` for developers** (implementation, rationale, limitations, and tests). Keep them synchronized with the code in every revision; `README.md` is the sole player manual.
+
+
 **Webspace 0.1.0 · An essay you can walk through**
 
 A miniature, original browser world about the names we give to goodness, fear, and power. Its first question comes from C. S. Lewis's *The Last Battle*: what happens when someone insists that Aslan and Tash are the same?
@@ -7,6 +10,11 @@ A miniature, original browser world about the names we give to goodness, fear, a
 This independent, unofficial literary experiment treats that claim as a **contested proposition**, not as Lewis's conclusion. Walk among ghost-gray trees, speak to two figures, and discover how a name can reveal or conceal.
 
 **Play after publication:** [Enter Elisium](https://vitra-lumenhart.github.io/Elisium/) · **Browse source:** [Vitra-Lumenhart/elisium](https://github.com/Vitra-Lumenhart/Elisium). The playable URL goes live only after GitHub Pages is enabled. You can also open `index.html` locally in a modern browser.
+
+## v0.1.1 · Clearer navigation
+
+- Waypoint labels appear only for reachable nodes in the forward viewing hemisphere. Nodes behind the player no longer appear as confusing markers near the screen edge; turn around to reveal them.
+- `README.md` is now the sole player-facing guide. Every revision must also update the developer-facing technical manual.
 
 ## Explore
 
@@ -41,7 +49,7 @@ No login, external service, tracking, or third-party JavaScript dependency is re
 | `assets/*.svg` | Editable source illustrations |
 | `world_manifest.json` | Design-time world topology and metadata |
 | `TECH_MANUAL.html` | Technical architecture and next steps |
-| `README.txt` | Longer first-walk/player notes |
+| `README.md` | Canonical player-facing guide and release notes |
 | `COMPATIBILITY.md` | Relationship to the predecessor Chuzhoy |
 | `make_sprites.py` | Rebuild PNG sprites from SVG sources |
 | `build_preview.py` | Produce one-file offline HTML preview |
