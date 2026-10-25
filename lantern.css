@@ -1,0 +1,69 @@
+/* Writer's Lantern: projected in-world, twin-page DOM book. No modal/editor overlay. */
+#worldBook {
+ position:absolute;z-index:3;left:50%;top:50%;width:640px;height:356px;
+ padding:15px 19px 12px;transform-origin:center center;pointer-events:auto;
+ border:3px solid #a98450;border-radius:16px 16px 24px 24px;
+ color:#3d2d1c;background:linear-gradient(180deg,#8c6038 0%,#68452b 6%,#f4e9d3 9%,#efe2c6 90%,#8c623f 97%);
+ box-shadow:0 0 0 6px #251a14ae,0 16px 32px #090b0ec9,inset 0 0 0 2px #ebcf92,inset 0 -13px 24px #513a2371;
+ font-family:Georgia,'Times New Roman',serif;text-shadow:none;
+}
+#worldBook[hidden]{display:none!important}
+#worldBook:before {
+ position:absolute;content:"";left:calc(50% - 13px);top:57px;bottom:20px;width:26px;
+ background:linear-gradient(90deg,#715039,#af895d 23%,#fff4d8 51%,#87613f 78%,#56381f);
+ border-radius:9px;box-shadow:inset 0 0 11px #3a281e99;pointer-events:none;
+}
+#worldBook:after{content:"";position:absolute;inset:8px;border:1px solid #f3d59d79;border-radius:12px;pointer-events:none}
+.bookToolbar{display:flex;gap:8px;align-items:center;justify-content:space-between;min-height:33px;position:relative;z-index:1}
+.bookToolbar #bookKind{font:700 10px/1.4 system-ui,sans-serif;letter-spacing:.19em;color:#51371d}
+.bookButtons{display:flex;align-items:center;gap:7px}
+.bookCtrl,.book-inline-action,.book-actions button{
+ font:600 10px/1 system-ui,sans-serif;letter-spacing:.075em;cursor:pointer;
+ border:1px solid #a78a62;border-radius:18px;background:#f8e6c5;color:#4d341e;
+ box-shadow:0 1px 0 #fff9,inset 0 0 0 1px #fffaee;padding:9px 10px;white-space:nowrap
+}
+.bookCtrl:disabled{opacity:.37;cursor:default}
+.bookCtrl:hover:not(:disabled),.book-inline-action:hover,.book-actions button:hover{background:#fff5db}
+.bookSpread{display:grid;grid-template-columns:1fr 1fr;gap:29px;margin-top:8px;position:relative;z-index:1}
+.bookPage{
+ background:linear-gradient(140deg,#fff7e6,#eddbb6);
+ height:248px;overflow-y:auto;scrollbar-color:#c3a474 #f9eddb;
+ border:1px solid #ddc59c;border-radius:5px 14px 12px 5px;
+ box-shadow:inset 0 0 0 2px #fff5df,inset 0 -12px 16px #b4997040;
+ padding:15px 16px;color:#46301b;
+}
+.bookPage.right{border-radius:14px 5px 5px 12px}
+.book-eyebrow{display:block;font:700 10px/1.4 system-ui,sans-serif;letter-spacing:.15em;color:#8d6b42;margin-bottom:8px}
+.bookPage h3{font-size:24px;line-height:1.09;color:#4c351f;font-weight:400;margin:0 0 11px}
+.bookPage h3 small{display:block;margin-top:5px;font-size:12px;color:#8f744f}
+.bookPage p{color:#57432e;line-height:1.42;font-size:14px;margin:0 0 12px}
+.bookPage em{color:#785332}
+.bookPage .book-whisper{color:#816c50;font-style:italic;font-size:12px}
+.bookPage .book-links{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0 8px}
+.book-links a{color:#633e1d;text-decoration:underline;text-underline-offset:3px;font:12px system-ui,sans-serif}
+.book-inline-action{font-size:11px}
+.bookPage textarea{display:block;width:100%;min-height:105px;max-height:155px;resize:vertical;
+ background:#fffcf1;border:1px solid #b7976c;border-radius:6px;padding:10px;
+ font:14px/1.35 Georgia,serif;color:#3f2c1a;box-shadow:inset 0 2px 6px #9f7e5626}
+.bookPage textarea:focus{outline:2px solid #a77d40;outline-offset:1px}
+.guest-label{display:block;font:12px/1.25 Georgia,serif;color:#604527;margin-bottom:7px}
+.book-actions{display:flex;gap:6px;margin:10px 0}
+.book-actions button{font-size:10px;flex:1}
+.guest-mirror{background:#fff4dc;border:1px dashed #c5aa82;border-radius:6px;
+ min-height:75px;max-height:120px;overflow:auto;padding:10px;font-size:13px;white-space:pre-wrap;overflow-wrap:anywhere}
+.guest-entries{max-height:178px;overflow:auto}
+.guest-entries article{padding:8px 0;border-bottom:1px solid #bca17a80}
+.guest-entries small{color:#8d7656;font:10px system-ui,sans-serif}
+.guest-entries article p{white-space:pre-wrap;overflow-wrap:anywhere;margin:5px 0}
+#bookMeta{position:relative;z-index:1;text-align:center;margin-top:10px;color:#674a2b;
+ font:600 10px/1.3 system-ui,sans-serif;letter-spacing:.08em}
+#worldBook button:focus-visible,#worldBook a:focus-visible{outline:2px solid #9f6d2d;outline-offset:2px}
+@media(max-width:650px){
+ .bookPage h3{font-size:27px}
+ .bookPage p{font-size:17px}
+ .bookPage textarea{font-size:20px}
+ .bookPage .book-whisper{font-size:15px}
+ .book-eyebrow{font-size:12px}
+ .bookCtrl,.book-actions button{font-size:13px}
+ .bookPage{padding:14px}
+}
