@@ -1,0 +1,22 @@
+name: Elisium source checks
+on:
+  push:
+    branches: [main, "feature/**"]
+  pull_request:
+    branches: [main]
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate JavaScript syntax
+        run: |
+          node --check engine.js
+          node --check lantern.js
+      - name: Validate graph and atlas contracts
+        run: node tests/test_manifest.mjs
+      - name: Validate Writer's Lantern
+        run: node tests/test_lantern.mjs

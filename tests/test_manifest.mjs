@@ -17,6 +17,9 @@ assert.equal(manifest.sprites.aslan.panel_count,3);
 assert.equal(manifest.sprites.tash.panel_count,3);
 assert.equal(manifest.foliage.tree_families.length,5);
 assert.equal(manifest.foliage.stage_names.length,3);
+assert.equal(manifest.version,'0.2.0');
+assert.equal(manifest.nodes.letters.kind,'book');
+assert.equal(manifest.world_objects.writers_lantern.kind,'procedural-lantern-and-synchronized-book');
 for(const id of ['aslan','tash']){
  const fp=path.join(root,manifest.sprites[id].atlas),png=fs.readFileSync(fp);
  assert.equal(png.toString('hex',0,8),'89504e470d0a1a0a');
@@ -25,5 +28,5 @@ for(const id of ['aslan','tash']){
  assert(w>900&&h>300);
 }
 for(const id of ['birth','gate','lion','bird','letters'])assert(id in nodes);
-for(const file of ['index.html','engine.js','style.css','README.txt','TECH_MANUAL.html','COMPATIBILITY.md'])assert(fs.existsSync(path.join(root,file)));
-console.log('Elisium manifest: 12 symmetric nodes, 2 intact triptychs, 5 species × 3 growth stages. PASS');
+for(const file of ['index.html','engine.js','style.css','README.md','TECH_MANUAL.html','COMPATIBILITY.md'])assert(fs.existsSync(path.join(root,file)));
+console.log('Elisium manifest: 12 symmetric nodes, 2 intact triptychs, 5 species × 3 growth stages and Writer’s Lantern manifest PASS');
