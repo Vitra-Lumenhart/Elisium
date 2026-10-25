@@ -91,7 +91,7 @@ function projectBook(project,player,w,h,inTransit){
  let scale=Math.min(1.45,Math.max(.27,Math.abs(r.x-l.x)/640),Math.max(.3,(w-32)/640));
  el.hidden=false;el.style.left=c.x+'px';el.style.top=c.y+'px';el.style.transform='translate(-50%,-50%) scale('+scale+')';
  el.style.opacity=Math.min(1,Math.max(0,(c.depth-2.1)/1.5));
- el.style.pointerEvents=near(player)&&!inTransit&&scale>.53?'auto':'none';
+ el.style.pointerEvents=near(player)&&!inTransit&&scale>.33?'auto':'none';
 }
 function occludes(p,project){
  const c=project(BASE.book),l=project([BASE.book[0]-2.75,BASE.book[1],BASE.book[2]]),r=project([BASE.book[0]+2.75,BASE.book[1],BASE.book[2]]);
@@ -145,7 +145,7 @@ function geometry(g){
  const q=(xx,yy,zz)=>[bx+xx,yy,bz+zz];
  const backL=q(-1.69,2.04,-.36),backR=q(1.69,2.04,-.36),frontL=q(-1.69,2.53,.42),frontR=q(1.69,2.53,.42);
  tri(backL,backR,frontR,[.42,.26,.17]);tri(backL,frontR,frontL,[.42,.26,.17]);
- for(let i=0;i<7;i++){
+ for(let i=0;i<12;i++){
  const off=i*.015;
  const p1=q(-1.58,2.11+off,-.29),p2=q(1.58,2.11+off,-.29),p3=q(1.58,2.54+off,.39),p4=q(-1.58,2.54+off,.39);
  tri(p1,p2,p3,ivory);tri(p1,p3,p4,ivory);
