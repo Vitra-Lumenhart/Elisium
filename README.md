@@ -11,6 +11,11 @@ This independent, unofficial literary experiment treats that claim as a **contes
 
 **Play after publication:** [Enter Elisium](https://vitra-lumenhart.github.io/Elisium/) · **Browse source:** [Vitra-Lumenhart/elisium](https://github.com/Vitra-Lumenhart/Elisium). The playable URL goes live only after GitHub Pages is enabled. You can also open `index.html` locally in a modern browser.
 
+## v0.1.2 · Waypoint visibility repair
+
+- Fixed a CSS error that kept hidden waypoints and nameplates visible even when the navigation engine had filtered them out. Only actual reachable neighbors in view now render as waypoints.
+- Waypoints no longer print through the C. S. Lewis memorial screen, cover the location summary or bottom controls, or pile overlapping labels on each other. Turning and using **Graph** still exposes all connected routes.
+
 ## v0.1.1 · Clearer navigation
 
 - Waypoint labels appear only for reachable nodes in the forward viewing hemisphere. Nodes behind the player no longer appear as confusing markers near the screen edge; turn around to reveal them.
