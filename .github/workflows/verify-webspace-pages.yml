@@ -18,7 +18,7 @@ jobs:
           BASE: https://vitra-lumenhart.github.io/Elisium/webspace
         run: |
           set -euo pipefail
-          for path in index.html worlds/chuzhoy/index.html worlds/fortress/index.html worlds/gringotts/index.html worlds/witchs-hole/index.html worlds/elisium/index.html worlds/elisium/kilns/index.html worlds/elisium/kilns/house3d.mjs assets/vendor/three/build/three.module.js worlds/purgatorio/index.html; do
+          for path in index.html worlds/chuzhoy/index.html worlds/fortress/index.html worlds/gringotts/index.html worlds/witchs-hole/index.html worlds/elisium/index.html worlds/elisium/kilns/index.html worlds/elisium/kilns/house3d.mjs worlds/elisium/sky-atlas.js worlds/elisium/atlas-data.json assets/vendor/three/build/three.module.js worlds/purgatorio/index.html; do
             url="$BASE/$path"
             status="$(curl -sSL -o /tmp/webspace_response -w '%{http_code}' --retry 4 --retry-delay 3 --max-time 35 "$url")"
             echo "$status $url"
@@ -33,4 +33,20 @@ jobs:
               grep -q 'Labyrinth of Purgatorio' /tmp/webspace_response
             fi
           done
+          # Verify the exact approved canonical source, not simply an HTTP 200.
+          curl -fsSL --retry 4 --retry-delay 3 "$BASE/ORIGIN.json" -o /tmp/webspace_origin.json
+          curl -fsSL --retry 4 --retry-delay 3 "$BASE/worlds/elisium/atlas-data.json" -o /tmp/elisium_atlas.json
+          curl -fsSL --retry 4 --retry-delay 3 "$BASE/worlds/elisium/index.html" -o /tmp/elisium_parent.html
+          python3 - <<'PY'
+          import json, pathlib
+          origin=json.load(open('/tmp/webspace_origin.json'))
+          request=json.load(open('webspace/DEPLOYMENT_REQUEST.json'))
+          atlas=json.load(open('/tmp/elisium_atlas.json'))
+          expected=request['requested_source_commit']
+          assert origin['canonical_source_commit']==expected, f'Public mirror drift: {origin["canonical_source_commit"]} versus requested {expected}'
+          assert len(atlas['months'])==12 and len(atlas['objects'])==24 and len(atlas['points'])==7 and len(atlas['pairs'])==12
+          html=pathlib.Path('/tmp/elisium_parent.html').read_text()
+          assert 'id="elisiumGame"' in html and 'id="houseFrame"' in html
+          print('PASS: reviewed v8 source SHA, twelve sky signs, 24 SGM instruments, seven points, twelve pairs, retained game and Kilns pocket')
+          PY
           echo 'PASS: all six Webspace entries, nested Kilns, the local 3D module and offline engine are reachable on public GitHub Pages'
