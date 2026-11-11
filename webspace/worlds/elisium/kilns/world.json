@@ -1,0 +1,104 @@
+{
+  "schema": "webspace/childworld/1",
+  "id": "elisium/kilns",
+  "parent": "elisium",
+  "parent_entry": "../index.html",
+  "spatial_model": "10 physically modeled room spaces (9 ground-floor cells plus elevated attic), true traversable doorways, first-person W/A/S/D navigation, 24 interactive authored sculptures with Poly Haven artist donor geometries mounted in scene on room entry",
+  "clock": {
+    "policy": "House owns fictional time: +3 minutes per changed room, +6 per observation. Stair ascension is one changed room. Parent Elisium sky unchanged."
+  },
+  "state": {
+    "persistence": "sessionStorage on same origin; export manual",
+    "shared_with_parent": "allowlisted, explicit nonprivate discovery signals only"
+  },
+  "threshold": {
+    "entry": "elisium-kilns-door",
+    "return": "elisium-house",
+    "allowed_event_types": [
+      "webspace:child-event"
+    ],
+    "version": 1,
+    "handoff": {
+      "schema": "webspace.elisium.kilns/threshold/1",
+      "transport": "same-tab sessionStorage (not a security boundary)",
+      "fields": [
+        "from",
+        "to",
+        "entry",
+        "elapsed_minutes",
+        "observations[{id,minute}]"
+      ],
+      "allowlist": "H01-H24",
+      "max_elapsed_minutes": 2880,
+      "consumption": "once, by worlds/elisium/index.html",
+      "parent_effect": "House echoes; sky simulation unchanged"
+    }
+  },
+  "rooms": [
+    "Oratory",
+    "Library",
+    "Study",
+    "Stair Landing",
+    "Common Room",
+    "Dining Room",
+    "Picture Gallery",
+    "Vestibule",
+    "Kitchen",
+    "Attic"
+  ],
+  "object_ids": [
+    "H01",
+    "H02",
+    "H03",
+    "H04",
+    "H05",
+    "H06",
+    "H07",
+    "H08",
+    "H09",
+    "H10",
+    "H11",
+    "H12",
+    "H13",
+    "H14",
+    "H15",
+    "H16",
+    "H17",
+    "H18",
+    "H19",
+    "H20",
+    "H21",
+    "H22",
+    "H23",
+    "H24"
+  ],
+  "rendering": {
+    "primary": "three.js 0.168 pinned module import",
+    "artist_models": "20 distinct current Poly Haven 1k glTF donors for 24 authored objects, fetched lazily on entering each room; original procedural fantasy sculptures persist if assets fail",
+    "fallback": "illustrated.html, preserved v6 browser world",
+    "room_geometry": "original procedural timber framing, wallpaper, wooden floors, stone/window glass and warm light, no donor world geometry",
+    "visitor_controls": "WASD and arrows + pointer drag; E inspect/ascend; accessible room index and touch buttons",
+    "performance": "room-local original model fetching with slug deduplication and memory caching",
+    "status": "implemented; awaiting browser visual and navigation acceptance"
+  },
+  "floor_plan": {
+    "units": "meters",
+    "grid_cell_size": 10,
+    "ground_floor_cells": 9,
+    "upper_floor_cells": 1,
+    "entry": "Vestibule",
+    "attic_above": "Stair Landing",
+    "doorway_width_m": 2.75,
+    "source": "house-layout.mjs",
+    "physical_room_ids": "rooms names in current world.json",
+    "public_named_arrivals_unchanged": true
+  },
+  "object_presentation": {
+    "ids": "H01-H24",
+    "positions": "stable room-owned plinth coordinates derived from placeForObject(room,index)",
+    "historic_donors": "Poly Haven CC0 live source model geometry inside house; no longer isolated in an inspection panel",
+    "fantasy_art": "house-fantasy.mjs original bespoke physically animated objects with distinct activations",
+    "journals": "sessionStorage only; no automatic visitor identity or persistence across sessions"
+  },
+  "status": "playable physically navigable 3D house with 24 story-bearing objects; parent independent sky integration still deferred"
+}

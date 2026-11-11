@@ -1,0 +1,13 @@
+{
+  "id": "H10",
+  "name": "The Annotated Map",
+  "room": "Library",
+  "action": "Shift a crossing cost; watch the recommended route change.",
+  "inquiry": "Shortest paths depend on edge costs and constraints, not just straight lines.",
+  "polyhaven_url": "https://polyhaven.com/a/standing_chalkboard_01",
+  "asset_status": "original_low_poly_proxy",
+  "proxy_path": "../../../assets/kilns/proxy/H10.glb",
+  "event_key": "kilns.object.h10.observed",
+  "scope": "local",
+  "source": "Kilns curator v0.3 · v4 generated proxy; NOT confirmed v0.6 artist binary"
+}

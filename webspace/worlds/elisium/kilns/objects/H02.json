@@ -1,0 +1,13 @@
+{
+  "id": "H02",
+  "name": "Hospitality Hearth",
+  "room": "Common Room",
+  "action": "Tend the hearth; amber light reaches the garden.",
+  "inquiry": "Hospitality as the smallest unit of a viable future.",
+  "polyhaven_url": "https://polyhaven.com/a/stone_fire_pit",
+  "asset_status": "original_low_poly_proxy",
+  "proxy_path": "../../../assets/kilns/proxy/H02.glb",
+  "event_key": "kilns.object.h02.observed",
+  "scope": "local",
+  "source": "Kilns curator v0.3 · v4 generated proxy; NOT confirmed v0.6 artist binary"
+}

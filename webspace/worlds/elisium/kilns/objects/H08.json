@@ -1,0 +1,13 @@
+{
+  "id": "H08",
+  "name": "The Story-Repaired Dragon Scale",
+  "room": "Study",
+  "action": "Rotate the relic; its label changes between history and legend.",
+  "inquiry": "St George and Pendragon are inherited mythic interpretations, not historical proof.",
+  "polyhaven_url": "https://polyhaven.com/a/GothicCabinet_01",
+  "asset_status": "original_low_poly_proxy",
+  "proxy_path": "../../../assets/kilns/proxy/H08.glb",
+  "event_key": "kilns.object.h08.observed",
+  "scope": "local",
+  "source": "Kilns curator v0.3 · v4 generated proxy; NOT confirmed v0.6 artist binary"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "H01",
+  "name": "Threshold with Two Names",
+  "room": "Vestibule",
+  "action": "Flip two brass plaques; their reflection swaps.",
+  "inquiry": "Naming versus identity: the same passage under opposed labels.",
+  "polyhaven_url": "https://polyhaven.com/a/large_castle_door",
+  "asset_status": "original_low_poly_proxy",
+  "proxy_path": "../../../assets/kilns/proxy/H01.glb",
+  "event_key": "kilns.object.h01.observed",
+  "scope": "local",
+  "source": "Kilns curator v0.3 · v4 generated proxy; NOT confirmed v0.6 artist binary"
+}

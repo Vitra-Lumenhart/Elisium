@@ -1,0 +1,13 @@
+{
+  "id": "H23",
+  "name": "The Debate in Two Chairs",
+  "room": "Common Room",
+  "action": "Choose to help or exploit; watch repeated outcomes.",
+  "inquiry": "Repeated game: cooperation, retaliation, noise, forgiveness.",
+  "polyhaven_url": "https://polyhaven.com/a/ArmChair_01",
+  "asset_status": "original_low_poly_proxy",
+  "proxy_path": "../../../assets/kilns/proxy/H23.glb",
+  "event_key": "kilns.object.h23.observed",
+  "scope": "local",
+  "source": "Kilns curator v0.3 · v4 generated proxy; NOT confirmed v0.6 artist binary"
+}

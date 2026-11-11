@@ -1,0 +1,13 @@
+{
+  "id": "H13",
+  "name": "Wardrobe of Possible Worlds",
+  "room": "Vestibule",
+  "action": "Open wardrobe; a miniature child world appears.",
+  "inquiry": "The child world is both whole and part: holarchy rather than a flat link.",
+  "polyhaven_url": "https://polyhaven.com/a/GothicCabinet_01",
+  "asset_status": "original_low_poly_proxy",
+  "proxy_path": "../../../assets/kilns/proxy/H13.glb",
+  "event_key": "kilns.object.h13.observed",
+  "scope": "local",
+  "source": "Kilns curator v0.3 · v4 generated proxy; NOT confirmed v0.6 artist binary"
+}

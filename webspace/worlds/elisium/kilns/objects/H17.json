@@ -1,0 +1,13 @@
+{
+  "id": "H17",
+  "name": "Astronomical Orrery",
+  "room": "Library",
+  "action": "Turn the orrery wheel; different constellations phase in.",
+  "inquiry": "Cycles and phase can be modeled without dictating cosmic purpose.",
+  "polyhaven_url": "https://polyhaven.com/a/vintage_grandfather_clock_01",
+  "asset_status": "original_low_poly_proxy",
+  "proxy_path": "../../../assets/kilns/proxy/H17.glb",
+  "event_key": "kilns.object.h17.observed",
+  "scope": "local",
+  "source": "Kilns curator v0.3 · v4 generated proxy; NOT confirmed v0.6 artist binary"
+}

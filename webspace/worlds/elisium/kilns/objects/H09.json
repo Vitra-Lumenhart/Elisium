@@ -1,0 +1,13 @@
+{
+  "id": "H09",
+  "name": "Portrait of the Absent Reader",
+  "room": "Common Room",
+  "action": "Tilt the portrait; the coordinate grid speaks differently.",
+  "inquiry": "Same point, two coordinate vocabularies. Rotate a basis, not the vector.",
+  "polyhaven_url": "https://polyhaven.com/a/hanging_picture_frame_02",
+  "asset_status": "original_low_poly_proxy",
+  "proxy_path": "../../../assets/kilns/proxy/H09.glb",
+  "event_key": "kilns.object.h09.observed",
+  "scope": "local",
+  "source": "Kilns curator v0.3 · v4 generated proxy; NOT confirmed v0.6 artist binary"
+}

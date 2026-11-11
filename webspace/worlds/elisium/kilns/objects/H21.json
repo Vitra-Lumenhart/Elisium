@@ -1,0 +1,13 @@
+{
+  "id": "H21",
+  "name": "Vitra in the Glass",
+  "room": "Oratory",
+  "action": "Touch a pane; light moves without announcing a verdict.",
+  "inquiry": "Moral weather is represented, not assigned by an AI arbiter.",
+  "polyhaven_url": "https://polyhaven.com/a/gothic_statue",
+  "asset_status": "original_low_poly_proxy",
+  "proxy_path": "../../../assets/kilns/proxy/H21.glb",
+  "event_key": "kilns.object.h21.observed",
+  "scope": "local",
+  "source": "Kilns curator v0.3 · v4 generated proxy; NOT confirmed v0.6 artist binary"
+}

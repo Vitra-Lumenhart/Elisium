@@ -88,3 +88,16 @@ Subsequent commits to `main` refresh the same public website URL after GitHub co
 Elisium is an **independent, unofficial fan-fictional and critical interpretation** of themes and fictional characters associated with C. S. Lewis. It is not affiliated with or endorsed by the Lewis estate or any publisher. The writing and artwork created for this experiment are presented as original interpretations, not original excerpts from Lewis. Underlying fictional characters and names may remain protected by their respective rights holders.
 
 **License:** This repository was initialized with an MIT License. That license covers original software included in the repository to the extent its copyright holder has the right to license it. It does **not** grant rights to C. S. Lewis’s characters, texts, titles, or other third-party material. This project is an independent, unofficial literary interpretation.
+
+
+---
+
+## 2026-11-11 · The Webspace Kilns arrives in the Elisium Pages house
+
+**Backwards:** Elisium's existing stand-alone C. S. Lewis-inspired world and its original MIT source remain unchanged. The separate, canonical [Vitra-Lumenhart/Webspace](https://github.com/Vitra-Lumenhart/Webspace) project finished its Webspace v7 indoor Kilns, a genuinely walkable 3D Victorian house with ten spaces, twenty-four interactive H01–H24 historical/fantasy artifacts, real Poly Haven CC0 model mounts and its own local journal. GitHub's 3D browser suite passed. Because Webspace's own Pages activation requires a repository-administration operation not exposed to the available connection, we **mirror only this child-world's runtime and art** at the already-active Elisium Pages site, under `webspace/`, without replacing Elisium's index page.
+
+**Play the 3D Kilns:** [Enter the walkable House of Inherited Light](https://vitra-lumenhart.github.io/Elisium/webspace/worlds/elisium/kilns/index.html). The original [Webspace GitHub source](https://github.com/Vitra-Lumenhart/Webspace/tree/main/worlds/elisium/kilns) and the [immutable v7 source release](https://github.com/Vitra-Lumenhart/Webspace/releases/tag/webspace/v0007) remain authoritative; the deployment mirror is not a second editor's branch. Source file hashes and origin commit are recorded in [webspace/README.md](webspace/README.md).
+
+**Forwards:** Restore a canonical Webspace-root Pages address when an administrator enables it; deepen the narrative interactions between the twenty-four Kilns objects and Elisium's independent sky; develop more detailed custom furniture and smaller preprocessed physical assets without silently changing H IDs, historical attribution or the bounded event protocol. The mirrored site's link to the older standalone Elisium entry is a deliberate bridge, not an assertion that their rendering engines have been merged.
+
+**Not yet:** This Pages mirror is a static public copy, not a server, persistent guestbook, bank, identity authority or general automatic cross-repository synchronization. Updating the mirror requires a reviewed new source revision and matching documentation. Its real public HTTP/visual deployment must be confirmed by the Pages build and browser, not inferred merely from Git objects.

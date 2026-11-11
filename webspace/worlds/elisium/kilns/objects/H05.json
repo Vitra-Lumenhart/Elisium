@@ -1,0 +1,13 @@
+{
+  "id": "H05",
+  "name": "The Book of Many Witnesses",
+  "room": "Library",
+  "action": "Turn a leaf; then calculate how evidence updates a prior.",
+  "inquiry": "Competing witnesses; Bayes updates a hypothesis without absolute certainty.",
+  "polyhaven_url": "https://polyhaven.com/a/book_encyclopedia_set_01",
+  "asset_status": "original_low_poly_proxy",
+  "proxy_path": "../../../assets/kilns/proxy/H05.glb",
+  "event_key": "kilns.object.h05.observed",
+  "scope": "local",
+  "source": "Kilns curator v0.3 · v4 generated proxy; NOT confirmed v0.6 artist binary"
+}
