@@ -3,8 +3,8 @@
   "requested_date": "2026-11-11",
   "source_repository": "Vitra-Lumenhart/Webspace",
   "source_branch": "main",
-  "baseline_source_commit": "17fe45e2423a04b9de447ec1079bf5a3d6136a21",
-  "reason": "Publish all top-level playable Webspace worlds plus nested Kilns under one public root with a visible seven-tab navigation shell",
+  "baseline_source_commit": "6ac918c230db73b31b4f88e712aec4ac9f9ef882",
+  "reason": "Refresh the verified Webspace all-world Pages atlas with canonical R0012 source/browser links and matched backward-forward docs",
   "deployment_destination": "https://vitra-lumenhart.github.io/Elisium/webspace/index.html",
   "policy": "Build from canonical Webspace main; preserve standalone Elisium root page and do not edit world content in this mirror."
 }
