@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 6
     steps:
+      - uses: actions/checkout@v4
       - name: Verify public GitHub Pages URLs after deployment
         env:
           BASE: https://vitra-lumenhart.github.io/Elisium/webspace
