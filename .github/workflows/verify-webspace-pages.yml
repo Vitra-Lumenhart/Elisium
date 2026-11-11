@@ -1,0 +1,36 @@
+name: Verify public Webspace seven-tab atlas
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/verify-webspace-pages.yml
+      - webspace/ORIGIN.json
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-public-site:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - name: Verify public GitHub Pages URLs after deployment
+        env:
+          BASE: https://vitra-lumenhart.github.io/Elisium/webspace
+        run: |
+          set -euo pipefail
+          for path in index.html worlds/chuzhoy/index.html worlds/fortress/index.html worlds/gringotts/index.html worlds/witchs-hole/index.html worlds/elisium/index.html worlds/elisium/kilns/index.html worlds/elisium/kilns/house3d.mjs assets/vendor/three/build/three.module.js worlds/purgatorio/index.html; do
+            url="$BASE/$path"
+            status="$(curl -sSL -o /tmp/webspace_response -w '%{http_code}' --retry 4 --retry-delay 3 --max-time 35 "$url")"
+            echo "$status $url"
+            if [ "$status" != "200" ]; then
+              echo "Public Webspace route missing: $path"
+              exit 1
+            fi
+            test -s /tmp/webspace_response
+            if [ "$path" = index.html ]; then
+              grep -q 'Garden of Chuzhoy' /tmp/webspace_response
+              grep -q 'Witch' /tmp/webspace_response
+              grep -q 'Labyrinth of Purgatorio' /tmp/webspace_response
+            fi
+          done
+          echo 'PASS: all six Webspace entries, nested Kilns, the local 3D module and offline engine are reachable on public GitHub Pages'
