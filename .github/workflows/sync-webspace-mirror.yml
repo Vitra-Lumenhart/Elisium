@@ -27,13 +27,18 @@ jobs:
           git clone --quiet --depth=1 --branch main https://github.com/Vitra-Lumenhart/Webspace.git "$RUNNER_TEMP/webspace-canonical"
           SOURCE_SHA="$(git -C "$RUNNER_TEMP/webspace-canonical" rev-parse HEAD)"
           echo "Source version: $SOURCE_SHA"
+          EXPECTED_SHA="$(python3 -c 'import json;print(json.load(open("webspace/DEPLOYMENT_REQUEST.json")).get("requested_source_commit",""))')"
+          if [ -n "$EXPECTED_SHA" ] && [ "$SOURCE_SHA" != "$EXPECTED_SHA" ]; then
+            echo "Deployment request does not match reviewed canonical SHA: $EXPECTED_SHA versus $SOURCE_SHA"
+            exit 1
+          fi
           echo "SOURCE_SHA=$SOURCE_SHA" >> "$GITHUB_ENV"
       - name: Assemble complete playable multiworld runtime under webspace/
         run: |
           set -euo pipefail
           SOURCE="$RUNNER_TEMP/webspace-canonical"
           mkdir -p webspace
-          for dir in worlds assets shared engine commons contracts docs; do
+          for dir in worlds assets shared engine commons contracts docs tools; do
             if [ -d "$SOURCE/$dir" ]; then
               mkdir -p "webspace/$dir"
               rsync -a --delete "$SOURCE/$dir/" "webspace/$dir/"

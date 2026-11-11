@@ -4,7 +4,10 @@
   "source_repository": "Vitra-Lumenhart/Webspace",
   "source_branch": "main",
   "baseline_source_commit": "6ac918c230db73b31b4f88e712aec4ac9f9ef882",
-  "reason": "Refresh the verified Webspace all-world Pages atlas with canonical R0012 source/browser links and matched backward-forward docs",
+  "reason": "Publish accepted Elisium sovereign sky v8 (R0014) and release metadata correction (R0015) while preserving all six Webspace parent worlds, verified Kilns 3D and H01–H24 sources",
   "deployment_destination": "https://vitra-lumenhart.github.io/Elisium/webspace/index.html",
-  "policy": "Build from canonical Webspace main; preserve standalone Elisium root page and do not edit world content in this mirror."
+  "policy": "Mirror exact reviewed Webspace source commit. The mirror does not own world source and must not overwrite standalone Elisium root page.",
+  "requested_source_commit": "c87d78aacd34c41c752961cb9b7b120cfa085cd1",
+  "requested_source_tag": "webspace/v0008",
+  "review_evidence": "Webspace PR #11 (all four tests passed), PR #12 release workflow and metadata checks passed"
 }
