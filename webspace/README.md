@@ -2,6 +2,18 @@
 
 > **Revision covenant for human and AI collaborators:** Before changing a release, archive the entire old codebase under the next integer revision. In EVERY revision update `README.md` (player experience) and `TECH_MANUAL.html` (developer architecture and tests); preserve timeless active filenames and provide a full-screen HTML preview.
 
+## Start here — play the worlds or inspect their code
+
+**Play the complete Webspace in a browser:** [Enter all Webspace worlds](https://vitra-lumenhart.github.io/Elisium/webspace/index.html).
+
+**Browse and edit the complete codebase:** [Vitra-Lumenhart/Webspace · Code / main](https://github.com/Vitra-Lumenhart/Webspace/tree/main) · [World source folders](worlds/) · [Developer manual](TECH_MANUAL.html).
+
+The public game currently uses a **static publishing mirror inside the older Elisium repository**, because its GitHub Pages service is already active. **Webspace is the only canonical source repository.** Changes are developed here, reviewed, documented and intentionally mirrored for browser play. The independent [older Elisium repository](https://github.com/Vitra-Lumenhart/Elisium) is still a hosting dependency, not an extra authoritative Webspace world. Its own Pages URL must be preserved until publishing is migrated. Do not confuse GitHub's **Releases** (downloadable archives) or **Projects** (task boards) with the editable code in the **Code** tab.
+
+The public world menu exposes Garden of Chuzhoy, Gerudo Fortress, Gringotts Gerudo Branch, Witch's Hole, Elisium · Living Concordance, the nested Kilns and the **reserved, non-playable** Labyrinth of Purgatorio. [Individual public source and playable routes](GITHUB_PUBLISHING.md) are deliberately distinct.
+
+---
+
 ## Version 7 · November 11, 2026 — A House You May Enter
 
 The Kilns inside Elisium is now a **connected first-person 3D Victorian house**, not solely an illustrated room-selection screen. Open the [Kilns 3D world](worlds/elisium/kilns/index.html), move through doors by walking W/A/S/D or arrow keys and dragging to look, examine objects with E or clicking, and ascend the physical spiral staircase to the attic. A ten-space architectural model (nine connected ground-floor rooms and an upstairs attic) is built from original procedural geometry: wainscot, bookcases, patterned floors, coffered ceilings, hearths, windows and a stained-glass oratory. The original nine-room story graph and 24 H-object identities are preserved, and the previous [illustrated house](worlds/elisium/kilns/illustrated.html) remains publicly accessible as a fallback.
@@ -192,4 +204,18 @@ A roadmap entry is **not permission** to change the scope of another world. Each
 **Invariant impact:** This patch alters a test assertion and an administrative deployment workflow only. It preserves the Garden of Chuzhoy 6.2.8, the v7 house geometry, H01–H24 stable IDs, the Elisium threshold, independent sky, player-held session observations, P-001 portal default and S-001 Screen separation. The v7 public source-release tag is immutable; follow-up main commits remain independently inspectable.
 
 **Evidence:** [GitHub v7 source release](https://github.com/Vitra-Lumenhart/Webspace/releases/tag/webspace/v0007), [browser acceptance test](tools/test_kilns_house3d.mjs), [GitHub Pages workflow](.github/workflows/deploy-pages.yml), [explicit site activation limitation](docs/GITHUB_PAGES_ACTIVATION.md), [3D Kilns](worlds/elisium/kilns/index.html) and [illustrated fallback](worlds/elisium/kilns/illustrated.html). Actual public site availability requires a later successful Pages deployment and HTTP check.
+<!-- /WEBSPACE-LEDGER -->
+
+<!-- WEBSPACE-LEDGER id="R0012" date="2026-11-11" -->
+### 2026-11-11 · R0012 — Show the door to the world and the door to its source
+
+**Backwards:** Webspace's v7 Kilns and the complete multiworld federation remained safely archived in the canonical GitHub code tree while its earlier GitHub Pages site could not be activated with the ordinary workflow token. The existing separate Elisium repository had a working GitHub Pages service, so we installed a version-identified publishing mirror there. A new explicit sync copied all six top-level Webspace world entries, the nested Kilns, 24 GLB proxies, world rendering code and relevant assets; it recorded the upstream source commit in the mirror's `ORIGIN.json`. GitHub Pages deployed it successfully, and public HTTP smoke tests confirmed status 200 for the seven-tab entrance, every world entry including the reserved Purgatorio page, the Kilns 3D engine, and its locally hosted Three.js runtime. This update adds clear **Play online** versus **Browse code** links at the top of the README and within the root browser shell.
+
+**Forwards:** Make the public Pages URL and canonical source destination equally obvious to every child-world visitor; add a governed and tested deployment mechanism for future accepted source revisions. Eventually activate a public site directly owned by the Webspace repository or agreed independent host, migrate links without breaking visitors, and then retire the older Elisium repository's *hosting dependency* rather than prematurely deleting an active site. Continue independent work on Garden, Witch's Hole, the Gringotts identity design, and the Kilns' authored 24-object physical narrative. Purgatorio requires recovery of its original design, not an invented completion claim.
+
+**Not yet:** The direct `https://vitra-lumenhart.github.io/Webspace/` Pages site is NOT enabled. The public playable site is presently the verified `https://vitra-lumenhart.github.io/Elisium/webspace/index.html` mirror. Cross-repository synchronization is an intentional controlled publication, not every GitHub source commit automatically becoming a browser deployment. The independent older Elisium root application remains active and must not be deleted until there is an alternative hosting strategy.
+
+**Invariant impact:** No world route, authorial narrative, source object or underlying P-001 portal/S-001 Screen behavior changed. This is a discoverability and publication-address maintenance update. The source remains Webspace/main; the Pages mirror must preserve source hashes and historical design records. The formal Backwards/Forwards ledger and technical manual continue to update together.
+
+**Evidence:** [Live all-world atlas](https://vitra-lumenhart.github.io/Elisium/webspace/index.html), [editable canonical source](https://github.com/Vitra-Lumenhart/Webspace/tree/main), [Elisium hosting repo](https://github.com/Vitra-Lumenhart/Elisium), [deployment sync workflow](https://github.com/Vitra-Lumenhart/Elisium/blob/main/.github/workflows/sync-webspace-mirror.yml), [public URL HTTP verification](https://github.com/Vitra-Lumenhart/Elisium/actions/workflows/verify-webspace-pages.yml), [publishing instructions](GITHUB_PUBLISHING.md).
 <!-- /WEBSPACE-LEDGER -->
