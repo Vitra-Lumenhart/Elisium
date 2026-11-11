@@ -1,0 +1,486 @@
+{
+  "schema": "webspace/world-graph/0.7-version-2",
+  "coordinateSystem": "right-handed-like local X/Z ground plane, Y vertical; no real-world geolocation",
+  "unit": "authoring-unit",
+  "worlds": {
+    "fortress": {
+      "name": "Sandstone Fortress",
+      "start": "throne",
+      "origin": {
+        "node": "throne",
+        "x": 0,
+        "z": 0
+      },
+      "layout": "processional fortress with crossroads and hidden rear banking passage",
+      "nodes": {
+        "throne": {
+          "position": [
+            0,
+            1.72,
+            0
+          ],
+          "links": [
+            "hall",
+            "royal_rear"
+          ]
+        },
+        "hall": {
+          "position": [
+            0,
+            1.72,
+            -22
+          ],
+          "links": [
+            "throne",
+            "court"
+          ],
+          "details": {
+            "liveScreen": "vnn-wall",
+            "screenTarget": "https://news.vitra.ams/",
+            "podium": {
+              "position": [
+                -3.1,
+                0,
+                -21.9
+              ],
+              "emptyBackdrop": true
+            },
+            "chairCAD": "correspondents_chair.glb",
+            "chairInstances": 18,
+            "floorTextures": [
+              "procedural/interior/parquet",
+              "procedural/interior/runner",
+              "procedural/interior/inlay"
+            ]
+          },
+          "screenIds": [
+            "vnn-wall"
+          ],
+          "name": "Correspondents’ Den"
+        },
+        "court": {
+          "position": [
+            0,
+            1.72,
+            -33
+          ],
+          "links": [
+            "hall",
+            "crossroads"
+          ]
+        },
+        "cloister": {
+          "position": [
+            0,
+            1.72,
+            -51
+          ],
+          "links": [
+            "crossroads",
+            "gate"
+          ]
+        },
+        "gate": {
+          "position": [
+            0,
+            1.72,
+            -66
+          ],
+          "links": [
+            "cloister",
+            "portal"
+          ]
+        },
+        "portal": {
+          "position": [
+            0,
+            1.72,
+            -75
+          ],
+          "links": [
+            "gate"
+          ],
+          "portal": {
+            "world": "garden",
+            "node": "arrival",
+            "entryTag": "chuzhoy-north"
+          }
+        },
+        "royal_rear": {
+          "name": "Behind the throne",
+          "position": [
+            0,
+            1.72,
+            18
+          ],
+          "links": [
+            "throne",
+            "bank_gate"
+          ]
+        },
+        "bank_gate": {
+          "name": "Gerudo bank threshold",
+          "position": [
+            0,
+            1.72,
+            30
+          ],
+          "links": [
+            "royal_rear"
+          ],
+          "portal": {
+            "world": "gringotts",
+            "node": "arrival",
+            "entryTag": "gringotts-gerudo"
+          }
+        },
+        "crossroads": {
+          "position": [
+            0,
+            1.72,
+            -43
+          ],
+          "links": [
+            "court",
+            "cell",
+            "treasury",
+            "cloister"
+          ]
+        },
+        "cell": {
+          "position": [
+            -18.5,
+            1.72,
+            -43
+          ],
+          "links": [
+            "crossroads"
+          ]
+        },
+        "treasury": {
+          "position": [
+            19.6,
+            1.72,
+            -43
+          ],
+          "links": [
+            "crossroads"
+          ]
+        }
+      },
+      "landmarks": {
+        "courtyardChandelier": {
+          "position": [
+            0,
+            5,
+            -33
+          ],
+          "sourceCAD": "courtyard_chandelier.step",
+          "mesh": "courtyard_chandelier.glb",
+          "lighting": {
+            "default": "dormant",
+            "futureAnimation": "dramatic-flare"
+          }
+        }
+      }
+    },
+    "garden": {
+      "name": "Garden of Chuzhoy",
+      "start": "south",
+      "layout": "circular-diamond",
+      "nodes": {
+        "south": {
+          "position": [
+            0,
+            1.72,
+            21
+          ],
+          "links": [
+            "east",
+            "west"
+          ]
+        },
+        "east": {
+          "position": [
+            21,
+            1.72,
+            0
+          ],
+          "links": [
+            "south",
+            "north",
+            "fountain"
+          ]
+        },
+        "north": {
+          "position": [
+            0,
+            1.72,
+            -21
+          ],
+          "links": [
+            "east",
+            "west",
+            "arrival"
+          ]
+        },
+        "west": {
+          "position": [
+            -21,
+            1.72,
+            0
+          ],
+          "links": [
+            "north",
+            "south"
+          ]
+        },
+        "fountain": {
+          "position": [
+            5.6,
+            1.72,
+            0
+          ],
+          "links": [
+            "east"
+          ],
+          "asset": "garden_fountain.glb"
+        },
+        "arrival": {
+          "position": [
+            14,
+            1.72,
+            -27
+          ],
+          "links": [
+            "north"
+          ],
+          "portal": {
+            "world": "fortress",
+            "node": "portal",
+            "entryTag": "fortress-gate"
+          }
+        }
+      },
+      "landmarks": {
+        "fountain": {
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "sourceCAD": "garden_fountain.step",
+          "mesh": "garden_fountain.glb"
+        },
+        "portal": {
+          "position": [
+            14,
+            0,
+            -34
+          ],
+          "effect": "fourier-crt-prismatic"
+        },
+        "singingAstrarium": {
+          "position": [
+            -31,
+            0,
+            -11
+          ],
+          "type": "procedural astronomical sculpture"
+        }
+      },
+      "floorTextures": [
+        "procedural/outdoor/living-earth",
+        "procedural/outdoor/crystal-marble",
+        "procedural/outdoor/calcite-gravel"
+      ],
+      "architecturalTheme": "French cloister meets haunted, marble Charn-like ruin; pointed window arches, broken columns, woodline visible"
+    },
+    "gringotts": {
+      "name": "Gringotts · Gerudo Branch",
+      "start": "arrival",
+      "layout": "nave with side galleries and strongroom",
+      "nodes": {
+        "arrival": {
+          "position": [
+            0,
+            1.72,
+            31
+          ],
+          "links": [
+            "atrium"
+          ],
+          "portal": {
+            "world": "fortress",
+            "node": "bank_gate",
+            "entryTag": "fortress-bank-rear"
+          }
+        },
+        "atrium": {
+          "position": [
+            0,
+            1.72,
+            13
+          ],
+          "links": [
+            "arrival",
+            "tellers",
+            "calendar"
+          ]
+        },
+        "tellers": {
+          "position": [
+            0,
+            1.72,
+            -4
+          ],
+          "links": [
+            "atrium",
+            "exchange",
+            "post",
+            "vault"
+          ]
+        },
+        "exchange": {
+          "position": [
+            -16,
+            1.72,
+            -20
+          ],
+          "links": [
+            "tellers",
+            "vault"
+          ]
+        },
+        "post": {
+          "position": [
+            16,
+            1.72,
+            -20
+          ],
+          "links": [
+            "tellers",
+            "calendar",
+            "vault"
+          ]
+        },
+        "calendar": {
+          "position": [
+            16,
+            1.72,
+            10
+          ],
+          "links": [
+            "atrium",
+            "post"
+          ]
+        },
+        "vault": {
+          "position": [
+            0,
+            1.72,
+            -39
+          ],
+          "links": [
+            "tellers",
+            "exchange",
+            "post",
+            "privacy"
+          ]
+        },
+        "privacy": {
+          "position": [
+            0,
+            1.72,
+            -57
+          ],
+          "links": [
+            "vault"
+          ]
+        }
+      },
+      "theme": "Gerudo gold and ink, wizarding banking, goblin tellers, encrypted correspondence; fictional demo only",
+      "functionalStatus": "interactive visual prototypes; no real login, custody, key management, exchange or balance",
+      "floorTextures": [
+        "procedural/interior/marble",
+        "procedural/interior/brass-mosaic",
+        "procedural/interior/runner"
+      ]
+    }
+  },
+  "portalKit": {
+    "version": "webspace-portal/0.1",
+    "module": "./webspace-portal.js",
+    "localTravel": "world + node",
+    "remoteTravel": "href + entry",
+    "historyTransmission": "never",
+    "crossOriginConfirmation": "required",
+    "namedArrivals": [
+      "fortress-gate",
+      "chuzhoy-north",
+      "gringotts-gerudo",
+      "fortress-bank-rear"
+    ]
+  },
+  "federationExample": {
+    "local": {
+      "world": "garden",
+      "node": "south"
+    },
+    "remoteTemplate": {
+      "href": "https://future-world.example/",
+      "entry": "arrival"
+    },
+    "note": "This is a non-functional example. The target must be a real world whose author explicitly agrees to accept portal arrivals."
+  },
+  "screenKit": {
+    "module": "./webspace-screen.js",
+    "channelModule": "./webspace-channel.js",
+    "version": "webspace.screen/0.1",
+    "consentRequiredForRemoteRequest": true,
+    "sharePlayerHistory": false,
+    "screens": {
+      "vnn-wall": {
+        "kind": "webspace.screen",
+        "version": 1,
+        "title": "Vitra News Network",
+        "url": "https://news.vitra.ams/",
+        "world": "fortress",
+        "node": "hall",
+        "corners": [
+          [
+            3.15,
+            5.7,
+            -25.45
+          ],
+          [
+            8.65,
+            5.7,
+            -25.45
+          ],
+          [
+            8.65,
+            2.72,
+            -25.45
+          ],
+          [
+            3.15,
+            2.72,
+            -25.45
+          ]
+        ],
+        "sandbox": "allow-scripts",
+        "referrerPolicy": "no-referrer",
+        "mode": "opt-in-iframe",
+        "fallback": "local VNN standby / direct link"
+      },
+      "gringotts-parchment": {
+        "kind": "local-diegetic-document",
+        "world": "gringotts",
+        "node": "tellers",
+        "mode": "authless-fictional-prototype",
+        "externalLinks": "explicit top-level user action only"
+      }
+    }
+  }
+}

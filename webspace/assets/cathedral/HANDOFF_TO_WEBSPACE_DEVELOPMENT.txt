@@ -1,0 +1,26 @@
+WEBSPACE DEVELOPMENT — PASTE THIS HANDOFF INTO THE PARALLEL CHAT
+
+Attached ZIP: Cathedral_of_a_Thousand_Heavens_Rev06_Stained_Glass_Lightweight.zip
+Request: Replace the old wonky vaulted ceiling group with the registered temple
+without replacing any campus shrubs, landscaping, or existing HTML UI.
+
+1. Read README.md, INTEGRATE_IN_WEBSPACE.md and stained_glass_layout.json.
+2. Preserve Rev04 registered coordinate datum and Rev05 structural geometry.
+3. Mount public/viewer.js or copy its art shader and faked caustic technique
+   into the existing Three.js or compatible WebGL rendering pipeline.
+4. Stream stone GLBs 00, 01, 02 first. Add 05_stained_glass.glb and
+   tiny texture atlas immediately; defer 03 and 04 to closer camera distances.
+5. IMPORTANT: panorama and scene orientation use GLB x=u-96, y=height,
+   z=168-v. The altar is (0,0,0). EAST points toward +GLB Z.
+6. The 05 glb embeds the glass-color painting and broken edges, so the panes
+   are present in a GLB-aware viewer. The exaggerated COLOR LIGHT projections,
+   halo and stone texture atlas are rendered by viewer.js, not native STEP.
+7. Check WebGL2 and shader chunks against pinned Three r164. The material
+   hook uses <begin_vertex>, <color_fragment>, <roughnessmap_fragment>.
+8. This handoff is self-contained. It was NOT integrated into the real existing
+   Webspace Development HTML code because that exact source was unavailable.
+9. Run tests/verify_rev06.py; respect revision material byte budget.
+
+Aesthetic: Seven-point glass jewel star, punctured panels, blue/teal/ruby/amber
+light spilling across the circular Catholic ambulatory; Mont Saint-Michel stone
+architecture and subdued garden colors are not overwritten by the stained glass.

@@ -1,0 +1,41 @@
+'use strict';
+// No dependencies: node test_portal.js. Tests deliberately refuse unsafe links.
+const assert=require('node:assert/strict');
+const P=require('./webspace-portal.js');
+const worlds={fortress:{nodes:{throne:{},gate:{}}},garden:{nodes:{south:{}}}};
+assert.equal(P.VERSION,'webspace-portal/0.1');
+assert.deepEqual({...P.resolve({world:'garden',node:'south'},{worlds})},{type:'local',world:'garden',node:'south'});
+assert.throws(()=>P.resolve({world:'__proto__',node:'x'},{worlds}),/Invalid|Unknown local/);
+assert.throws(()=>P.resolve({world:'garden',node:'nonexistent'},{worlds}),/Invalid|Unknown local/);
+assert.throws(()=>P.resolve({world:'garden',node:'bad/../entry'},{worlds}),/Invalid/);
+let localCalled='';
+P.activate({world:'fortress',node:'throne'},{worlds,onLocal:(w,n)=>localCalled=w+':'+n});
+assert.equal(localCalled,'fortress:throne');
+let actualURL='';let promptMessage='';
+let r=P.activate({href:'https://someworld.example/threshold',entry:'east'},{baseURL:'https://mysite.example/world',onExternal:u=>actualURL=u,confirmExternal:(m)=>{promptMessage=m;return true;}});
+assert.equal(r.type,'external');assert.match(promptMessage,/someworld.example/);
+assert.equal(new URL(actualURL).searchParams.get('ws_entry'),'east');
+assert.equal(new URL(actualURL).searchParams.get('ws_v'),'1');
+assert.ok(!actualURL.includes('history'));assert.ok(!actualURL.includes('player'));
+assert.equal(P.parseArrival('?ws_v=1&ws_entry=east',{validEntries:['east']}),'east');
+assert.equal(P.parseArrival('?ws_v=1&ws_entry=east',{validEntries:['north']}),null);
+assert.equal(P.parseArrival('?ws_v=1&ws_entry=east&ws_entry=north'),null);
+assert.equal(P.parseArrival('?ws_entry=east'),null);
+assert.equal(P.parseArrival('?ws_v=1&ws_entry=..%2Fadmin'),null);
+assert.ok(P.resolve({href:'http://localhost:8000/world',entry:'home'},{baseURL:'http://localhost:8000'}).url);
+assert.ok(P.resolve({href:'http://'+'a'.repeat(56)+'.onion/world',entry:'home'},{baseURL:'http://localhost:8000'}).url);
+for(const bad of ['javascript:alert(1)','data:text/html,test','file:///tmp/evil','http://example.com','https://user:pass@real.example','http://wrong.onion/world', 'ftp://example.com']){
+  assert.throws(()=>P.resolve({href:bad,entry:'home'},{baseURL:'https://mysite.example/'}));
+}
+let navCalls=0;
+r=P.activate({href:'https://other.example/garden',entry:'south'},{baseURL:'https://mysite.example/',onExternal:()=>navCalls++});
+assert.equal(r.blocked,true);assert.equal(navCalls,0);
+r=P.activate({href:'https://other.example/garden',entry:'south'},{baseURL:'https://mysite.example/',confirmExternal:()=>false,onExternal:()=>navCalls++});
+assert.equal(r.blocked,true);assert.equal(navCalls,0);
+const portalBuilder={boxes:[],ovals:[],box:null,ellipsoid:null};
+portalBuilder.box=(...a)=>portalBuilder.boxes.push(a);portalBuilder.ellipsoid=(...a)=>portalBuilder.ovals.push(a);
+const g=P.frame(portalBuilder,{x:3,z:5,width:7,height:7});
+assert.equal(g.y,.42);assert.ok(portalBuilder.boxes.length>=5);assert.equal(portalBuilder.ovals.length,4);
+assert.throws(()=>P.frame(portalBuilder,{width:-2}),/Invalid/);
+assert.match(P.fragmentShader,/for\(int i=1;i<=5;i\+\+\)/);
+console.log('PASS: 24+ checks for portal shape, routing, cross-origin consent, isolation and URL safety');

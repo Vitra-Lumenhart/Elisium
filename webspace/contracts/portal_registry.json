@@ -1,0 +1,57 @@
+{
+  "schema": "webspace/portal-policy/1",
+  "status": "declarative-policy-not-renderer-integration",
+  "canonical_portal": {
+    "id": "P-001/chuzhoy-portal",
+    "visual_authority": "worlds/chuzhoy/garden_native.html",
+    "historical_kit": "shared/legacy/webspace-portal.js",
+    "interaction": "explicit-user-activated-portal",
+    "arrival": "ws_v=1&ws_entry=<published-tag>",
+    "privacy": "public-arrival-only",
+    "visual_parity": "not-yet-verified"
+  },
+  "world_defaults": {
+    "chuzhoy": "P-001/chuzhoy-portal",
+    "fortress": "P-001/chuzhoy-portal",
+    "gringotts": "P-001/chuzhoy-portal",
+    "witchs-hole": "P-001/chuzhoy-portal",
+    "elisium": "P-001/chuzhoy-portal",
+    "purgatorio": "reserved-nonplayable"
+  },
+  "non_portal_thresholds": [
+    {
+      "id": "elisium/kilns",
+      "kind": "doorway-child-world",
+      "notes": "A house threshold is not automatically a standard portal."
+    }
+  ],
+  "custom_exceptions": [
+    {
+      "id": "PORTAL/WITCHS-WELL",
+      "world": null,
+      "status": "design-candidate-unverified",
+      "exception": "visual-only-to-be-determined",
+      "owner": "Vitra-Lumenhart",
+      "acceptance": "Locate canonical source, document exact design, tests, and stable public routing; do not claim currently implemented."
+    }
+  ],
+  "screen_policy": {
+    "id": "S-001/screen",
+    "reference": "shared/legacy/SCREEN_PROTOCOL.md",
+    "equivalent_to_portal": false
+  },
+  "required_for_active_custom": [
+    "id",
+    "world",
+    "owner",
+    "interaction_contract",
+    "source_path",
+    "tests",
+    "exception",
+    "status"
+  ],
+  "tests": {
+    "manifest": "tests/test_portal_registry.mjs",
+    "visual_parity": "future"
+  }
+}

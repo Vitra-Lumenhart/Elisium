@@ -1,0 +1,41 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cathedral of a Thousand Heavens — Rev06 Webspace</title>
+<meta name="description" content="An architectural parametric GLB temple study with low-resolution stone atlases and mathematically aligned colored glass caustics.">
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.164.1/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.164.1/examples/jsm/"}}</script>
+<style>
+:root {color-scheme:dark;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:#121821;color:#ebded1;}
+*{box-sizing:border-box} body{margin:0} #temple-stage{height:100svh;min-height:420px;position:relative;overflow:hidden}
+#viewer{position:absolute;inset:0}#viewer canvas{display:block;width:100%;height:100%}
+header{position:absolute;z-index:1;top:18px;left:20px;max-width:min(480px,calc(100vw - 40px));pointer-events:none;text-shadow:0 1px 16px #1119}
+header small{font-size:.69rem;letter-spacing:.18em;color:#d8b98e;text-transform:uppercase;font-weight:700}h1{font-size:clamp(1.12rem,2.1vw,1.65rem);margin:8px 0 4px;font-weight:580;letter-spacing:-.018em}header p{font-size:.80rem;color:#dbd3c7;margin:0;line-height:1.55}
+menu{position:absolute;z-index:2;bottom:20px;left:20px;right:20px;display:flex;flex-wrap:wrap;align-items:center;gap:7px;padding:0;margin:0;max-width:970px}
+button{font:inherit;border-radius:999px;background:#28313d;border:1px solid #53616a;color:#f0e9d8;padding:9px 14px;cursor:pointer;white-space:nowrap;font-size:.79rem;transition:background .16s}
+button:hover{background:#45515d}button.on{background:#d1b388;color:#17202a;border-color:#e6c39a}button:focus-visible{outline:2px solid #fff}
+#status{position:absolute;right:18px;top:18px;background:#141d28cc;border:1px solid #53616a77;border-radius:8px;padding:7px 11px;font: .72rem ui-monospace,monospace;color:#d0cabd;max-width:37vw}
+.legend{position:absolute;bottom:91px;right:18px;background:#141d2899;border:1px solid #46536788;padding:10px 12px;border-radius:8px;color:#cfc9bb;font-size:.7rem;max-width:230px;line-height:1.6}
+@media(max-width:650px){header{top:13px;left:15px;right:15px}header p{display:none}#status{top:auto;bottom:137px;right:14px;max-width:48vw}.legend{display:none}menu{left:12px;right:12px;bottom:14px;gap:5px}button{font-size:.72rem;padding:8px 10px}}
+</style></head><body><main id="temple-stage"><div id="viewer" aria-label="3D temple renderer"></div>
+<header><small>Parametric marble architecture / Rev 06</small><h1>Cathedral of a Thousand Heavens</h1><p>Abrahamic altar, gardens, Communion Crown, and the stacked stone architecture of Mont Saint-Michel. Orbit to explore. Scroll to zoom.</p></header>
+<div id="status" role="status" aria-live="polite">Loading initial stonework…</div>
+<div class="legend">CAD: X North • Y West • Z Up<br>GLB: Y Up • entry faces viewer<br>0.5 m masonry module • 1 m courses<br>512² shared stone atlas • 256px glass</div>
+<menu id="toolbar"><button data-phase="00_foundations" class="on">Foundations</button><button data-phase="01_courts_water" class="on">Courts / water</button><button data-phase="02_communion_crown" class="on">Crown</button><button data-phase="03_mont_skyline">Mont skyline</button><button data-phase="04_ornaments_ruins">Ruins / jewels</button><button data-phase="05_stained_glass" class="on">Broken stained glass</button><button id="full">Load all</button><button id="quality">Stone detail</button><button id="fx" class="on">Colored light</button><button id="view">Reset camera</button></menu>
+</main>
+<script type="module">
+import {mountTemple} from './viewer.js';
+const status=document.querySelector('#status');let completed=0;
+const kit=mountTemple(document.querySelector('#viewer'),{assetBase:'./assets/',onStatus:e=>{
+ if(e.error)status.textContent='Could not load '+e.phase+': '+e.error;
+ else if(e.loaded)status.textContent=`Loaded ${++completed} / 6 layers • orbit / zoom / pan`;
+}});
+for(const b of document.querySelectorAll('[data-phase]'))b.addEventListener('click',async()=>{
+ const enable=!b.classList.contains('on');b.classList.toggle('on',enable);
+ try{await kit.showPhase(b.dataset.phase,enable);}catch(err){status.textContent=String(err);}
+});
+document.querySelector('#full').addEventListener('click',async()=>{
+ status.textContent='Loading skyline and ruin details…';await kit.showAll();
+ document.querySelectorAll('[data-phase]').forEach(x=>x.classList.add('on'));
+});
+document.querySelector('#quality').addEventListener('click',e=>{kit.setQuality('high');e.target.classList.add('on');});
+document.querySelector('#fx').addEventListener('click',e=>{const on=!e.target.classList.contains('on');e.target.classList.toggle('on',on);kit.setGlassLight(on);});
+document.querySelector('#view').addEventListener('click',()=>{kit.camera.position.set(178,117,166);kit.controls.target.set(0,27,0);kit.controls.update();});
+</script></body></html>

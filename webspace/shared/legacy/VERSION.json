@@ -1,0 +1,17 @@
+{
+  "version": 3,
+  "created_at": "2026-10-25",
+  "previous_version": 2,
+  "source_base": "webspace_v6_1_2_fixed.zip",
+  "features": [
+    "Gringotts Gerudo branch",
+    "rear throne portal",
+    "two named portal arrivals",
+    "persistent travel ribbon",
+    "fictional bank desk",
+    "direct Proton service links",
+    "Independent GitHub Pages-ready repository layout and publishing guide"
+  ],
+  "security_disclaimer": "Fictional interactive prototype, not a real authentication or financial service",
+  "release_type": "GitHub Pages packaging; runtime behavior unchanged from v2"
+}

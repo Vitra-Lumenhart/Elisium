@@ -1,0 +1,46 @@
+{
+  "stats": {
+    "00_foundations": {
+      "bytes": 11044,
+      "meshes": 4,
+      "nodes": 4,
+      "triangles": 396,
+      "objects_authored": 33,
+      "batched_by_material": true
+    },
+    "01_courts_water": {
+      "bytes": 307196,
+      "meshes": 7,
+      "nodes": 7,
+      "triangles": 16596,
+      "objects_authored": 124,
+      "batched_by_material": true
+    },
+    "02_communion_crown": {
+      "bytes": 378132,
+      "meshes": 5,
+      "nodes": 5,
+      "triangles": 20524,
+      "objects_authored": 197,
+      "batched_by_material": true
+    },
+    "03_mont_skyline": {
+      "bytes": 275572,
+      "meshes": 6,
+      "nodes": 6,
+      "triangles": 14808,
+      "objects_authored": 128,
+      "batched_by_material": true
+    },
+    "04_ornaments_ruins": {
+      "bytes": 115860,
+      "meshes": 6,
+      "nodes": 6,
+      "triangles": 5896,
+      "objects_authored": 202,
+      "batched_by_material": true
+    }
+  },
+  "step_size": 669099,
+  "cad_parts": 61
+}

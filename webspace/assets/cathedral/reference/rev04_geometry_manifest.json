@@ -1,0 +1,360 @@
+{
+  "name": "Cathedral of a Thousand Heavens — Communion Crown, revision 04",
+  "drawing_status": "Concept design, not construction-ready",
+  "version": "2026-10-23.r04",
+  "units": "metre",
+  "coordinate_system": {
+    "u": "south to north (+u, plan page left to right)",
+    "v": "east to west (+v, plan page bottom to top)",
+    "z": "upward from sanctuary pavement",
+    "cad_X": "u",
+    "cad_Y": "v",
+    "section_A_A": "u = 96 m (west left in sheet 03, east right)",
+    "plan_world_bounds": {
+      "u": [
+        0,
+        192
+      ],
+      "v": [
+        0,
+        288
+      ]
+    },
+    "one_modular_grid_cell_m": 12,
+    "half_grid_registration_m": 6,
+    "mirrored_reflected_ceiling": false
+  },
+  "registration_fiducials": {
+    "F1": [
+      54,
+      126
+    ],
+    "F2": [
+      138,
+      126
+    ],
+    "F3": [
+      54,
+      210
+    ],
+    "F4": [
+      138,
+      210
+    ]
+  },
+  "site": {
+    "north_south_width_m": 192,
+    "east_west_length_m": 288,
+    "entry": "east v=0",
+    "rear": "west v=288",
+    "landscape_exterior": "excluded from drawn site"
+  },
+  "construction_phases": [
+    {
+      "stage": 1,
+      "name": "Abrahamic altar memory",
+      "visible_elements": [
+        "square core",
+        "four corner piers"
+      ]
+    },
+    {
+      "stage": 2,
+      "name": "Exodus ordered enclosure",
+      "visible_elements": [
+        "east to west procession",
+        "outer rectangular enclosure"
+      ]
+    },
+    {
+      "stage": 3,
+      "name": "Moorish water-and-star gardens",
+      "visible_elements": [
+        "four narrow rills",
+        "courtyard cloisters",
+        "wudu rooms"
+      ]
+    },
+    {
+      "stage": 4,
+      "name": "French Gothic structural campaign",
+      "visible_elements": [
+        "3x3 vaulted bay grid",
+        "corner buttresses",
+        "pointed arches"
+      ]
+    },
+    {
+      "stage": 5,
+      "name": "Franco-Moorish crown",
+      "visible_elements": [
+        "eightfold arch transfer",
+        "sixteen primary ribs",
+        "muqarnas coffer seams"
+      ]
+    },
+    {
+      "stage": 6,
+      "name": "Modern Roman Catholic Communion Crown",
+      "visible_elements": [
+        "freestanding square altar",
+        "twelve seating banks",
+        "circular assembly",
+        "heptagram oculus"
+      ]
+    }
+  ],
+  "zones": [
+    {
+      "id": "E1",
+      "name": "eastern entry and wudu",
+      "v_range_m": [
+        0,
+        48
+      ],
+      "ritual": "ablution supplied with clean water",
+      "wudu_enclosures_u_v_wh": [
+        [
+          14,
+          12,
+          52,
+          31
+        ],
+        [
+          126,
+          12,
+          52,
+          31
+        ]
+      ]
+    },
+    {
+      "id": "C1",
+      "name": "four-river garden",
+      "v_range_m": [
+        48,
+        126
+      ],
+      "courtyard_u_v_wh": [
+        22,
+        52,
+        148,
+        70
+      ],
+      "ritual": "reflecting water, not immersion"
+    },
+    {
+      "id": "S1",
+      "name": "central sanctuary",
+      "u_range_m": [
+        54,
+        138
+      ],
+      "v_range_m": [
+        126,
+        210
+      ],
+      "center_u_v": [
+        96,
+        168
+      ],
+      "design": "original square 84 x 84 with later inscribed round assembly"
+    },
+    {
+      "id": "W1",
+      "name": "western baptism court",
+      "v_range_m": [
+        210,
+        288
+      ],
+      "font_center_u_v": [
+        96,
+        252
+      ],
+      "font_outer_radius_m": 7.5,
+      "font_water_radius_m": 4.5,
+      "font_section_water_depth_m": 1.4
+    },
+    {
+      "id": "W2",
+      "name": "older west chapel",
+      "u_range_m": [
+        75,
+        117
+      ],
+      "v_range_m": [
+        211,
+        230
+      ],
+      "design": "retained axial sanctuary; not the modern altar"
+    }
+  ],
+  "sanctuary": {
+    "ancient_square_side_m": 84,
+    "old_bay_grid": "3 by 3 (28-m bays)",
+    "modern_ring_radii_m": [
+      7,
+      22,
+      26,
+      32,
+      42
+    ],
+    "freestanding_altar_u_v": [
+      96,
+      168
+    ],
+    "altar_length_width_m": [
+      3,
+      3
+    ],
+    "seating_banks": 12,
+    "aisles_cardinal_angles_deg": [
+      0,
+      90,
+      180,
+      270
+    ]
+  },
+  "crown": {
+    "transfer_ring_elevation_m": 25,
+    "primary_ribs": 16,
+    "radial_paths_primary_and_secondary": 32,
+    "old_square_to_octagon": "four squinch arches",
+    "oculus_diameter_m": 18,
+    "oculus_points": 7,
+    "seven_to_sixteen_pattern_interface_tesserae": 112,
+    "roof_apex_elevation_m": 84,
+    "vault_apex_elevation_m": 65,
+    "galleries_elevations_m": [
+      9,
+      21
+    ],
+    "aqueduct_lip_elevation_m": 47
+  },
+  "ruins": [
+    {
+      "id": "R1",
+      "type": "roof collapse",
+      "annular_sector_center": [
+        96,
+        168
+      ],
+      "radius_m": [
+        27,
+        44
+      ],
+      "angles_deg": [
+        10,
+        45
+      ],
+      "ground_debris_centres": [
+        [
+          126,
+          179
+        ],
+        [
+          134,
+          184
+        ],
+        [
+          125,
+          193
+        ],
+        [
+          130,
+          191
+        ]
+      ]
+    },
+    {
+      "id": "R2",
+      "type": "broken western perimeter masonry",
+      "u_approx": [
+        0,
+        3
+      ],
+      "v_approx": [
+        264,
+        282
+      ]
+    },
+    {
+      "id": "R3",
+      "type": "unfinished east garden arcade",
+      "u_approx": [
+        22,
+        46
+      ],
+      "v_approx": [
+        58,
+        82
+      ]
+    },
+    {
+      "id": "R4",
+      "type": "lost western baptistery edge vaults",
+      "u_approx": [
+        38,
+        60
+      ],
+      "v_approx": [
+        259,
+        277
+      ]
+    }
+  ],
+  "water_segregation": {
+    "wudu": "fresh supply / dedicated drain",
+    "baptism": "separate fill, blessing and drain",
+    "hydraulic_garden": "shallow reflecting rills and rain recovery",
+    "roof": "flying aqueduct gutters to rainwater cistern, not directly to ritual basins"
+  },
+  "materials": {
+    "primary": "warm pale marble with masonry structural backing",
+    "secondary": "stone piers and rib vaults",
+    "inlay": [
+      "tarnished bronze",
+      "alabaster",
+      "dark malachite",
+      "golden glass"
+    ],
+    "not_gaudi": [
+      "no biomorphic tree columns",
+      "no organic fused vaults",
+      "no exterior landscape/ornamental shrubs"
+    ]
+  },
+  "dxf": {
+    "units": "m",
+    "x_axis": "north",
+    "y_axis": "west",
+    "ground_layers": [
+      "G_FOUNDATIONS",
+      "G_GATES",
+      "G_GARDENS",
+      "G_WUDU",
+      "G_BAPTISTRY",
+      "G_MODERN_ASSEMBLY",
+      "G_HERITAGE_CHAPEL",
+      "G_RUIN_DEBRIS"
+    ],
+    "ceiling_layers": [
+      "C_REFLECTED_ARCADES",
+      "C_OCTAGON",
+      "C_PRIMARY_RIBS",
+      "C_SECONDARY_RIBS",
+      "C_HEPTAGRAM",
+      "C_VAULT_BREACH"
+    ],
+    "shared_layers": [
+      "00_DATUM",
+      "01_ALIGNMENT"
+    ]
+  },
+  "files": {
+    "ground": "01_GROUND_PLAN.svg",
+    "ceiling": "02_REFLECTED_CEILING_PLAN.svg",
+    "section": "03_EW_SECTION.svg",
+    "registered_cad": "04_REGISTERED_GROUND_AND_CEILING.dxf"
+  }
+}

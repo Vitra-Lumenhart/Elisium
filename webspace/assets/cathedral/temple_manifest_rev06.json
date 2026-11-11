@@ -1,0 +1,49 @@
+{
+  "name": "Cathedral of a Thousand Heavens",
+  "revision": "06_stained_glass_microtextures",
+  "coordinate_contract": "CAD X=u north, Y=v west, Z=up; GLB x=u-96 y=Z z=168-v; altar GLB origin",
+  "prior_geometry": "Rev05 unchanged except add-on glass stage and full GLB merging",
+  "step_files": [
+    "temple_structural_master.step",
+    "glass_bay_cad_envelopes.step"
+  ],
+  "six_stage_GLBS": [
+    "00_foundations.glb",
+    "01_courts_water.glb",
+    "02_communion_crown.glb",
+    "03_mont_skyline.glb",
+    "04_ornaments_ruins.glb",
+    "05_stained_glass.glb"
+  ],
+  "maps": {
+    "stone_atlas": "textures/marble_micro_atlas.webp",
+    "stained_rgba": "textures/sevenfold_broken_glass.png",
+    "fake_caustic": "textures/glass_caustic_fake.webp"
+  },
+  "rendering": {
+    "marble": "one axis planar projections sampling 512x512 atlas in viewer shader",
+    "stained": "GLB alpha cutoff 8 windows, embedded texture",
+    "caustics": "8 quads batched 1 draw call additive screen over gallery floor",
+    "halo": "8 quads batched 1 draw call",
+    "shadow_size_default": 1024,
+    "shadow_size_high": 2048,
+    "idle_gpu_renders": false
+  },
+  "source": "src/build_temple.py then src/paint_rev06.py and src/export_glass_cad.py",
+  "future_KTX2": "not currently shipped; WebP/PNG chosen to eliminate transcoder payload",
+  "bytes_per_glb": {
+    "04_ornaments_ruins.glb": 115860,
+    "03_mont_skyline.glb": 275572,
+    "temple_lite.glb": 692480,
+    "01_courts_water.glb": 307196,
+    "temple_full.glb": 1102616,
+    "02_communion_crown.glb": 378132,
+    "00_foundations.glb": 11044,
+    "05_stained_glass.glb": 27764
+  },
+  "bytes_per_texture": {
+    "marble_micro_atlas.webp": 4530,
+    "glass_caustic_fake.webp": 10618,
+    "sevenfold_broken_glass.png": 22911
+  }
+}

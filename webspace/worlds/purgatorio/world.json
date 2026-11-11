@@ -1,0 +1,18 @@
+{
+  "schema": "webspace/world/1",
+  "id": "purgatorio",
+  "name": "Labyrinth of Purgatorio",
+  "status": "PLACEHOLDER ONLY",
+  "entry": "worlds/purgatorio/index.html",
+  "arrival_tag": "purgatorio-threshold",
+  "authoring_note": "No sourced game design, navigation graph, art, theology or mechanics supplied in accessible project files. This shell deliberately defines none.",
+  "planned_interfaces": [
+    "world-manifest",
+    "portal arrival",
+    "time contract",
+    "original assets",
+    "narrative provenance",
+    "tests"
+  ],
+  "assets": []
+}

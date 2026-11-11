@@ -1,0 +1,14 @@
+# ChatGPT-generated self-contained previews are built artifacts, not primary source.
+webspace_preview.html
+webspace_bank_preview.html
+__pycache__/
+*.pyc
+.DS_Store
+.vscode/
+.idea/
+# Personal keys, credentials, or local browser data must never be committed.
+.env
+.env.*
+*.pem
+*.key
+webspace_history/

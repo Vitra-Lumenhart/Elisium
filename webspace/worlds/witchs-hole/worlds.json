@@ -1,0 +1,109 @@
+{
+  "schema": "webspace/world-graph/0.7",
+  "world": "witchs-hole",
+  "title": "Witch's Hole \u2014 The Breathing Underdark",
+  "entryTags": {
+    "witches-hole-ridge": "arrival"
+  },
+  "singleExit": {
+    "node": "arrival",
+    "kind": "world-portal",
+    "destination": "../webspace_v6_1_2/index.html",
+    "targetPublishedEntryTag": "chuzhoy-north"
+  },
+  "coordinateSystem": "local X/Z horizontal, Y computed from 3D terrain; coordinates fictional, meters for game scale",
+  "sites": {
+    "arrival": {
+      "x": -22,
+      "z": 73,
+      "links": [
+        "lookout",
+        "cleft"
+      ]
+    },
+    "lookout": {
+      "x": -30,
+      "z": 52,
+      "links": [
+        "arrival",
+        "bridge"
+      ]
+    },
+    "cleft": {
+      "x": 31,
+      "z": 43,
+      "links": [
+        "arrival",
+        "basin"
+      ]
+    },
+    "bridge": {
+      "x": -33,
+      "z": 17,
+      "links": [
+        "lookout",
+        "brook",
+        "basin"
+      ]
+    },
+    "basin": {
+      "x": 24,
+      "z": 12,
+      "links": [
+        "cleft",
+        "bridge",
+        "hut"
+      ]
+    },
+    "brook": {
+      "x": -15,
+      "z": -4,
+      "links": [
+        "bridge",
+        "hut",
+        "siphon"
+      ]
+    },
+    "hut": {
+      "x": 29,
+      "z": -23,
+      "links": [
+        "basin",
+        "brook",
+        "weir"
+      ]
+    },
+    "siphon": {
+      "x": -34,
+      "z": -38,
+      "links": [
+        "brook",
+        "outflow"
+      ]
+    },
+    "weir": {
+      "x": 22,
+      "z": -54,
+      "links": [
+        "hut",
+        "outflow"
+      ]
+    },
+    "outflow": {
+      "x": -23,
+      "z": -67,
+      "links": [
+        "siphon",
+        "weir"
+      ]
+    }
+  },
+  "engine": {
+    "render": "WebGL2",
+    "fluid": "reduced-dimensional Eulerian 66x88 advection and density transport",
+    "fog": "3 layer density-texture sheets",
+    "brook": "procedural ribbon/wave material",
+    "sfx": "separate opt-in fog and stream WebAudio stems"
+  },
+  "networkDependencies": []
+}

@@ -1,0 +1,51 @@
+{
+  "schema": "cathedral.catalogue/1",
+  "version": "1.0.0",
+  "source": "commons/cathedral/grammar.mjs",
+  "units": "metres",
+  "rightHanded": true,
+  "authority": "host 2D map",
+  "renderer": "host adapter only",
+  "originalSourceLicense": "MIT",
+  "artworkProvenance": "Original procedural geometry; no acquired third-party assets",
+  "foundationalArt": [
+    "Alhambra: inward patterned courts and muqarnas",
+    "Mont Saint-Michel / Gothic: rising stone, ribs and buttresses",
+    "Abrahamic square foundations and later Catholic circular assembly",
+    "Taj: dressed marble and quiet paradise",
+    "Russian: optional symbolic flame/crown details"
+  ],
+  "families": [
+    "dressed_arch",
+    "shoulder_arch",
+    "column",
+    "vault_rect",
+    "vault_octagon",
+    "vault_trapezoid",
+    "glass_rose",
+    "glass_lancet",
+    "glass_screen"
+  ],
+  "palettes": [
+    "penitential_ember",
+    "verdant_mercy",
+    "nocturne_sapphire"
+  ],
+  "effects": [
+    "diffusion",
+    "thickness",
+    "haloMultiplier"
+  ],
+  "moods": [
+    "shimmer",
+    "glimmer",
+    "blaze"
+  ],
+  "status": "source compiler, not installed into a world",
+  "acceptance": "tests/test_cathedral_catalogue.mjs",
+  "intendedConsumers": [
+    "chuzhoy",
+    "purgatorio",
+    "future host worlds"
+  ]
+}

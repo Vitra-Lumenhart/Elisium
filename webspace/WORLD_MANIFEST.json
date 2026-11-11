@@ -1,0 +1,116 @@
+{
+  "schema": "webspace/federation/1.1",
+  "release_integer": 7,
+  "source_lineage": "Chuzhoy 6.2.8 (rollback 6.2.5.1) + legacy v3 Gerudo/Gringotts + Witch v2 + Elisium v4.6",
+  "worlds": [
+    {
+      "id": "chuzhoy",
+      "name": "Garden of Chuzhoy",
+      "entry": "worlds/chuzhoy/index.html",
+      "version": "6.2.8 Wilderness (canonical GitHub native)",
+      "engine": "Standalone WebGL2 Garden 6.2.8 compressed runtime; source extraction tool",
+      "arrival_tag": "chuzhoy-north",
+      "features": [
+        "southern arches",
+        "wilderness depth veils",
+        "independent wildlife sprites",
+        "ewes pasture",
+        "Creeping Charlie growth",
+        "architectural gold/pink toggles",
+        "compass wing recenter",
+        "one-way obsidian-to-rose route"
+      ]
+    },
+    {
+      "id": "fortress",
+      "name": "Gerudo Fortress",
+      "entry": "worlds/fortress/index.html",
+      "version": "Gringotts-era v3",
+      "engine": "Chuzhoy legacy WebGL2/Canvas fallback",
+      "arrival_tag": "fortress-gate"
+    },
+    {
+      "id": "gringotts",
+      "name": "Gringotts Gerudo Branch",
+      "entry": "worlds/gringotts/index.html?ws_v=1&ws_entry=gringotts-gerudo",
+      "version": "Gringotts-era v3",
+      "engine": "Chuzhoy legacy WebGL2/Canvas fallback",
+      "arrival_tag": "gringotts-gerudo"
+    },
+    {
+      "id": "witchs-hole",
+      "name": "Witch's Hole",
+      "entry": "worlds/witchs-hole/index.html",
+      "version": "v2 Ravine Cliff",
+      "engine": "Independent Witch WebGL2",
+      "arrival_tag": "witch-arrival"
+    },
+    {
+      "id": "elisium",
+      "name": "Elisium · Living Concordance",
+      "entry": "worlds/elisium/index.html",
+      "version": "4.6 compact playable",
+      "engine": "Independent Elisium WebGL2/Canvas compatible",
+      "arrival_tag": "elisium-first-footfall"
+    },
+    {
+      "id": "purgatorio",
+      "name": "Labyrinth of Purgatorio",
+      "entry": "worlds/purgatorio/index.html",
+      "version": "placeholder v0.0",
+      "engine": "static narrative reservation",
+      "arrival_tag": "purgatorio-threshold",
+      "status": "placeholder"
+    }
+  ],
+  "portal_contract": {
+    "query": "?ws_v=1&ws_entry=<published-tag>",
+    "transfer": [
+      "public arrival tag"
+    ],
+    "prohibited_transfer": [
+      "credentials",
+      "private correspondence",
+      "balances",
+      "player history",
+      "camera coordinates"
+    ],
+    "cross_world_sessions": "per-world only"
+  },
+  "asset_bank": {
+    "kilns_proxy_count": 24,
+    "actual_polyhaven_artist_files": 0,
+    "cathedral_revision": "Rev06",
+    "polyhaven_artist_sources_verified": 20,
+    "kilns_object_mappings": 24,
+    "artist_originals_downloaded_to_github_actions": true,
+    "polyhaven_artist_files_checked_into_git": 0,
+    "live_1k_gltf_inspection": "Historical model source is mounted in world during room entry, rather than only a separate study viewport",
+    "offline_glb_proxies_preserved": true
+  },
+  "children": [
+    {
+      "id": "elisium/kilns",
+      "parent": "elisium",
+      "entry": "worlds/elisium/kilns/index.html",
+      "version": "walkable 3D Victorian house v0.3",
+      "model": "3D architectural physical room network (9 ground-floor connected cells + elevated attic), 24 interactive object positions, Poly Haven donor geometry loaded as in-room furniture, illustrated fallback",
+      "object_count": 24,
+      "status": "playable source implemented; browser and public host validation required",
+      "artist_source_viewer": "../../../assets/kilns/polyhaven-live-viewer.mjs",
+      "threshold_candidate": {
+        "schema": "webspace.elisium.kilns/threshold/1",
+        "release_status": "feature branch, unmerged",
+        "transport": "one-time same-tab sessionStorage",
+        "fields": "H01-H24 IDs and bounded fictional minutes only",
+        "parent_ui": "House echoes; independent sky unchanged"
+      },
+      "illustrated_fallback": "worlds/elisium/kilns/illustrated.html",
+      "scene_entry": "worlds/elisium/kilns/house3d.mjs",
+      "artifact_source": "worlds/elisium/kilns/house-fantasy.mjs",
+      "mounted_current_polyhaven": true,
+      "parent_sky_integrated": false
+    }
+  ],
+  "release_note": "Kilns child entry upgraded from illustrated room graph to 10-space, physically connected 3D Victorian house; original v6 illustration preserved"
+}

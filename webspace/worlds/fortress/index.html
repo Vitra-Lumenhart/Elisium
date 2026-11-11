@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Webspace · Gringotts at Gerudo Fortress · Version 3</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;--panel:#0e1b25dc;--edge:#8296a866;--text:#edf3f6}*{box-sizing:border-box}
+html,body{width:100%;height:100%;margin:0;background:#101922;color:var(--text)}
+#app{display:flex;flex-direction:column;height:100dvh;min-height:440px;overflow:hidden}
+header{height:62px;flex-shrink:0;background:#101a22;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(10px,2vw,24px);border-bottom:1px solid #344550;gap:12px}
+.brand{font-weight:800;font-size:17px;letter-spacing:.05em;white-space:nowrap}.brand small{font-weight:400;font-size:12px;letter-spacing:0;color:#b3c2cc;margin-left:9px}
+button{font:inherit;cursor:pointer;color:inherit;border:1px solid #657989;background:#253640;border-radius:10px;padding:9px 12px}button:hover{background:#355061}button:focus-visible{outline:2px solid #ead7a3;outline-offset:2px}button:disabled{opacity:.36;cursor:default}.action{background:#3f345f;border-color:#ad8df4}.action:hover{background:#6445a4}.small{font-size:12px;padding:8px 10px}
+#main{position:relative;flex:1;min-height:0;overflow:hidden;background:#16243a}
+/* A two-dimensional fourth-wall shuffle: no changes to camera pose until the CUT. */
+@keyframes wsWiggle{0%,100%{transform:translate(0,0) rotate(0)}20%{transform:translate(5px,-2px) rotate(.35deg)}42%{transform:translate(-6px,3px) rotate(-.42deg)}65%{transform:translate(3px,-1px) rotate(.24deg)}85%{transform:translate(-2px,1px) rotate(-.12deg)}}
+#main.portal-wiggle #view,#main.portal-wiggle #sky,#main.portal-wiggle #navOverlay{animation:wsWiggle .43s ease-in-out both;transform-origin:center}
+@media(prefers-reduced-motion:reduce){#main.portal-wiggle #view,#main.portal-wiggle #sky,#main.portal-wiggle #navOverlay{animation:none}}
+#sky,#view,#navOverlay{position:absolute;inset:0;width:100%;height:100%;display:block}#navOverlay{pointer-events:none}#view{touch-action:none;cursor:grab}#view:active{cursor:grabbing}
+#info{pointer-events:none;position:absolute;left:15px;top:16px;max-width:min(470px,calc(100% - 30px));background:var(--panel);border:1px solid var(--edge);border-radius:12px;padding:11px 14px;backdrop-filter:blur(8px);z-index:3}
+#world{font-size:11px;letter-spacing:.18em;color:#e4c995;text-transform:uppercase}#place{font-weight:780;font-size:22px;margin:3px 0}#description{font-size:12px;color:#ccdae2;line-height:1.5}
+#side{position:absolute;right:15px;top:16px;display:flex;gap:7px;z-index:4}#side button{background:#13232adf;font-size:12px;padding:8px 11px}
+#navBar{position:absolute;left:50%;bottom:17px;transform:translateX(-50%);display:flex;align-items:center;gap:7px;border-radius:15px;border:1px solid #788c9b77;background:#0c1a25e6;padding:9px;backdrop-filter:blur(8px);z-index:5}#navBar button{min-width:45px}#navBar .travel{background:#8d6839;border-color:#d8a773}
+#portalAction{position:absolute;left:50%;bottom:95px;transform:translateX(-50%);z-index:5;white-space:nowrap;display:none;align-items:center;gap:8px;box-shadow:0 0 30px #9b6ffd4d;background:#2c234f;border-color:#b6a0fe}
+#portalAction.visible{display:flex}
+#screenAction{position:absolute;left:50%;bottom:95px;transform:translateX(-50%);z-index:5;display:none;background:#225166;border-color:#a3dfea;box-shadow:0 0 20px #78daea52}
+#screenAction.visible{display:flex}
+
+#status{position:absolute;right:14px;bottom:18px;z-index:3;font-size:11px;color:#c9d3da;text-align:right;background:#0b1820a9;border-radius:9px;padding:7px 10px;max-width:220px}
+#drawer{position:absolute;right:15px;top:57px;z-index:8;display:none;background:#12212bf2;border:1px solid #7c929e;border-radius:12px;box-shadow:0 12px 35px #0009;max-height:calc(100% - 130px);width:min(400px,calc(100% - 30px));overflow:auto;padding:17px}#drawer.open{display:block}#drawer h2{font-size:16px;margin:0 0 8px}#drawer p,#drawer li{font-size:12px;line-height:1.55;color:#d3dfe7}#drawer button{font-size:12px;margin-bottom:4px}
+#toast{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:7;pointer-events:none;max-width:80vw;padding:14px 20px;color:#fff;background:#12212bea;border:1px solid #c7a7ea;border-radius:12px;text-align:center;opacity:0;transition:opacity .25s}#toast.show{opacity:1}
+footer{background:#101a22;border-top:1px solid #344550;display:flex;justify-content:space-between;gap:12px;padding:8px 15px;color:#9fb5c4;font-size:11px}
+@media(max-width:850px){.brand small{display:none}#info{max-width:65vw}#side{top:15px}#status{display:none}footer span:last-child{display:none}}
+@media(max-width:540px){#info{top:12px;left:12px;max-width:63vw}#place{font-size:17px}#description{font-size:11px}#world{font-size:9px}#side{right:8px;top:13px;gap:4px}#side button{font-size:11px;padding:6px 7px}#navBar{bottom:10px}#portalAction{bottom:93px;font-size:12px}}
+
+/* Version 2: full-viewport adventure canvas with a docked, always-visible destination ribbon. */
+#app{position:relative;height:100dvh;min-height:320px;}
+header{position:absolute;top:0;left:0;right:0;height:56px;background:linear-gradient(#101821e9,#10182100);border:0;z-index:7;pointer-events:none}
+header button{pointer-events:auto}
+#main{position:absolute;inset:0;width:100%;height:100%;min-height:0}
+footer{display:none}
+#info,#side{top:68px}
+#navBar{bottom:13px}
+#portalAction,#portalAction.visible,#screenAction,#screenAction.visible{display:none!important}
+#travelRibbon{position:absolute;bottom:84px;left:50%;transform:translateX(-50%);width:min(95%,940px);display:flex;align-items:center;justify-content:flex-start;overflow-x:auto;overflow-y:hidden;gap:7px;z-index:6;padding:8px 10px;white-space:nowrap;background:linear-gradient(90deg,#111e2bcf,#132333b9,#111e2bcf);border:1px solid #a88c5f5e;border-radius:14px;backdrop-filter:blur(9px);scrollbar-width:thin;scrollbar-color:#96856a8c transparent}
+#travelRibbon button{flex:none;font-size:12px;font-weight:650;border:1px solid #e1c8954d;background:#342e2fd9;border-radius:9px;padding:10px 13px;color:#f9ebd5;min-height:38px}
+#travelRibbon .portal{color:#ecd0ff;border-color:#b797f9a1;background:#43335fd9}#travelRibbon .screen{background:#224c54cf;border-color:#6cb8b8af}
+#travelRibbon:empty{display:none}
+#status{bottom:16px}
+#bankDesk[hidden]{display:none!important}
+#bankDesk{position:absolute;inset:0;z-index:15;display:flex;justify-content:center;align-items:center;background:#06101dc7;backdrop-filter:blur(8px);padding:13px}
+#bankDeskPanel{position:relative;max-height:min(92dvh,900px);width:min(790px,100%);overflow:auto;scrollbar-color:#8a623d #e6d2ac;border:8px double #ac8a4c;border-radius:17px;background:linear-gradient(120deg,#f1dfba,#e6ce9f 52%,#f2dfb8);color:#3a2930;box-shadow:0 34px 90px #000b,inset 0 0 30px #98764266;padding:clamp(20px,4vw,38px)}
+#bankDeskPanel:before{content:'✦ ✦ ✦';display:block;text-align:center;color:#987238;letter-spacing:2em;margin-bottom:5px}
+#bankDeskHeading{font-family:Georgia,serif;font-size:clamp(24px,4vw,37px);letter-spacing:.01em;margin:0 38px 15px 0;color:#392333}
+#bankDeskClose{position:absolute;top:12px;right:13px;width:40px;height:40px;background:#593647;border-color:#97744c;font-size:21px;color:#fff;padding:4px}
+#bankDeskBody{font-family:Georgia,serif;font-size:15px;line-height:1.55}#bankDeskBody p{margin:10px 0 16px}
+.desk-eyebrow{font:700 10px system-ui,sans-serif;letter-spacing:.16em;color:#896444;margin-bottom:13px}
+.parchment-title{font-weight:700;font-size:19px;border-bottom:1px solid #9c754e77;padding:5px 0 11px;margin-bottom:15px}
+.desk-grid,.proton-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:20px 0}
+#bankDeskBody button{background:#ece0c3;color:#43313b;border:1px solid #99794a;white-space:normal;text-align:left;padding:12px;border-radius:7px;line-height:1.3;box-shadow:0 2px 0 #aa865266}
+#bankDeskBody button:hover{background:#fdf2d3}#bankDeskBody button:focus-visible{outline:3px solid #6048a3}
+#bankDeskBody .desk-primary{background:#543249;color:#fff5dc;border-color:#664255}
+#bankDeskBody .desk-return{display:block;margin-top:20px;padding:10px 14px;font:700 12px system-ui,sans-serif;background:transparent;border:0;box-shadow:none;text-decoration:underline}
+.desk-controls{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+.desk-label{display:block;font:700 12px system-ui,sans-serif;margin-top:18px;color:#644330}
+.desk-input{display:block;width:100%;margin-top:8px;background:#fff8e7;border:1px solid #886337;border-radius:7px;padding:14px;font:18px Georgia,serif;color:#3c2630}
+.desk-result{white-space:pre-line;background:#f6e9c9a9;border-left:4px solid #9e7747;padding:14px 17px;margin:16px 0;font:14px/1.6 Georgia,serif}
+.desk-fine{font:12px/1.55 system-ui,sans-serif;color:#654e42;margin-top:18px}
+.coin-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+.coin-stat{white-space:pre-line;text-align:center;font:700 16px/1.9 Georgia,serif;background:#e9d3a6;border-radius:12px;border:1px solid #a78c59;padding:14px}
+.proton-link{font:700 15px Georgia,serif!important}.proton-desc{font:11px/1.4 system-ui,sans-serif;color:#785a4e;padding-top:7px}
+.calendar-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:17px 0 12px}
+.calendar-month{font-weight:700;font-size:20px;text-align:center}.calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}
+.calendar-dow{text-align:center;font:700 12px system-ui,sans-serif;color:#785642;padding:5px}
+#bankDeskBody .calendar-day{text-align:center;border:0;padding:10px 0;box-shadow:none;background:#ead6b2;min-width:0;font:14px Georgia,serif}
+#bankDeskBody .calendar-day.today{background:#59405a;color:white}
+@media(max-width:650px){.brand{font-size:13px}.brand small{display:none}header{padding:0 9px}header button{font-size:11px;padding:7px}#info,#side{top:63px}#info{max-width:69vw;padding:8px 9px}#place{font-size:17px}#description{font-size:10px}#side{right:5px;gap:4px}#side button{padding:6px;font-size:10px}#travelRibbon{width:98%;bottom:75px;border-radius:9px}#travelRibbon button{font-size:11px;padding:8px}#navBar{bottom:6px}#bankDeskPanel{padding:18px;border-width:5px}.desk-grid,.proton-grid{grid-template-columns:1fr 1fr;gap:7px}}
+
+@keyframes wsParchmentAppear{from{opacity:.75;transform:scale(.985) translateY(9px)}to{opacity:1;transform:scale(1) translateY(0)}}
+@keyframes wsPageFlip{from{opacity:.3;transform:perspective(600px) rotateY(-10deg)}to{opacity:1;transform:perspective(600px) rotateY(0)}}
+#bankDesk:not([hidden]) #bankDeskPanel{animation:wsParchmentAppear .28s ease-out}
+.calendar-grid{animation:wsPageFlip .36s ease-out;transform-origin:left center}
+@media(prefers-reduced-motion:reduce){#bankDesk:not([hidden]) #bankDeskPanel,.calendar-grid{animation:none}}
+</style>
+</head>
+<body>
+<div id="app"><header><div class="brand">◈ WEBSPACE <small>Gerudo Fortress · Gringotts Branch · Chuzhoy</small></div><div><button id="export">Export journey</button> <button id="reset">Reset</button></div></header>
+<main id="main">
+<div id="bankDesk" role="dialog" aria-modal="true" aria-labelledby="bankDeskHeading" hidden><div id="bankDeskPanel"><button id="bankDeskClose" aria-label="Close banking parchment">×</button><h2 id="bankDeskHeading"></h2><div id="bankDeskBody"></div></div></div>
+<canvas id="sky" aria-hidden="true"></canvas><canvas id="view" aria-label="Interactive WebGL adventure world"></canvas><canvas id="navOverlay" aria-hidden="true"></canvas>
+<section id="info"><div id="world"></div><div id="place"></div><div id="description"></div></section>
+<div id="side"><button id="mapBtn">Map</button><button id="historyBtn">History</button><button id="helpBtn">Help</button></div>
+<div id="drawer"></div><div id="toast"></div>
+<button id="portalAction" class="action" title="Interact with the portal and cross worlds">◈ Enter world portal</button>
+<button id="screenAction" class="action" title="Inspect VNN wall screen">▣ Inspect VNN Screen</button>
+
+<div id="travelRibbon" role="group" aria-label="Available destinations and actions"></div>
+<div id="status">CAD model loading…</div>
+<div id="navBar"><button id="turnLeft" title="Rotate left">↶</button><button id="back" title="Return / step back">↓</button><button id="forward" class="travel" title="Advance to connected viewpoint">↑</button><button id="turnRight" title="Rotate right">↷</button></div>
+</main><footer><span>WebGL2 · Portal Kit · Gringotts branch · private-service art prototypes</span><span>Throne room = local (0, 0) · linear fortress / circular garden</span></footer></div>
+<script src="../../shared/legacy/webspace-channel.js"></script>
+<script src="../../shared/legacy/webspace-portal.js"></script>
+<script src="../../shared/legacy/webspace-screen.js"></script>
+<script src="../../shared/legacy/webspace-bank-desk.js"></script>
+<script src="../../shared/legacy/worlds-runtime.js"></script>
+<script src="../../shared/legacy/webspace-fallback.js"></script>
+<script src="../../shared/legacy/webspace.js"></script>
+<script src="../../shared/world-nav.js"></script>
+</body></html>

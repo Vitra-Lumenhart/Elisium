@@ -1,0 +1,167 @@
+{
+  "revision": "05 parametric architectural vertical slice",
+  "status": "concept visual model, not construction-ready",
+  "source": "Registered Revision04 coordinates and manifest",
+  "unit": "metre",
+  "site": {
+    "u": [
+      0,
+      192
+    ],
+    "v": [
+      0,
+      288
+    ],
+    "entry": "east v=0",
+    "rear": "west v=288"
+  },
+  "CAD_axes": {
+    "x": "north/u",
+    "y": "west/v",
+    "z": "up"
+  },
+  "GLB_axes": {
+    "x": "north/u minus 96",
+    "y": "up (CAD z)",
+    "z": "east (168 minus CAD v)"
+  },
+  "CAD_to_GLB_matrix_row_major": [
+    [
+      1.0,
+      0.0,
+      0.0,
+      -96.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      -1.0,
+      0.0,
+      168.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "world_altar_CAD": [
+    96,
+    168,
+    0
+  ],
+  "grid_module_m": 0.5,
+  "coarse_registration_grid_m": 12,
+  "course_height_m": 1.0,
+  "authenticity": "Herodian-style limestone/ashlar reference, not an actual universal Second Temple marble standard",
+  "column_families": {
+    "garden": {
+      "radius": 0.75,
+      "height": 5.7,
+      "capital_radius": 1.0,
+      "capital_h": 0.6
+    },
+    "gallery": {
+      "radius": 1.05,
+      "height": 21.4
+    },
+    "corner": {
+      "radius": 2.0,
+      "height": 45.3
+    }
+  },
+  "pointed_arch_master": {
+    "type": "two circular arcs",
+    "span_m": 12,
+    "rise_m": 7,
+    "spring_m": 6.2,
+    "projecting_keystone": false,
+    "crown_joint_note": "Do not claim masonry arches are keystoneless by structural necessity"
+  },
+  "central": {
+    "center_u_v": [
+      96,
+      168
+    ],
+    "square_size_m": 84,
+    "altar_size_m": [
+      3,
+      3
+    ],
+    "radial_seating_banks": 12,
+    "major_ribs": 16,
+    "heptagram_points": 7,
+    "oculus_diameter_m": 18,
+    "roof_elevation_m": 84
+  },
+  "water": {
+    "wudu": "eastern dedicated basins",
+    "baptism": "western immersion font; not swimming pool",
+    "garden": "independent reflecting water rills"
+  },
+  "focus_shift": "Mont Saint-Michel: staggered tiered crypt/rooms and elevated cloister, while retaining existing Gothic geometry",
+  "later_collage": "Taj-derived marble domes + chhatris; Russian-derived flame lanterns and geometric kokoshnik collars",
+  "ruin_breaches": [
+    "north-northeast crown roof sector R1",
+    "western wall broken at v269-282",
+    "western baptistry lost rim roof",
+    "unfinished garden arcade"
+  ],
+  "scene_files": {
+    "00_foundations": {
+      "bytes": 11044,
+      "meshes": 4,
+      "nodes": 4,
+      "triangles": 396,
+      "objects_authored": 33,
+      "batched_by_material": true
+    },
+    "01_courts_water": {
+      "bytes": 307196,
+      "meshes": 7,
+      "nodes": 7,
+      "triangles": 16596,
+      "objects_authored": 124,
+      "batched_by_material": true
+    },
+    "02_communion_crown": {
+      "bytes": 378132,
+      "meshes": 5,
+      "nodes": 5,
+      "triangles": 20524,
+      "objects_authored": 197,
+      "batched_by_material": true
+    },
+    "03_mont_skyline": {
+      "bytes": 275572,
+      "meshes": 6,
+      "nodes": 6,
+      "triangles": 14808,
+      "objects_authored": 128,
+      "batched_by_material": true
+    },
+    "04_ornaments_ruins": {
+      "bytes": 115860,
+      "meshes": 6,
+      "nodes": 6,
+      "triangles": 5896,
+      "objects_authored": 202,
+      "batched_by_material": true
+    }
+  },
+  "STEP": {
+    "path": "cad/temple_structural_master.step",
+    "b_rep_solids": 61,
+    "excludes": "tiny ornament, textures, seating, most lattice ribs; all in procedural GLB generator"
+  },
+  "LOD_policy": "stage 00 initially, stage 01 and 02 next; stages 03 and 04 opt-in; share GLB geometries through nodes and reference components",
+  "provenance": {
+    "r04_manifest": "reference/rev04_geometry_manifest.json"
+  }
+}

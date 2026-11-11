@@ -1,0 +1,115 @@
+{
+  "stage": "05_stained_glass",
+  "window_count": 8,
+  "CAD_coords": "u north, v west, z up",
+  "GLB_coords": "x north, y up, z east",
+  "panes": [
+    {
+      "index": 0,
+      "angle_rad": 0.23562,
+      "cad_uv": [
+        127.262,
+        175.505
+      ],
+      "height_m": [
+        8.8,
+        21.3
+      ],
+      "width_m": 7.4
+    },
+    {
+      "index": 1,
+      "angle_rad": 0.75922,
+      "cad_uv": [
+        119.321,
+        190.131
+      ],
+      "height_m": [
+        8.8,
+        21.3
+      ],
+      "width_m": 7.4
+    },
+    {
+      "index": 2,
+      "angle_rad": 1.80642,
+      "cad_uv": [
+        88.495,
+        199.262
+      ],
+      "height_m": [
+        8.8,
+        21.3
+      ],
+      "width_m": 7.4
+    },
+    {
+      "index": 3,
+      "angle_rad": 2.33001,
+      "cad_uv": [
+        73.869,
+        191.321
+      ],
+      "height_m": [
+        8.8,
+        21.3
+      ],
+      "width_m": 7.4
+    },
+    {
+      "index": 4,
+      "angle_rad": 3.37721,
+      "cad_uv": [
+        64.738,
+        160.495
+      ],
+      "height_m": [
+        8.8,
+        21.3
+      ],
+      "width_m": 7.4
+    },
+    {
+      "index": 5,
+      "angle_rad": 3.90081,
+      "cad_uv": [
+        72.679,
+        145.869
+      ],
+      "height_m": [
+        8.8,
+        21.3
+      ],
+      "width_m": 7.4
+    },
+    {
+      "index": 6,
+      "angle_rad": 4.94801,
+      "cad_uv": [
+        103.505,
+        136.738
+      ],
+      "height_m": [
+        8.8,
+        21.3
+      ],
+      "width_m": 7.4
+    },
+    {
+      "index": 7,
+      "angle_rad": 5.47161,
+      "cad_uv": [
+        118.131,
+        144.679
+      ],
+      "height_m": [
+        8.8,
+        21.3
+      ],
+      "width_m": 7.4
+    }
+  ],
+  "technique": "painted RGBA masked non-intersecting quad surfaces; luminous shader and screen-space fake caustics only in viewer",
+  "colors": "cyan, amber, lapis, emerald, magenta, garnet",
+  "exaggeration": "prismatic fantasy color spilling onto marble, not physical raytracing"
+}
