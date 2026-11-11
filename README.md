@@ -101,3 +101,14 @@ Elisium is an **independent, unofficial fan-fictional and critical interpretatio
 **Forwards:** Restore a canonical Webspace-root Pages address when an administrator enables it; deepen the narrative interactions between the twenty-four Kilns objects and Elisium's independent sky; develop more detailed custom furniture and smaller preprocessed physical assets without silently changing H IDs, historical attribution or the bounded event protocol. The mirrored site's link to the older standalone Elisium entry is a deliberate bridge, not an assertion that their rendering engines have been merged.
 
 **Not yet:** This Pages mirror is a static public copy, not a server, persistent guestbook, bank, identity authority or general automatic cross-repository synchronization. Updating the mirror requires a reviewed new source revision and matching documentation. Its real public HTTP/visual deployment must be confirmed by the Pages build and browser, not inferred merely from Git objects.
+
+
+## The seven-address Webspace atlas — publishing all worlds
+
+**Backwards (2026-11-11):** The Kilns already appeared as a playable, 3D child-world on this GitHub Pages site, while the other Webspace worlds remained browseable through the canonical [Webspace codebase](https://github.com/Vitra-Lumenhart/Webspace/tree/main) but not yet published together as a public multiworld entry. A new intentionally triggered GitHub Actions workflow now stages **all six top-level world entries** from Webspace's canonical `main`, plus the nested Kilns. The existing Elisium home and separate historical source are preserved.
+
+**Play all Webspace worlds:** [Enter the Webspace seven-tab atlas](https://vitra-lumenhart.github.io/Elisium/webspace/index.html) (this link becomes live **only after** the sync action completes and GitHub Pages rebuilds successfully). The menu is Garden of Chuzhoy, Gerudo Fortress, Gringotts, Witch's Hole, Elisium, the Kilns child-world and the **reserved, not yet playable** Labyrinth of Purgatorio.
+
+**Forwards:** Move publication under Webspace's own domain/repository when GitHub Pages is activated there; at that time retire this external deployment mirror without losing public-world access. Protect the versioned archive, source provenance, shared portal semantics and authored H-object interactions. The mirror never becomes a competing second game repository; authored updates and README/manual revisions belong in Webspace first.
+
+**Not yet:** The first synchronization and public Pages rebuild must complete before the atlas is described as deployed; Purgatorio remains a placeholder. The old standalone Elisium repo is still needed as a hosting environment until a new site replaces it.

@@ -1,0 +1,104 @@
+name: Sync all Webspace worlds into public Elisium Pages mirror
+
+# A deliberate, versioned deployment request; no unreviewed daily overwrite.
+# GITHUB_TOKEN commits do NOT trigger Pages, so a final trusted connector
+# commit (or explicit Pages build) is required for a first publication.
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/sync-webspace-mirror.yml
+      - webspace/DEPLOYMENT_REQUEST.json
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  mirror-worlds:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Fetch the canonical public Webspace source
+        run: |
+          git clone --quiet --depth=1 --branch main https://github.com/Vitra-Lumenhart/Webspace.git "$RUNNER_TEMP/webspace-canonical"
+          SOURCE_SHA="$(git -C "$RUNNER_TEMP/webspace-canonical" rev-parse HEAD)"
+          echo "Source version: $SOURCE_SHA"
+          echo "SOURCE_SHA=$SOURCE_SHA" >> "$GITHUB_ENV"
+      - name: Assemble complete playable multiworld runtime under webspace/
+        run: |
+          set -euo pipefail
+          SOURCE="$RUNNER_TEMP/webspace-canonical"
+          mkdir -p webspace
+          for dir in worlds assets shared engine commons contracts docs; do
+            if [ -d "$SOURCE/$dir" ]; then
+              mkdir -p "webspace/$dir"
+              rsync -a --delete "$SOURCE/$dir/" "webspace/$dir/"
+            fi
+          done
+          for file in index.html garden-of-chuzhoy.html webspace_standalone_preview.html README.md TECH_MANUAL.html WORLD_MANIFEST.json VERSION.json; do
+            cp "$SOURCE/$file" "webspace/$file"
+          done
+          python3 - <<'PY'
+          import json, pathlib, os
+          base=pathlib.Path('webspace')
+          j=json.loads((base/'WORLD_MANIFEST.json').read_text())
+          assert len(j['worlds'])==6
+          expected=['chuzhoy','fortress','gringotts','witchs-hole','elisium','purgatorio']
+          assert [w['id'] for w in j['worlds']]==expected
+          for w in j['worlds']:
+              location=w['entry'].split('?')[0]
+              assert (base/location).is_file(), 'Missing playable/reserved entry: '+location
+          assert (base/'worlds/elisium/kilns/index.html').is_file()
+          for i in range(1,25):
+              assert (base/f'assets/kilns/proxy/H{i:02d}.glb').is_file()
+          origin={
+            'schema':'webspace/pages-mirror/2',
+            'canonical_repository':'https://github.com/Vitra-Lumenhart/Webspace',
+            'canonical_source_commit':os.environ['SOURCE_SHA'],
+            'public_multiworld_url':'https://vitra-lumenhart.github.io/Elisium/webspace/index.html',
+            'public_kilns_url':'https://vitra-lumenhart.github.io/Elisium/webspace/worlds/elisium/kilns/index.html',
+            'hosting_repository':'Vitra-Lumenhart/Elisium',
+            'source_authority':'Canonical Webspace only; this is a public Pages deployment mirror',
+            'world_count':len(j['worlds']),
+            'worlds':{w['id']:w['entry'] for w in j['worlds']},
+            'child_worlds':{c['id']:c['entry'] for c in j['children']}
+          }
+          (base/'ORIGIN.json').write_text(json.dumps(origin,indent=2)+'\n')
+          print('PASS 6 world entries, 1 indoor child world, 24 fallback objects')
+          PY
+      - name: Preserve clear mirror identity and provenance
+        run: |
+          cat > webspace/DEPLOYMENT_MIRROR.md <<'EOF'
+          # Webspace static public mirror
+
+          This folder is rendered under the existing public GitHub Pages site
+          https://vitra-lumenhart.github.io/Elisium/webspace/index.html .
+          Its source is the independent canonical public repository:
+          https://github.com/Vitra-Lumenhart/Webspace/tree/main
+
+          Do not develop a second copy of the game inside this mirror. Changes
+          must be authored and documented in Webspace and intentionally
+          synchronized after review. The source SHA and exact world entry
+          mapping reside in ORIGIN.json. The older standalone Elisium root
+          game and its Pages home page remain separate and unchanged.
+
+          The primary gameplay menu contains Chuzhoy, Gerudo Fortress,
+          Gringotts, Witch's Hole, Elisium and the reserved Purgatorio
+          placeholder, plus the Kilns nested inside Elisium.
+          EOF
+      - name: Commit mirror to the existing public Elisium repository
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add webspace/
+          if git diff --cached --quiet; then
+            echo 'Already current: Webspace source is unchanged'
+          else
+            git commit -m "Mirror reviewed Webspace multiworld runtime (source $SOURCE_SHA)"
+            git push origin HEAD:main
+          fi
