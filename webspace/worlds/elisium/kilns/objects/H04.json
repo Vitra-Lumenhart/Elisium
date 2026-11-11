@@ -1,0 +1,13 @@
+{
+  "id": "H04",
+  "name": "The Stair of Previous Readers",
+  "room": "Stair Landing",
+  "action": "Open a stair drawer; a predecessor’s note appears.",
+  "inquiry": "Inheriting an old route is different from reciting its steps.",
+  "polyhaven_url": "https://polyhaven.com/a/vintage_wooden_drawer_01",
+  "asset_status": "original_low_poly_proxy",
+  "proxy_path": "../../../assets/kilns/proxy/H04.glb",
+  "event_key": "kilns.object.h04.observed",
+  "scope": "local",
+  "source": "Kilns curator v0.3 · v4 generated proxy; NOT confirmed v0.6 artist binary"
+}

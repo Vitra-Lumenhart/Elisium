@@ -1,0 +1,53 @@
+name: Kilns v7 GitHub Pages mirror acceptance
+
+on:
+  pull_request:
+    paths:
+      - webspace/**
+      - .github/workflows/test-webspace-kilns-deploy.yml
+  push:
+    branches: [main]
+    paths:
+      - webspace/**
+      - .github/workflows/test-webspace-kilns-deploy.yml
+
+permissions:
+  contents: read
+
+jobs:
+  mirror-physical-world:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify copied sources, geometry and rights
+        run: |
+          node --check webspace/worlds/elisium/kilns/house3d.mjs
+          node --check webspace/worlds/elisium/kilns/house-fantasy.mjs
+          node --check webspace/worlds/elisium/kilns/house-layout.mjs
+          node --check webspace/worlds/elisium/kilns/house-assets.mjs
+          node -e "const fs=require('fs'), o=require('./webspace/assets/kilns/OBJECTS.json').objects; if(o.length!==24 || new Set(o.map(x=>x.id)).size!==24)throw Error('missing authored objects'); for(const x of o)if(!fs.existsSync('webspace/assets/kilns/proxy/'+x.id+'.glb'))throw Error('missing proxy '+x.id); console.log('PASS H01–H24, all local proxy binaries and 3D module syntax')"
+          test -s webspace/assets/vendor/three/build/three.module.js
+          test -s webspace/assets/vendor/three/LICENSE
+          test -s webspace/worlds/elisium/threshold.js
+      - name: Install browser test runner (Chrome already provisioned)
+        run: |
+          npm install --no-save playwright@1.56.1
+          which google-chrome
+      - name: Browser QA on actual mirror, without any CDN for the 3D engine
+        run: |
+          mkdir -p artifacts
+          python3 -m http.server 8000 --bind 127.0.0.1 --directory webspace >/tmp/elisium-kilns-http.log 2>&1 &
+          sleep 2
+          export WEBSPACE_BROWSER_PATH="$(command -v google-chrome)"
+          node webspace/tools/test_kilns_house3d.mjs
+      - name: Publish real browser screenshots for curators
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: elisium-pages-kilns-v7-house-qa
+          path: artifacts/
+          retention-days: 30

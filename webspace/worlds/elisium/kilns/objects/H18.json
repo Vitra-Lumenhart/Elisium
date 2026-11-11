@@ -1,0 +1,13 @@
+{
+  "id": "H18",
+  "name": "The Printing Press",
+  "room": "Study",
+  "action": "Print a phrase; see how it propagates through a network.",
+  "inquiry": "Repetition amplifies messages; false and true claims can both spread.",
+  "polyhaven_url": "https://polyhaven.com/a/spinning_wheel_01",
+  "asset_status": "original_low_poly_proxy",
+  "proxy_path": "../../../assets/kilns/proxy/H18.glb",
+  "event_key": "kilns.object.h18.observed",
+  "scope": "local",
+  "source": "Kilns curator v0.3 · v4 generated proxy; NOT confirmed v0.6 artist binary"
+}

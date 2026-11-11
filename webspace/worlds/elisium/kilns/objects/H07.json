@@ -1,0 +1,13 @@
+{
+  "id": "H07",
+  "name": "Two Inherited Cups",
+  "room": "Dining Room",
+  "action": "Offer either cup; both leave rings in the table.",
+  "inquiry": "Hospitality vs ownership; a vessel can be shared without erasing difference.",
+  "polyhaven_url": "https://polyhaven.com/a/brass_goblets",
+  "asset_status": "original_low_poly_proxy",
+  "proxy_path": "../../../assets/kilns/proxy/H07.glb",
+  "event_key": "kilns.object.h07.observed",
+  "scope": "local",
+  "source": "Kilns curator v0.3 · v4 generated proxy; NOT confirmed v0.6 artist binary"
+}

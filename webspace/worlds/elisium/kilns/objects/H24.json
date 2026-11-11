@@ -1,0 +1,13 @@
+{
+  "id": "H24",
+  "name": "The Quiet Repairer",
+  "room": "Attic",
+  "action": "Tap three nails; a cracked mullion is restored.",
+  "inquiry": "Matthias-like repair sustains structures quietly after rupture.",
+  "polyhaven_url": "https://polyhaven.com/a/wooden_hammer_01",
+  "asset_status": "original_low_poly_proxy",
+  "proxy_path": "../../../assets/kilns/proxy/H24.glb",
+  "event_key": "kilns.object.h24.observed",
+  "scope": "local",
+  "source": "Kilns curator v0.3 · v4 generated proxy; NOT confirmed v0.6 artist binary"
+}

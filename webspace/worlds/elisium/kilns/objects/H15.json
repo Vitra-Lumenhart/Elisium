@@ -1,0 +1,13 @@
+{
+  "id": "H15",
+  "name": "The Book's Tiny Chapel",
+  "room": "Library",
+  "action": "Grow a tree of arguments around the tiny chapel.",
+  "inquiry": "A recursive rule produces distinct branches; the part supports the whole.",
+  "polyhaven_url": "https://polyhaven.com/a/gothic_statue",
+  "asset_status": "original_low_poly_proxy",
+  "proxy_path": "../../../assets/kilns/proxy/H15.glb",
+  "event_key": "kilns.object.h15.observed",
+  "scope": "local",
+  "source": "Kilns curator v0.3 · v4 generated proxy; NOT confirmed v0.6 artist binary"
+}

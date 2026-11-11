@@ -1,0 +1,13 @@
+{
+  "id": "H03",
+  "name": "The Twelve-Pane Window",
+  "room": "Oratory",
+  "action": "Slide color channels; split the beam into window petals.",
+  "inquiry": "One light, many transmissions: spectra are different from moral verdicts.",
+  "polyhaven_url": "https://polyhaven.com/a/fancy_picture_frame_02",
+  "asset_status": "original_low_poly_proxy",
+  "proxy_path": "../../../assets/kilns/proxy/H03.glb",
+  "event_key": "kilns.object.h03.observed",
+  "scope": "local",
+  "source": "Kilns curator v0.3 · v4 generated proxy; NOT confirmed v0.6 artist binary"
+}

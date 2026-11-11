@@ -1,0 +1,13 @@
+{
+  "id": "H22",
+  "name": "The Wren and the Crumb",
+  "room": "Kitchen",
+  "action": "Leave crumbs; see whether a wren returns or remains free.",
+  "inquiry": "A bird has probabilistic choices, not an imperative to reward the player.",
+  "polyhaven_url": "https://polyhaven.com/a/potted_plant_01",
+  "asset_status": "original_low_poly_proxy",
+  "proxy_path": "../../../assets/kilns/proxy/H22.glb",
+  "event_key": "kilns.object.h22.observed",
+  "scope": "local",
+  "source": "Kilns curator v0.3 · v4 generated proxy; NOT confirmed v0.6 artist binary"
+}

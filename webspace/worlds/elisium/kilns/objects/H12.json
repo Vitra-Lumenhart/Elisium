@@ -1,0 +1,13 @@
+{
+  "id": "H12",
+  "name": "The Editorial Desk",
+  "room": "Library",
+  "action": "Edit a sentence; its former wording remains visible.",
+  "inquiry": "Version history preserves corrected drafts rather than pretending finality.",
+  "polyhaven_url": "https://polyhaven.com/a/wooden_table_02",
+  "asset_status": "original_low_poly_proxy",
+  "proxy_path": "../../../assets/kilns/proxy/H12.glb",
+  "event_key": "kilns.object.h12.observed",
+  "scope": "local",
+  "source": "Kilns curator v0.3 · v4 generated proxy; NOT confirmed v0.6 artist binary"
+}

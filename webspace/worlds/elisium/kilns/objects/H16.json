@@ -1,0 +1,13 @@
+{
+  "id": "H16",
+  "name": "The Honest Exit",
+  "room": "Stair Landing",
+  "action": "Open and close the quiet door; no answer required.",
+  "inquiry": "An honest exit allows incompletion.",
+  "polyhaven_url": "https://polyhaven.com/a/large_castle_door",
+  "asset_status": "original_low_poly_proxy",
+  "proxy_path": "../../../assets/kilns/proxy/H16.glb",
+  "event_key": "kilns.object.h16.observed",
+  "scope": "local",
+  "source": "Kilns curator v0.3 · v4 generated proxy; NOT confirmed v0.6 artist binary"
+}

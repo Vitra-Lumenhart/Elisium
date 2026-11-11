@@ -1,0 +1,13 @@
+{
+  "id": "H14",
+  "name": "The Fireplace Reflection",
+  "room": "Common Room",
+  "action": "Tilt mirror; another angle of the meadow appears.",
+  "inquiry": "Observer position affects view; perspective is not automatically moral relativism.",
+  "polyhaven_url": "https://polyhaven.com/a/ornate_mirror_01",
+  "asset_status": "original_low_poly_proxy",
+  "proxy_path": "../../../assets/kilns/proxy/H14.glb",
+  "event_key": "kilns.object.h14.observed",
+  "scope": "local",
+  "source": "Kilns curator v0.3 · v4 generated proxy; NOT confirmed v0.6 artist binary"
+}

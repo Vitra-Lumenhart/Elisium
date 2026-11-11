@@ -1,0 +1,13 @@
+{
+  "id": "H06",
+  "name": "The Unsent Letter",
+  "room": "Study",
+  "action": "Choose send, amend or keep; the envelope changes.",
+  "inquiry": "The absent addressee makes the ethics of interpretation concrete.",
+  "polyhaven_url": "https://polyhaven.com/a/vintage_suitcase",
+  "asset_status": "original_low_poly_proxy",
+  "proxy_path": "../../../assets/kilns/proxy/H06.glb",
+  "event_key": "kilns.object.h06.observed",
+  "scope": "local",
+  "source": "Kilns curator v0.3 · v4 generated proxy; NOT confirmed v0.6 artist binary"
+}

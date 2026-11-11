@@ -1,0 +1,13 @@
+{
+  "id": "H11",
+  "name": "Correspondence Window",
+  "room": "Study",
+  "action": "Stamp an envelope; hear a short dispatch chime.",
+  "inquiry": "Messages are imperfectly transmitted; no reader owns the sender.",
+  "polyhaven_url": "https://polyhaven.com/a/vintage_wooden_drawer_01",
+  "asset_status": "original_low_poly_proxy",
+  "proxy_path": "../../../assets/kilns/proxy/H11.glb",
+  "event_key": "kilns.object.h11.observed",
+  "scope": "local",
+  "source": "Kilns curator v0.3 · v4 generated proxy; NOT confirmed v0.6 artist binary"
+}

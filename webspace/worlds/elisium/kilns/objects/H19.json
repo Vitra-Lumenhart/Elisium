@@ -1,0 +1,13 @@
+{
+  "id": "H19",
+  "name": "Metronome of Zeal",
+  "room": "Common Room",
+  "action": "Wind two musical frequencies; separate their hidden pulses.",
+  "inquiry": "Complex sounds are sums of components; a chord can retain two notes.",
+  "polyhaven_url": "https://polyhaven.com/a/mantel_clock_01",
+  "asset_status": "original_low_poly_proxy",
+  "proxy_path": "../../../assets/kilns/proxy/H19.glb",
+  "event_key": "kilns.object.h19.observed",
+  "scope": "local",
+  "source": "Kilns curator v0.3 · v4 generated proxy; NOT confirmed v0.6 artist binary"
+}

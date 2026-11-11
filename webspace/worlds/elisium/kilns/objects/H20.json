@@ -1,0 +1,13 @@
+{
+  "id": "H20",
+  "name": "Rain-Catching Instrument",
+  "room": "Kitchen",
+  "action": "Catch a sample; estimate the rain rate with uncertainty.",
+  "inquiry": "Small samples create uncertain estimates. Compare frequency and interval.",
+  "polyhaven_url": "https://polyhaven.com/a/vintage_microscope",
+  "asset_status": "original_low_poly_proxy",
+  "proxy_path": "../../../assets/kilns/proxy/H20.glb",
+  "event_key": "kilns.object.h20.observed",
+  "scope": "local",
+  "source": "Kilns curator v0.3 · v4 generated proxy; NOT confirmed v0.6 artist binary"
+}

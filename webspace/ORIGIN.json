@@ -1,0 +1,11 @@
+{
+  "schema": "webspace/kilns-deployment-mirror/1",
+  "copied_from": "Vitra-Lumenhart/Webspace",
+  "source_commit": "17fe45e2423a04b9de447ec1079bf5a3d6136a21",
+  "mirrored_at": "2026-11-11",
+  "canonical": "https://github.com/Vitra-Lumenhart/Webspace",
+  "player_url": "https://vitra-lumenhart.github.io/Elisium/webspace/worlds/elisium/kilns/index.html",
+  "hosting_repo": "Vitra-Lumenhart/Elisium",
+  "scope": "standalone Kilns v7 runtime + original 24 GLB proxies + pinned MIT Three.js r168",
+  "note": "A mirror under the already-enabled Elisium GitHub Pages site; original standalone Elisium index.html is unchanged."
+}
