@@ -1,0 +1,496 @@
+{
+  "schema": "webspace/elisium-atlas/1",
+  "status": "fictional pedagogical sky atlas, not positional star catalog, astrological prediction, or authoritative synoptic theology",
+  "zodiacSource": "https://www.iranicaonline.org/articles/horoscope/",
+  "monthsSource": "https://iranologia.es/en/2020/09/23/a-concise-review-of-the-iranian-calendar/",
+  "zoroastrianismSource": "https://www.iranicaonline.org/articles/zodiac/",
+  "sgmSource": "Semantic Geometry Mapping: From Relative Meaning to Constructed Semantic Space, proposed 90-chapter outline (not a completed 90-chapter textbook)",
+  "populationAssumption": "Seven billion is a hypothetical thought experiment, not an assertion about world population or consciousness",
+  "points": [
+    {
+      "id": "tip0",
+      "name": "Threshold / Secular Exit",
+      "question": "Departure, doubt, humanism and autonomy are distinct from the dwarfs' fictional disillusionment."
+    },
+    {
+      "id": "tip1",
+      "name": "Judaism",
+      "question": "Covenant, interpretation, communal memory and living disagreement; no single Jewish voice."
+    },
+    {
+      "id": "tip2",
+      "name": "Islam",
+      "question": "Tawhid, prophethood, mercy and accountability; do not merge Jesus and Muhammad into one role."
+    },
+    {
+      "id": "tip3",
+      "name": "Tash · fictional",
+      "question": "Lewis's Calormene fiction and political manipulation of sacred authority; not a proxy for Islam."
+    },
+    {
+      "id": "tip4",
+      "name": "Aslan · fictional",
+      "question": "The lion as a narrative figure of self-offering and discernment; Leo is an astronomical lion, not proof of identity."
+    },
+    {
+      "id": "tip5",
+      "name": "Christianity",
+      "question": "Incarnation, death, resurrection and human solidarity; distinguish theology from Narnian analogy."
+    },
+    {
+      "id": "tip6",
+      "name": "Zoroastrianism / Ahura Mazda",
+      "question": "Asha, good thought, beneficial action, cosmic renewal and freely chosen truth; not simply Christian or Islamic anticipation."
+    }
+  ],
+  "months": [
+    {
+      "id": "season01",
+      "name": "Farvardin",
+      "dedication": "Fravashis · remembrance and ancestors",
+      "zodiac": "Aries",
+      "pahlavi": "Warrag",
+      "vantage": "tip6",
+      "pair": "A Name and a Right to Leave",
+      "objects": [
+        "H01",
+        "H16"
+      ],
+      "lens": "book",
+      "az": -2.8797932657906435,
+      "el": 0.43,
+      "note": "Month-name dedication and zodiac sign are different systems; their one-to-one order here is an authored teaching alignment, not a historical correspondence."
+    },
+    {
+      "id": "season02",
+      "name": "Ordibehesht",
+      "dedication": "Asha Vahishta · best truth / order",
+      "zodiac": "Taurus",
+      "pahlavi": "Gav",
+      "vantage": "tip1",
+      "pair": "A Gift Without a Claim",
+      "objects": [
+        "H02",
+        "H22"
+      ],
+      "lens": "witness",
+      "az": -2.356194490192345,
+      "el": 0.4959384671971473,
+      "note": "Month-name dedication and zodiac sign are different systems; their one-to-one order here is an authored teaching alignment, not a historical correspondence."
+    },
+    {
+      "id": "season03",
+      "name": "Khordad",
+      "dedication": "Haurvatat · wholeness",
+      "zodiac": "Gemini",
+      "pahlavi": "Do-pahikar",
+      "vantage": "tip2",
+      "pair": "The Traveling Light",
+      "objects": [
+        "H03",
+        "H17"
+      ],
+      "lens": "book",
+      "az": -1.832595714594046,
+      "el": 0.5291458348191687,
+      "note": "Month-name dedication and zodiac sign are different systems; their one-to-one order here is an authored teaching alignment, not a historical correspondence."
+    },
+    {
+      "id": "season04",
+      "name": "Tir",
+      "dedication": "Tishtrya · rain star / Sirius",
+      "zodiac": "Cancer",
+      "pahlavi": "Karzang",
+      "vantage": "tip6",
+      "pair": "Inherited Messages",
+      "objects": [
+        "H04",
+        "H11"
+      ],
+      "lens": "letters",
+      "az": -1.3089969389957472,
+      "el": 0.5131383460778683,
+      "note": "Tir preserves the name Tishtrya, identified with Sirius and associated with rain in Iranian religious tradition; this is a historically grounded star association, unlike the illustrative zodiac month alignment."
+    },
+    {
+      "id": "season05",
+      "name": "Amordad",
+      "dedication": "Ameretat · immortality",
+      "zodiac": "Leo",
+      "pahlavi": "Shagr",
+      "vantage": "tip4",
+      "pair": "Evidence and Editorial Power",
+      "objects": [
+        "H05",
+        "H12"
+      ],
+      "lens": "book",
+      "az": -0.7853981633974483,
+      "el": 0.45586193496611105,
+      "note": "Leo–Aslan is a literary lion analogy, NOT a historical Zoroastrian attribution."
+    },
+    {
+      "id": "season06",
+      "name": "Shahrivar",
+      "dedication": "Khshathra Vairya · desirable dominion",
+      "zodiac": "Virgo",
+      "pahlavi": "Hosag",
+      "vantage": "tip5",
+      "pair": "The Unanswered Place",
+      "objects": [
+        "H06",
+        "H07"
+      ],
+      "lens": "letters",
+      "az": -0.2617993877991496,
+      "el": 0.3857479556705148,
+      "note": "Month-name dedication and zodiac sign are different systems; their one-to-one order here is an authored teaching alignment, not a historical correspondence."
+    },
+    {
+      "id": "season07",
+      "name": "Mehr",
+      "dedication": "Mithra · covenants and contracts",
+      "zodiac": "Libra",
+      "pahlavi": "Tarazug",
+      "vantage": "tip3",
+      "pair": "Myth Beyond Ownership",
+      "objects": [
+        "H08",
+        "H13"
+      ],
+      "lens": "shelter",
+      "az": 0.2617993877991496,
+      "el": 0.3376001841276812,
+      "note": "Month-name dedication and zodiac sign are different systems; their one-to-one order here is an authored teaching alignment, not a historical correspondence."
+    },
+    {
+      "id": "season08",
+      "name": "Aban",
+      "dedication": "Aban · waters",
+      "zodiac": "Scorpio",
+      "pahlavi": "Gazdum",
+      "vantage": "tip6",
+      "pair": "The Unjudging Reflection",
+      "objects": [
+        "H09",
+        "H21"
+      ],
+      "lens": "witness",
+      "az": 0.7853981633974478,
+      "el": 0.33531862244073907,
+      "note": "Month-name dedication and zodiac sign are different systems; their one-to-one order here is an authored teaching alignment, not a historical correspondence."
+    },
+    {
+      "id": "season09",
+      "name": "Azar",
+      "dedication": "Atar · fire",
+      "zodiac": "Sagittarius",
+      "pahlavi": "Nemasp",
+      "vantage": "tip0",
+      "pair": "The Road and Its Reflection",
+      "objects": [
+        "H10",
+        "H14"
+      ],
+      "lens": "shelter",
+      "az": 1.3089969389957474,
+      "el": 0.38003581168830974,
+      "note": "Month-name dedication and zodiac sign are different systems; their one-to-one order here is an authored teaching alignment, not a historical correspondence."
+    },
+    {
+      "id": "season10",
+      "name": "Dey",
+      "dedication": "Ahura Mazda · creator / wisdom",
+      "zodiac": "Capricorn",
+      "pahlavi": "Wahig",
+      "vantage": "tip6",
+      "pair": "Preserving the Branches",
+      "objects": [
+        "H15",
+        "H20"
+      ],
+      "lens": "witness",
+      "az": 1.8325957145940457,
+      "el": 0.44955465151005436,
+      "note": "Dey explicitly echoes Ahura Mazda as Creator; this month-to-creator link is stronger historically than treating Capricorn as a Zoroastrian divine sign."
+    },
+    {
+      "id": "season11",
+      "name": "Bahman",
+      "dedication": "Vohu Manah · good mind",
+      "zodiac": "Aquarius",
+      "pahlavi": "Dol",
+      "vantage": "tip1",
+      "pair": "Print and Repair",
+      "objects": [
+        "H18",
+        "H24"
+      ],
+      "lens": "book",
+      "az": 2.356194490192345,
+      "el": 0.5093667863849153,
+      "note": "Month-name dedication and zodiac sign are different systems; their one-to-one order here is an authored teaching alignment, not a historical correspondence."
+    },
+    {
+      "id": "season12",
+      "name": "Esfand",
+      "dedication": "Spenta Armaiti · devotion / earth",
+      "zodiac": "Pisces",
+      "pahlavi": "Mahig",
+      "vantage": "tip5",
+      "pair": "Zeal and a Second Chair",
+      "objects": [
+        "H19",
+        "H23"
+      ],
+      "lens": "shelter",
+      "az": 2.879793265790643,
+      "el": 0.5297821579053075,
+      "note": "Month-name dedication and zodiac sign are different systems; their one-to-one order here is an authored teaching alignment, not a historical correspondence."
+    }
+  ],
+  "pairs": [
+    {
+      "a": "H01",
+      "b": "H16",
+      "title": "A Name and a Right to Leave",
+      "lens": "book"
+    },
+    {
+      "a": "H02",
+      "b": "H22",
+      "title": "A Gift Without a Claim",
+      "lens": "witness"
+    },
+    {
+      "a": "H03",
+      "b": "H17",
+      "title": "The Traveling Light",
+      "lens": "book"
+    },
+    {
+      "a": "H04",
+      "b": "H11",
+      "title": "Inherited Messages",
+      "lens": "letters"
+    },
+    {
+      "a": "H05",
+      "b": "H12",
+      "title": "Evidence and Editorial Power",
+      "lens": "book"
+    },
+    {
+      "a": "H06",
+      "b": "H07",
+      "title": "The Unanswered Place",
+      "lens": "letters"
+    },
+    {
+      "a": "H08",
+      "b": "H13",
+      "title": "Myth Beyond Ownership",
+      "lens": "shelter"
+    },
+    {
+      "a": "H09",
+      "b": "H21",
+      "title": "The Unjudging Reflection",
+      "lens": "witness"
+    },
+    {
+      "a": "H10",
+      "b": "H14",
+      "title": "The Road and Its Reflection",
+      "lens": "shelter"
+    },
+    {
+      "a": "H15",
+      "b": "H20",
+      "title": "Preserving the Branches",
+      "lens": "witness"
+    },
+    {
+      "a": "H18",
+      "b": "H24",
+      "title": "Print and Repair",
+      "lens": "book"
+    },
+    {
+      "a": "H19",
+      "b": "H23",
+      "title": "Zeal and a Second Chair",
+      "lens": "shelter"
+    }
+  ],
+  "objects": [
+    {
+      "id": "H01",
+      "chapter": 44,
+      "method": "Topology before distance",
+      "experiment": "Change a label without moving the doorway; ask what classification conceals.",
+      "family": "topology"
+    },
+    {
+      "id": "H02",
+      "chapter": 16,
+      "method": "Distributed agency",
+      "experiment": "Measure hospitality offered without confusing capacity with assent.",
+      "family": "agency"
+    },
+    {
+      "id": "H03",
+      "chapter": 32,
+      "method": "Change of basis",
+      "experiment": "Rotate an optical basis; preserve light and quantify projected error.",
+      "family": "basis"
+    },
+    {
+      "id": "H04",
+      "chapter": 9,
+      "method": "Ordered semantic series",
+      "experiment": "Infer an earlier reader's path from missing intervals; preserve gaps.",
+      "family": "sequence"
+    },
+    {
+      "id": "H05",
+      "chapter": 27,
+      "method": "Bayesian residual audit",
+      "experiment": "Compare testimony likelihood and posterior confidence; avoid grading souls.",
+      "family": "bayes"
+    },
+    {
+      "id": "H06",
+      "chapter": 4,
+      "method": "Evidence and provenance",
+      "experiment": "Separate a written letter, hearsay and an inferred absence.",
+      "family": "evidence"
+    },
+    {
+      "id": "H07",
+      "chapter": 3,
+      "method": "Counterfactual choice",
+      "experiment": "Test hospitality under unknown arrival rather than assuming an outcome.",
+      "family": "agency"
+    },
+    {
+      "id": "H08",
+      "chapter": 54,
+      "method": "Compression and reconstruction",
+      "experiment": "Distinguish a living myth from a lossy reconstruction of its ancestry.",
+      "family": "compression"
+    },
+    {
+      "id": "H09",
+      "chapter": 35,
+      "method": "Inner-product spaces",
+      "experiment": "Project a portrait onto declared reference axes; explain what is lost.",
+      "family": "basis"
+    },
+    {
+      "id": "H10",
+      "chapter": 42,
+      "method": "Reachability and geodesics",
+      "experiment": "Compare shortest time route with witness-preserving routes.",
+      "family": "route"
+    },
+    {
+      "id": "H11",
+      "chapter": 26,
+      "method": "Prediction and uncertainty",
+      "experiment": "Reconcile timestamp, delayed delivery and narrator memory.",
+      "family": "sequence"
+    },
+    {
+      "id": "H12",
+      "chapter": 37,
+      "method": "Operators and revision",
+      "experiment": "A second editor changes a document; preserve the original operator.",
+      "family": "evidence"
+    },
+    {
+      "id": "H13",
+      "chapter": 48,
+      "method": "Coordinate atlases",
+      "experiment": "Transform from room coordinates to child-world frame without conflation.",
+      "family": "topology"
+    },
+    {
+      "id": "H14",
+      "chapter": 33,
+      "method": "Laboratory frames",
+      "experiment": "Mirror a perspective, then test which facts are invariant.",
+      "family": "basis"
+    },
+    {
+      "id": "H15",
+      "chapter": 13,
+      "method": "Outer products / interactions",
+      "experiment": "Grow branching interpretations from two source axes.",
+      "family": "matrix"
+    },
+    {
+      "id": "H16",
+      "chapter": 86,
+      "method": "Ethical boundaries",
+      "experiment": "Protect refusal, nonbelief and the honest exit as distinct choices.",
+      "family": "agency"
+    },
+    {
+      "id": "H17",
+      "chapter": 31,
+      "method": "Phase and expression",
+      "experiment": "Find a repeating sky phase without touching the astronomical clock.",
+      "family": "phase"
+    },
+    {
+      "id": "H18",
+      "chapter": 28,
+      "method": "Covariance and contagion",
+      "experiment": "Simulate rumor propagation and separation of reach from accuracy.",
+      "family": "diffusion"
+    },
+    {
+      "id": "H19",
+      "chapter": 24,
+      "method": "Derivatives of semantic state",
+      "experiment": "Detect when zeal accelerates beyond corrective response capacity.",
+      "family": "phase"
+    },
+    {
+      "id": "H20",
+      "chapter": 29,
+      "method": "Sampling and standardization",
+      "experiment": "Estimate rainfall or population belief with uncertainty and confounds.",
+      "family": "sampling"
+    },
+    {
+      "id": "H21",
+      "chapter": 55,
+      "method": "Artificial learner continuity",
+      "experiment": "A lens models reports, not minds: inspect confidence and missing voices.",
+      "family": "sampling"
+    },
+    {
+      "id": "H22",
+      "chapter": 25,
+      "method": "Prediction residuals",
+      "experiment": "Treat a wren's return as a choice under uncertainty.",
+      "family": "bayes"
+    },
+    {
+      "id": "H23",
+      "chapter": 18,
+      "method": "Distributed agency graph",
+      "experiment": "Disentangle capacity, authorship, delegation and social coercion.",
+      "family": "matrix"
+    },
+    {
+      "id": "H24",
+      "chapter": 27,
+      "method": "Residual decomposition and repair",
+      "experiment": "Repair the structure while retaining evidence that it failed.",
+      "family": "evidence"
+    }
+  ]
+}

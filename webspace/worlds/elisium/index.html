@@ -1,12 +1,39 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Elisium · Living Concordance 4.6</title><style>html,body,iframe{width:100%;height:100%;margin:0;border:0;background:#101827;overflow:hidden}iframe{display:block}</style></head><body><iframe title="Elisium · Living Concordance 4.6" src="elisium_native.html" allow="fullscreen"></iframe><script src="../../shared/world-nav.js"></script><a href="kilns/index.html?ws_v=1&amp;ws_entry=elisium-kilns-door" style="position:fixed;z-index:10;top:12px;right:12px;border:1px solid #bda274;background:#182938e9;color:#eed19c;border-radius:8px;padding:10px 14px;text-decoration:none;font:12px system-ui" title="Visit the independently navigable indoor house">⌂ Enter the Kilns</a><section id="kilnsReturnNotice" hidden aria-label="House echoes" style="position:fixed;z-index:11;left:12px;bottom:14px;max-width:min(340px,calc(100vw - 24px));background:#162636f5;color:#f1dfc0;border:1px solid #bfa474;border-radius:10px;padding:11px;font:13px/1.45 system-ui,sans-serif;box-shadow:0 8px 30px #0009">
-<button type="button" id="kilnsEchoToggle" aria-expanded="false" style="background:#57452d;border:1px solid #bc9b64;color:#f5ddaa;padding:8px 11px;border-radius:7px;cursor:pointer">⌂ House echoes</button>
-<div id="kilnsEchoDetails" hidden><p id="kilnsEchoSummary"></p><ul id="kilnsEchoItems" style="padding-left:22px;max-height:32vh;overflow:auto"></ul><small>Only named observations cross. The private journal stays inside; the sky simulation remains independent.</small></div></section>
-<script src="threshold.js"></script><script>
-(()=>{'use strict';const bridge=window.ElisiumThreshold,record=bridge.consume(sessionStorage);
-if(!record||!record.observations.length)return;
-const card=document.getElementById('kilnsReturnNotice'),toggle=document.getElementById('kilnsEchoToggle'),details=document.getElementById('kilnsEchoDetails'),list=document.getElementById('kilnsEchoItems');
-document.getElementById('kilnsEchoSummary').textContent=record.observations.length+' discoveries across '+record.elapsed_minutes+' fictional interior minutes.';
-for(const o of record.observations){const li=document.createElement('li');li.textContent=o.id+' · '+bridge.meanings[o.id];list.append(li)}
-toggle.textContent='⌂ House echoes · '+record.observations.length;toggle.addEventListener('click',()=>{details.hidden=!details.hidden;toggle.setAttribute('aria-expanded',String(!details.hidden))});card.hidden=false;
-})();
-</script></body></html>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Elisium · Seven Points, Twelve Signs &amp; the Kilns</title>
+<meta name="description" content="A walkable sevenfold world, independent sky, Persian calendar and zodiac study, literary encounters and nested Victorian house.">
+<link rel="stylesheet" href="sky-atlas.css">
+<style>html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#0b1524}
+#elisiumGame{position:fixed;inset:0;width:100%;height:100%;border:0}
+#houseReturn{position:fixed;bottom:12px;right:12px;z-index:32;max-width:360px;background:#192b36;color:#e9dcc6;border:1px solid #bfa979;padding:13px;border-radius:9px;font:13px/1.5 system-ui}
+#houseReturn[hidden]{display:none}#houseReturn button{margin:5px;background:#3d5161;border:1px solid #a99a79;border-radius:6px;color:#f1dfbf;padding:7px 9px;cursor:pointer}
+#atlasPanel[hidden],#kilnsPocket[hidden],#secularDialogue[hidden]{display:none}</style></head>
+<body>
+<iframe id="elisiumGame" title="Elisium 4.6 — persistent land, independent sky and sixty-four literary readers" src="elisium_native.html" allow="fullscreen"></iframe>
+<div id="atlasButtons" aria-label="Elisium interactive instruments"><button id="atlasOpen" type="button">✧ SKY ATLAS · 12</button><button id="pocketOpen" type="button">⌂ THE KILNS</button></div>
+<p id="atlasHint" role="status">The sevenfold garden is opening. The house is available through the library threshold.</p>
+<div id="atlasPanel" hidden role="dialog" aria-modal="true" aria-label="Twelve signs and seven traditions"><div class="atlasCard">
+<div class="atlasTop"><div><h2>Twelve Signs under Seven Points</h2><small>Iranian calendar dedications · comparative zodiac · original literary observations</small></div><button id="atlasClose" type="button">Close · return to garden</button></div>
+<div class="atlasGrid">
+ <section><h3>Seasonal signs</h3><p class="atlasSubtle">These are two separate historical systems aligned for this fictional instrument, not historically identical calendar dates.</p><nav id="monthList" aria-label="Twelve seasonal and zodiac exhibits"></nav>
+ <h3>Population / Synapse laboratory</h3><p class="atlasSubtle">Hypothetical 7,000,000,000 records. Sample-size mathematics measures messages, not souls.</p>
+ <div class="atlasCompact"><label>Sample accounts <input type="range" id="sampleN" min="20" max="10000" step="20" value="1000"></label><label>Assumed response share (%) <input type="range" id="sampleP" min="1" max="99" value="50"></label><label>Within-cluster correlation (%) <input type="range" id="sampleRho" min="0" max="30" value="2"></label></div>
+ <p class="atlasReadout" id="populationReadout"></p><p class="atlasSubtle" id="populationWarning"></p>
+ </section>
+ <section class="atlasPane"><h2 id="atlasTitle">Opening the signs</h2><p id="atlasDetail"></p><p id="atlasSource"></p><h3>Seven-point vantage</h3><p id="atlasWhere"></p><h3>House companions</h3><p id="atlasPair"></p><p class="atlasReadout" id="atlasCounter"></p>
+ <div class="atlasActions"><button id="atlasWalk" type="button">Walk toward vantage</button><button id="atlasSkyward" type="button">Look skyward</button><button id="atlasObserve" type="button">Witness this sign outdoors</button></div>
+ <div class="atlasDivider"></div><h3>The library as instrument</h3><p id="atlasMathLabel"></p><p id="atlasMathDescription"></p>
+ <div class="atlasActions"><button id="atlasHouse" type="button">Enter the 3D Kilns</button><button id="openReaders" type="button">Hear the 64 fictional readers</button><button id="atlasMathAll" type="button">All 24 SGM exercises</button></div>
+ <ol id="mathList" hidden></ol>
+ <p class="atlasReadout" id="atlasNote" aria-live="polite"></p>
+ <p class="atlasSubtle">Math and statistics model evidence and uncertainty; they cannot rate religious truth or know consciousness. Constellation geometry is illustrative, not an accurate star catalog. No external chat or agent service is contacted.</p>
+ </section>
+</div></div></div>
+<div id="kilnsPocket" hidden role="dialog" aria-modal="true" aria-label="The Kilns pocket world"><div id="pocketSheet"><div id="pocketTop"><strong>⌂ THE KILNS · parent Elisium remains alive behind this threshold</strong><button id="pocketClose" type="button">◈ Return to Elisium</button></div><iframe id="houseFrame" title="Walkable Kilns indoor child world" loading="lazy" allow="fullscreen"></iframe></div></div>
+<div id="secularDialogue" hidden role="dialog" aria-modal="true" aria-label="The Dwarfs quiet circle"><div class="atlasCard"><div class="atlasTop"><h2>The Dwarfs’ Quiet Circle</h2><button id="secularClose" type="button">Return to the path</button></div><p>Behind the first portal, just out of initial sight, an almost-empty circle holds a few inward-facing stones. One has the words “The Dwarfs are for the Dwarfs.”</p>
+<p>This alludes to disillusionment after deception in C. S. Lewis's <em>The Last Battle</em>. Their embittered fictional refusal is <strong>not</strong> a definition of atheism or of secular ethics. One can reject a claim about God, reject organized religion, refuse manipulation, or simply leave this garden; these are different choices.</p><div class="atlasActions"><button data-secular="leave" type="button">I leave religion; not humanity</button><button data-secular="question" type="button">I keep questioning</button><button data-secular="remain" type="button">I stay, without surrender</button></div><p id="secularNote" class="atlasReadout" role="status"></p><p class="atlasSubtle">No conversion, moral score or penalty. This optional one-edge circle returns to the Threshold.</p></div></div>
+<div id="houseReturn" hidden role="status"><strong>✦ Messages from the house</strong><p id="houseReturnText"></p><div id="houseTuning"></div><button id="houseReturnClose" type="button">Dismiss</button></div>
+<script src="../../shared/world-nav.js"></script>
+<script src="threshold.js"></script>
+<script src="sky-atlas.js" defer></script>
+</body></html>

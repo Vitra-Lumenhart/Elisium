@@ -100,5 +100,13 @@
     "fantasy_art": "house-fantasy.mjs original bespoke physically animated objects with distinct activations",
     "journals": "sessionStorage only; no automatic visitor identity or persistence across sessions"
   },
-  "status": "playable physically navigable 3D house with 24 story-bearing objects; parent independent sky integration still deferred"
+  "status": "playable physically navigable 3D house with 24 story-bearing objects; parent independent sky integration still deferred",
+  "parent_integration_candidate": {
+    "version": "v8",
+    "source": "worlds/elisium/sky-atlas.js",
+    "mode": "iframe pocket world retains running native 4.6 parent",
+    "handoff": "one-time explicit object IDs and bounded local minutes",
+    "authority": "parent owns sky and land routes, child owns rooms and journals",
+    "limitations": "Native game time not reconciled; no server or persisted identity; no child code overwritten"
+  }
 }

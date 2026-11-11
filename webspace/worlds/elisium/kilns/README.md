@@ -36,3 +36,11 @@ The house does not ask for an identity, bank account, password or permission to 
 ## Validation statement
 
 Live GPU acceptance and public Pages publication must be checked separately from source creation. The test workflow verifies real 3D geometry, a walkable door, live art physically mounted in the dining room, stair passage and all H01–H24 effects; do not claim a complete graphics review of all Poly Haven models merely because one selected representative passes.
+
+## v8 · Exterior quest giver and retained parent world (candidate)
+
+Elisium now owns the twelve-sign sky comparison, the seven-point route and the summons to this house. Entering from the outdoor v8 shell opens this existing *3D house* as a nested child, without unloading the original v4.6 outdoor simulation. The source at \`house3d.mjs\`, \`house-fantasy.mjs\`, \`house-assets.mjs\` and the optional illustrated fallback remains unchanged. The bounded threshold projects explicit H-object observations (no private journal, account, simulated belief score or religious verdict), and the parent reads them after the player returns.
+
+See [SGM_OBJECT_LAB_v8.md](SGM_OBJECT_LAB_v8.md) for all 24 recommended mathematical investigations, the twelve inherited object pairs, comparison boundaries and an educational example concerning seven billion hypothetical Matrix/Synapse records. Most object-specific math exercises are **recommendations**, not implemented 3D object behavior. The implemented numeric sampling exercise lives outdoors in the Sky Atlas. Do not equate a sampled message with a person's consciousness.
+
+**Known contract debt:** v7 room clock (+3 per changed room) and object-exam clock (+6) remain in the house. The v8 wrapper preserves native Elisium's state while the child is open, but does not yet advance Elisium's travel clock by the child's fictional minutes, and does not persist a full native 4.6 session across a browser reload. If a parent is absent, the standalone \`index.html\` and its regular return navigation remain available.

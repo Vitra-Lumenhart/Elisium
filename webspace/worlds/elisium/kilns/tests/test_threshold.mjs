@@ -15,6 +15,7 @@ for(let n=1;n<=24;n++)assert(t.observe(s,'H'+String(n).padStart(2,'0')));
 assert.equal(t.read(s).observations.length,24);t.clear(s);assert.equal(t.read(s),null);
 const child=fs.readFileSync(path.join(dir,'../index.html'),'utf8'),parent=fs.readFileSync(path.join(dir,'../../index.html'),'utf8');
 const house=fs.readFileSync(path.join(dir,'../house3d.mjs'),'utf8');assert(child.includes('src="../threshold.js"')&&house.includes('bridge.observe(sessionStorage,o.id)')&&house.includes('bridge.advance(sessionStorage,3)'));
-assert(parent.includes('src="threshold.js"')&&parent.includes('bridge.consume(sessionStorage)')&&parent.includes('id="kilnsReturnNotice"'));
+const parentHandler=fs.readFileSync(path.join(dir,'../../sky-atlas.js'),'utf8');
+assert(parent.includes('src="threshold.js"')&&parent.includes('id="houseFrame"')&&parentHandler.includes('b.consume(sessionStorage)')&&parentHandler.includes('H.mark(item.id,\'studied\'')&&parentHandler.includes('sky.tuneSignal'));
 const world=JSON.parse(fs.readFileSync(path.join(dir,'../world.json'),'utf8'));assert.equal(world.threshold.handoff.schema,t.SCHEMA);
 console.log('PASS Kilns threshold: 24 IDs, time, one-time return, privacy projection, parent-child HTML wiring');

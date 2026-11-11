@@ -30,3 +30,8 @@ Use a single near-temple wall or roofless 3–6 m bay following *existing* 2D wa
 5. Record the new layout in the world README/manual and paired root ledger; do not silently rewrite prior art.
 
 An artist for Purgatorio may import a single `vault_trapezoid` or `glass_screen` with its own mapping; that is why none of these recipes owns Chuzhoy's coordinates.
+
+
+## Reconciliation update R0013 — planning for Garden 6.3 (2026-11-11)
+
+Read [the detailed versioned source census and design plan](../../docs/CHUZHOY_6_3_ASSET_RECONCILIATION.md) before treating the R0010 grammar as a replacement model. There are multiple distinct source generations: the monumental Rev06 CAD/GLB master, Rev07 prototype sockets, the locally reconstructed Rev08 wall/part microkit already embedded in Garden 6.2.8, and the new R0010 *source-only* cathedral library. Full v9.2 artist binaries are not in this repository. The existing Garden's exterior arcade is a valued composition; do not delete it. Rebuild joints, material and support with the new grammar. The pink 6.2.8 study is a low heptagon with ~11m arches, not yet an elevated seven-point crown. First deliver one host-registered roofless cathedral bay with genuine stone, a high broken lancet and a discoverable glass light source; no new navigation, sacred water replacement or camera obstruction.

@@ -1,7 +1,7 @@
 {
   "schema": "webspace/pages-mirror/2",
   "canonical_repository": "https://github.com/Vitra-Lumenhart/Webspace",
-  "canonical_source_commit": "6ac918c230db73b31b4f88e712aec4ac9f9ef882",
+  "canonical_source_commit": "c87d78aacd34c41c752961cb9b7b120cfa085cd1",
   "public_multiworld_url": "https://vitra-lumenhart.github.io/Elisium/webspace/index.html",
   "public_kilns_url": "https://vitra-lumenhart.github.io/Elisium/webspace/worlds/elisium/kilns/index.html",
   "hosting_repository": "Vitra-Lumenhart/Elisium",
