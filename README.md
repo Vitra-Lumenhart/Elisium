@@ -112,3 +112,12 @@ Elisium is an **independent, unofficial fan-fictional and critical interpretatio
 **Forwards:** Move publication under Webspace's own domain/repository when GitHub Pages is activated there; at that time retire this external deployment mirror without losing public-world access. Protect the versioned archive, source provenance, shared portal semantics and authored H-object interactions. The mirror never becomes a competing second game repository; authored updates and README/manual revisions belong in Webspace first.
 
 **Not yet:** The first synchronization and public Pages rebuild must complete before the atlas is described as deployed; Purgatorio remains a placeholder. The old standalone Elisium repo is still needed as a hosting environment until a new site replaces it.
+
+
+### November 11 publication refresh — source and public world together
+
+**Backwards:** The seven-tab Webspace atlas under Elisium Pages deployed and its GitHub-hosted public HTTP suite returned 200 for all world entrypoints, the Kilns and its local rendering module. The canonical Webspace repository also accepted R0012, adding a visible SOURCE CODE link inside the game and clear Play/Browse links at the top of its README. We requested a refreshed mirror from canonical Webspace commit `6ac918c230db73b31b4f88e712aec4ac9f9ef882` rather than hand-editing the mirrored code.
+
+**Forwards:** Keep this Elisium Pages mirror as a verified public host only until Webspace's own Pages or another approved domain becomes active; keep linking to canonical source and republishing only deliberately accepted revisions. Do not delete this historical host in the meantime.
+
+**Not yet:** Independent Webspace Pages activation and automated site migration are unfinished; Purgatorio is an honest placeholder, not gameplay. The mirror does not become a new sovereign Webspace source.
