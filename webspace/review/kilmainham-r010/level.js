@@ -1,8 +1,8 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
-import { material, projectUV, reskinMesh, applyMaterialMaps, addCharacters } from './kilmainham-materials.js';
-import { weatherScene } from './weathering.js';
+import { material, projectUV, reskinMesh, applyMaterialMaps, addCharacters } from './kilmainham-materials.js?v=101';
+import { weatherScene } from './weathering.js?v=101';
 
 // Architectural revision R010, photo-based geometry and alternating structural bands:
 // - only two interior testimony nodes remain (hall and chapel)
@@ -45,6 +45,18 @@ scene.background=new THREE.Color(0xb5bdc0);
 scene.fog=new THREE.Fog(0x9fa7a8,49,120);
 const camera=new THREE.PerspectiveCamera(65,innerWidth/innerHeight,.05,150);camera.rotation.order='YXZ';
 const renderer=new THREE.WebGLRenderer({antialias:true});
+let shaderFallback=false;
+renderer.debug.onShaderError=(gl,program,vertex,fragment)=>{
+ console.error('Kilmainham shader error',gl.getProgramInfoLog(program),gl.getShaderInfoLog(vertex),gl.getShaderInfoLog(fragment));
+ if(shaderFallback)return;shaderFallback=true;
+ // Reset optional shader hooks after the current render; preserve scanned maps.
+ requestAnimationFrame(()=>{
+  scene.traverse(o=>{if(!o.isMesh)return;for(const m of Array.isArray(o.material)?o.material:[o.material]){
+   if(!m?.userData?.weathering)continue;m.onBeforeCompile=()=>{};m.customProgramCacheKey=()=> 'kilmainham-safe';m.needsUpdate=true;
+  }});
+  const el=document.querySelector('#assets');if(el)el.textContent+=' · weather shader fallback';
+ });
+};
 renderer.setSize(innerWidth,innerHeight);renderer.setPixelRatio(Math.min(devicePixelRatio,2));
 renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=.98;
 renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
@@ -97,10 +109,10 @@ const shadeMat=material('iron');
 const library={masonry:stone,oak:doorMat,iron,boarding:wood,flags:floorMat,recess};
 const materialGroups={masonry:[stone,surround],oak:[doorMat],iron:[iron,trim,steelBlue,rustSteel,shadeMat],boarding:[wood,roofWood,bridgeWood],flags:[floorMat]};
 const uvKinds=new Map(Object.entries(materialGroups).flatMap(([key,materials])=>materials.map(m=>[m,key])));
+const roofGlass=new THREE.MeshStandardMaterial({color:0xc1c9c6,transparent:true,opacity:.21,roughness:.48,side:THREE.DoubleSide,depthWrite:false});
 const weatherKinds=new Map(uvKinds);for(const [m,k] of [[paperMat,'paper'],[gold,'brass'],[lampGlow,'lamp'],[glass,'glass'],[roofGlass,'glass'],[recess,'recess']])weatherKinds.set(m,k);
 const mixers=[];let previousTime=0;
 const review={maps:0,failed:[],characters:0,characterFailed:0};
-const roofGlass=new THREE.MeshStandardMaterial({color:0xc1c9c6,transparent:true,opacity:.21,roughness:.48,side:THREE.DoubleSide,depthWrite:false});
 const cache={};
 function poly(points){const s=new THREE.Shape(); points.forEach(([x,y],i)=>i?s.lineTo(x,y):s.moveTo(x,y));s.closePath();return s;}
 function archShape(w,h,head){const s=new THREE.Shape();s.moveTo(-w/2,0);s.lineTo(w/2,0);s.lineTo(w/2,h-head);s.absellipse(0,h-head,w/2,head,0,Math.PI,false);s.lineTo(-w/2,0);s.closePath();return s;}
@@ -268,7 +280,7 @@ addEventListener('keydown',e=>{if(dialog.open)return; if(!e.key.startsWith('Arro
 function updateMarkers(){const r=canvas.getBoundingClientRect(),f=camera.getWorldDirection(new THREE.Vector3()); for(const m of markers){const delta=m.world.clone().sub(camera.position),p=m.world.clone().project(camera); const visible=!state.trip&&!dialog.open&&delta.dot(f)>.1&&p.z>=-1&&p.z<=1&&Math.abs(p.x)<.9&&Math.abs(p.y)<.85; m.el.hidden=!visible; if(visible){m.el.style.left=`${r.left+(p.x+1)*r.width/2}px`; m.el.style.top=`${r.top+(1-p.y)*r.height/2}px`;}}}
 addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight)});
 function animate(now){const dt=previousTime?Math.min(.05,(now-previousTime)/1000):0;previousTime=now;for(const mixer of mixers)mixer.update(dt);tick(now); camera.rotation.set(pitch,yaw,0,'YXZ'); camera.updateMatrixWorld(); updateMarkers(); renderer.render(scene,camera)}
-function reportArt(){const failed=review.failed.length?' · '+review.failed.length+' map fallbacks':'';$('#assets').textContent='R010 · '+review.maps+'/5 material maps'+failed+' · '+review.characters+' characters'+(review.characterFailed?' ('+review.characterFailed+' unavailable)':'');}
+function reportArt(){const failed=review.failed.length?' · '+review.failed.length+' map fallbacks':'';$('#assets').textContent='R010 · '+review.maps+'/5 material maps'+failed+' · '+review.characters+' characters'+(review.characterFailed?' ('+review.characterFailed+' unavailable)':'')+(shaderFallback?' · weather shader fallback':'');}
 try{
  await load();build();flushAssets();batchArchitecture();weatherScene(scene,weatherKinds);
  refresh();reportArt();renderer.setAnimationLoop(animate);
