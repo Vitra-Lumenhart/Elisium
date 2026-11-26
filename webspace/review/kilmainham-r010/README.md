@@ -17,3 +17,6 @@ References: [East Wing axial view](https://www.ireland.com/things-to-do/attracti
 
 ## Review only
 The material workbench uses real Poly Haven CC0 source scans, not generated repetitive patterns. A map is requested at 2K, then 1K or 4K if unavailable. Source grade and projection are editable in kilmainham-materials.js. The color maps can be exported from art-review.html; the linen swatch is a material experiment and is not yet applied to character clothing. No Vitra Drive upload or production catalogue integration before approval. Live visual testing remains outstanding.
+
+## R010a startup hotfix
+The deployed mirror had referenced roofGlass before its declaration. Corrected source and mirror, renamed reserved GLSL identifier `patch`, added module-error HUD and optional `?safe=1` shader bypass. Shader compile errors revert optional hooks while retaining base maps. Browser verification pending.
