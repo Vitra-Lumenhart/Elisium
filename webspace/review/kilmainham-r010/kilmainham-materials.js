@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { distress } from './weathering.js';
+import { distress } from './weathering.js?v=101';
 
 // Kilmainham+: photographed material scans, graded to a coherent preindustrial palette.
 // Source assets are CC0; the grade is deliberately restrained to preserve KayKit silhouettes.
