@@ -9,8 +9,9 @@ const profiles={
  character:[.44,.15,.18,.06],recess:[.25,.16,.12,.05],lamp:[.30,.12,.16,.08]
 };
 const applied=new WeakSet();
+const weatheringEnabled=!new URLSearchParams(location.search).has('safe');
 export function distress(m,kind){
- if(!m||applied.has(m))return m;applied.add(m);
+ if(!weatheringEnabled||!m||applied.has(m))return m;applied.add(m);
  const p=profiles[kind]||profiles.masonry;
  m.userData.weathering=kind;
  m.onBeforeCompile=shader=>{
@@ -35,11 +36,11 @@ export function distress(m,kind){
  `).replace('#include <color_fragment>',`#include <color_fragment>
  vec3 kp=kWorld;
  float cloud=kFbm(kp*0.56);
- float patch=smoothstep(.36,.70,kFbm(kp*1.7+17.0));
+ float dirtPatch=smoothstep(.36,.70,kFbm(kp*1.7+17.0));
  float streak=smoothstep(.47,.77,kFbm(vec3(kp.x*4.2,kp.y*.38,kp.z*4.2)+8.0));
  float grit=kNoise(kp*33.0);
  float low=exp(-max(kp.y,0.0)*.58);
- float dirt=clamp((cloud*.40+patch*.26+streak*.25+grit*.09)*kWeather.x,0.0,1.0);
+ float dirt=clamp((cloud*.40+dirtPatch*.26+streak*.25+grit*.09)*kWeather.x,0.0,1.0);
  if(kKind==1.0){
    // Uneven damp tide near the floor and dirty runoff beneath gallery levels.
    float under=0.0;
@@ -48,7 +49,7 @@ export function distress(m,kind){
    dirt=clamp(dirt+tide*kWeather.y*.52+under*streak*.33,0.0,1.0);
  }else if(kKind==2.0){
    float traffic=exp(-abs(kp.x)*.65);
-   dirt=clamp(dirt+low*.08+(.24*(1.0-traffic))*patch,0.0,1.0);
+   dirt=clamp(dirt+low*.08+(.24*(1.0-traffic))*dirtPatch,0.0,1.0);
  }else if(kKind==5.0){
    float sill=mod(max(kp.y,0.0),6.30);
    float threshold=exp(-sill*1.35);
@@ -66,8 +67,8 @@ export function distress(m,kind){
  }
  if(kKind==4.0){
    // Dirty glazing, still transparent and daylight-bearing.
-   diffuseColor.rgb=mix(diffuseColor.rgb,vec3(.24,.26,.20),patch*.46);
-   diffuseColor.a=clamp(diffuseColor.a*(.75+patch*1.7),0.0,.62);
+   diffuseColor.rgb=mix(diffuseColor.rgb,vec3(.24,.26,.20),dirtPatch*.46);
+   diffuseColor.a=clamp(diffuseColor.a*(.75+dirtPatch*1.7),0.0,.62);
  }
  `);
  };
