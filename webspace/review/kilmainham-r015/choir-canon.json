@@ -1,0 +1,227 @@
+{
+  "schema": "kilmainham.choir/1",
+  "status": "candidate",
+  "triangle": {
+    "canonicalVertices": null,
+    "operationalProbes": [
+      "evidential honesty",
+      "voluntary agency",
+      "livable futures"
+    ],
+    "note": "Provisional scene probes, not the recovered Abrahamic Triangle. Never assign scores to Judaism, Christianity or Islam."
+  },
+  "rivalry": {
+    "rule": "Paley order seven: offset 1,2,4",
+    "canonicalAssignment": null,
+    "note": "No verified full assignment; no invented rivalry applied."
+  },
+  "powers": [
+    {
+      "id": "sable",
+      "name": "Mr. Sable",
+      "gift": null,
+      "vice": "Intemperance of Certainty",
+      "preferred": "Lorekeeper",
+      "alternate": "BlackKnight",
+      "home": "gate",
+      "giftAct": "Ask what grants jurisdiction",
+      "viceAct": "Declare the matter settled",
+      "giftLine": "Who grants that right?",
+      "viceLine": "The matter is settled."
+    },
+    {
+      "id": "ember",
+      "name": "Canon Ember",
+      "gift": "Courageous Disclosure",
+      "vice": "Prophetic Presumption",
+      "preferred": "Tiefling",
+      "alternate": "Cleric",
+      "home": "hall",
+      "giftAct": "Disclose a qualified account",
+      "viceAct": "Proclaim an unverified conclusion",
+      "giftLine": "Hear the whole account.",
+      "viceLine": "I know what follows."
+    },
+    {
+      "id": "vesper",
+      "name": "Sister Vesper",
+      "gift": "Respectful Witness",
+      "vice": "Consecrated Detachment",
+      "preferred": "Cleric",
+      "alternate": "AvianSwordsman",
+      "home": "chapel",
+      "giftAct": "Attend without taking ownership",
+      "viceAct": "Withhold necessary intervention",
+      "giftLine": "May I hear you?",
+      "viceLine": "Not mine to answer."
+    },
+    {
+      "id": "rook",
+      "name": "Captain Rook",
+      "gift": "Principled Departure",
+      "vice": "Incorruptible Independence",
+      "preferred": "BlackKnight",
+      "alternate": "Paladin",
+      "home": "gate",
+      "giftAct": "Leave a coercive bargain",
+      "viceAct": "Depart while an obligation remains",
+      "giftLine": "I owe no assent.",
+      "viceLine": "You stand alone."
+    },
+    {
+      "id": "rowan",
+      "name": "Brother Rowan",
+      "gift": "Unpurchased Hospitality",
+      "vice": "Festive Amnesia",
+      "preferred": "Paladin",
+      "alternate": "Tiefling",
+      "home": "hall",
+      "giftAct": "Offer a place without payment",
+      "viceAct": "Erase an obligation for peace",
+      "giftLine": "There is room here.",
+      "viceLine": "Let us forget it."
+    },
+    {
+      "id": "nacre",
+      "name": "Widow Nacre",
+      "gift": "Faithful Remembrance",
+      "vice": "Memorial Captivity",
+      "preferred": "Lorekeeper",
+      "alternate": "Cleric",
+      "home": "chapel",
+      "giftAct": "Preserve a revisable account",
+      "viceAct": "Treat a past error as permanent",
+      "giftLine": "Keep both accounts.",
+      "viceLine": "Nothing will change."
+    },
+    {
+      "id": "cairn",
+      "name": "Sister Cairn",
+      "gift": "Merciful Fortitude",
+      "vice": "Sacred Attrition",
+      "preferred": "Cleric",
+      "alternate": "Paladin",
+      "home": "hearing",
+      "giftAct": "Share a burden voluntarily",
+      "viceAct": "Make endurance a condition of dignity",
+      "giftLine": "Rest. I will stay.",
+      "viceLine": "Endure it a little longer."
+    }
+  ],
+  "humans": [
+    {
+      "id": "vale",
+      "name": "Eamon Vale",
+      "role": "intake clerk",
+      "node": "gate",
+      "form": "Rogue",
+      "need": "protect witnesses"
+    },
+    {
+      "id": "mara",
+      "name": "Mara Keane",
+      "role": "inmate",
+      "node": "hall",
+      "form": "Rogue_Hooded",
+      "need": "preserve her testimony"
+    },
+    {
+      "id": "pike",
+      "name": "Rowan Pike",
+      "role": "warder",
+      "node": "hall",
+      "form": "Knight",
+      "need": "keep the hall orderly"
+    },
+    {
+      "id": "aidan",
+      "name": "Brother Aidan",
+      "role": "chaplain",
+      "node": "chapel",
+      "form": "Rogue",
+      "need": "protect families"
+    },
+    {
+      "id": "ivo",
+      "name": "Ivo Byrne",
+      "role": "inmate",
+      "node": "hearing",
+      "form": "Rogue_Hooded",
+      "need": "have his case heard"
+    }
+  ],
+  "actions": {
+    "name": [
+      1,
+      -0.15,
+      0.2
+    ],
+    "alias": [
+      0.2,
+      0.75,
+      0.2
+    ],
+    "blanks": [
+      1,
+      0.2,
+      0.5
+    ],
+    "reconstruct": [
+      -0.65,
+      0.1,
+      -0.15
+    ],
+    "verified": [
+      0.7,
+      0.85,
+      0.25
+    ],
+    "allnames": [
+      0.1,
+      -0.8,
+      -0.3
+    ],
+    "deliver": [
+      0.65,
+      0.1,
+      0.35
+    ],
+    "adjourn": [
+      0.45,
+      0.65,
+      0.35
+    ]
+  },
+  "epochs": [
+    {
+      "year": 1120,
+      "title": "The Well",
+      "node": "gate",
+      "issue": "sanctuary charter"
+    },
+    {
+      "year": 1348,
+      "title": "The Infirmary",
+      "node": "chapel",
+      "issue": "admission during scarcity"
+    },
+    {
+      "year": 1582,
+      "title": "The College",
+      "node": "hall",
+      "issue": "contradictory testimony"
+    },
+    {
+      "year": 1715,
+      "title": "The Crown",
+      "node": "hearing",
+      "issue": "publication of disputed records"
+    },
+    {
+      "year": 1879,
+      "title": "The Ninth Bell",
+      "node": "gate",
+      "issue": "witness registration"
+    }
+  ]
+}
